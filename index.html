@@ -23,6 +23,24 @@
             font-weight: bold;
             animation: fadeInDown 1s ease-in-out;
         }
+        .about {
+            margin-top: 40px;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            transition: transform 0.3s ease;
+        }
+        .about:hover {
+            transform: translateY(-5px);
+        }
+        .about h2 {
+            margin-bottom: 10px;
+        }
         .services {
             display: flex;
             flex-wrap: wrap;
@@ -65,25 +83,6 @@
         .button:hover {
             background: linear-gradient(to right, #ff4b2b, #ff416c);
         }
-        .hidden {
-            opacity: 0;
-            transform: translateY(50px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-        }
-        .show {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        @keyframes fadeInDown {
-            from {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
         @media (max-width: 768px) {
             .services {
                 flex-direction: column;
@@ -96,23 +95,29 @@
     <div class="container">
         <div class="header">Joe’s Tech Repair</div>
         <p>Advanced Tech Repairs by a Computer Engineering Major</p>
+        
+        <div class="about">
+            <h2>About Us</h2>
+            <p>Joe’s Tech Repair is dedicated to providing top-notch tech solutions for students and professionals. With expertise in computer engineering, we ensure high-quality repairs and diagnostics for all your devices.</p>
+        </div>
+        
         <div class="services">
-            <div class="card hidden">
+            <div class="card">
                 <i class="fas fa-laptop-code"></i>
                 <h2>Laptop & PC Repair</h2>
                 <p>Fixing hardware & software issues on all computers.</p>
             </div>
-            <div class="card hidden">
+            <div class="card">
                 <i class="fas fa-mobile-alt"></i>
                 <h2>Phone Repair</h2>
                 <p>Screen replacements, battery fixes, and more for all mobile devices.</p>
             </div>
-            <div class="card hidden">
+            <div class="card">
                 <i class="fas fa-map-marker-alt"></i>
                 <h2>On-the-Go Repairs</h2>
                 <p>Mobile repair services at UCR or nearby locations.</p>
             </div>
-            <div class="card hidden">
+            <div class="card">
                 <i class="fas fa-tools"></i>
                 <h2>Advanced Diagnostics</h2>
                 <p>Deep system analysis & troubleshooting for tech issues.</p>
@@ -120,32 +125,5 @@
         </div>
         <button class="button" onclick="showBookingMessage()">Book a Repair</button>
     </div>
-    
-    <script>
-        function showBookingMessage() {
-            let button = document.querySelector('.button');
-            button.innerHTML = "✅ Booking Confirmed!";
-            button.style.background = "#4caf50";
-            setTimeout(() => {
-                button.innerHTML = "Book a Repair";
-                button.style.background = "linear-gradient(to right, #ff416c, #ff4b2b)";
-            }, 2000);
-        }
-        
-        function revealOnScroll() {
-            let elements = document.querySelectorAll('.hidden');
-            let windowHeight = window.innerHeight;
-            
-            elements.forEach(el => {
-                let position = el.getBoundingClientRect().top;
-                if (position < windowHeight - 50) {
-                    el.classList.add('show');
-                }
-            });
-        }
-        
-        window.addEventListener('scroll', revealOnScroll);
-        document.addEventListener('DOMContentLoaded', revealOnScroll);
-    </script>
 </body>
 </html>
