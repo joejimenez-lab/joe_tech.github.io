@@ -65,6 +65,15 @@
         .button:hover {
             background: linear-gradient(to right, #ff4b2b, #ff416c);
         }
+        .hidden {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .show {
+            opacity: 1;
+            transform: translateY(0);
+        }
         @keyframes fadeInDown {
             from {
                 opacity: 0;
@@ -88,22 +97,22 @@
         <div class="header">Joe’s Tech Repair</div>
         <p>Advanced Tech Repairs by a Computer Engineering Major</p>
         <div class="services">
-            <div class="card">
+            <div class="card hidden">
                 <i class="fas fa-laptop-code"></i>
                 <h2>Laptop & PC Repair</h2>
                 <p>Fixing hardware & software issues on all computers.</p>
             </div>
-            <div class="card">
+            <div class="card hidden">
                 <i class="fas fa-mobile-alt"></i>
                 <h2>Phone Repair</h2>
                 <p>Screen replacements, battery fixes, and more for all mobile devices.</p>
             </div>
-            <div class="card">
+            <div class="card hidden">
                 <i class="fas fa-map-marker-alt"></i>
                 <h2>On-the-Go Repairs</h2>
                 <p>Mobile repair services at UCR or nearby locations.</p>
             </div>
-            <div class="card">
+            <div class="card hidden">
                 <i class="fas fa-tools"></i>
                 <h2>Advanced Diagnostics</h2>
                 <p>Deep system analysis & troubleshooting for tech issues.</p>
@@ -122,6 +131,21 @@
                 button.style.background = "linear-gradient(to right, #ff416c, #ff4b2b)";
             }, 2000);
         }
+        
+        function revealOnScroll() {
+            let elements = document.querySelectorAll('.hidden');
+            let windowHeight = window.innerHeight;
+            
+            elements.forEach(el => {
+                let position = el.getBoundingClientRect().top;
+                if (position < windowHeight - 50) {
+                    el.classList.add('show');
+                }
+            });
+        }
+        
+        window.addEventListener('scroll', revealOnScroll);
+        document.addEventListener('DOMContentLoaded', revealOnScroll);
     </script>
 </body>
 </html>
