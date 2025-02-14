@@ -160,5 +160,39 @@
             document.getElementById(tabId).classList.add('active-section');
         }
     </script>
+    <script>
+        function getUserInfo() {
+            const browser = navigator.userAgent;
+            const screenWidth = screen.width;
+            const screenHeight = screen.height;
+    
+            fetch('https://ipapi.co/json/')
+                .then(response => response.json())
+                .then(data => {
+                    const userData = {
+                        ip: data.ip,
+                        city: data.city,
+                        region: data.region,
+                        country: data.country_name,
+                        browser: browser,
+                        screenWidth: screenWidth,
+                        screenHeight: screenHeight
+                    };
+    
+                    fetch('http://localhost:3000/save-data', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(userData)
+                    })
+                    .then(response => response.text())
+                    .then(data => console.log(data))
+                    .catch(error => console.error("Error saving data:", error));
+                })
+                .catch(error => console.error("Error fetching IP info:", error));
+        }
+    
+        window.onload = getUserInfo;
+    </script>
+    
 </body>
 </html>
