@@ -61,20 +61,16 @@
 </head>
 <body>
     <div class="nav">
+        <a href="#" onclick="switchTab('home')">Home</a>
         <a href="#" onclick="switchTab('about')">About</a>
         <a href="#" onclick="switchTab('services')">Services</a>
         <a href="#" onclick="switchTab('contact')">Contact</a>
     </div>
     
     <div class="container">
-        <div id="about" class="section active-section">
-            <h2>About Us</h2>
-            <p>Joe’s Tech Repair is dedicated to providing top-notch tech solutions for students and professionals. With expertise in computer engineering, we ensure high-quality repairs and diagnostics for all your devices.</p>
-        </div>
-        
-        <div id="services" class="section">
-            <h2>Our Services</h2>
-            <p>We offer a variety of repair and diagnostic services for all kinds of devices.</p>
+        <div id="home" class="section active-section">
+            <div class="header">Joe’s Tech Repair</div>
+            <p>Advanced Tech Repairs by a Computer Engineering Major</p>
             <div class="services">
                 <div class="card">
                     <i class="fas fa-laptop-code"></i>
@@ -97,6 +93,16 @@
                     <p>Deep system analysis & troubleshooting for tech issues.</p>
                 </div>
             </div>
+        </div>
+        
+        <div id="about" class="section">
+            <h2>About Us</h2>
+            <p>Joe’s Tech Repair is dedicated to providing top-notch tech solutions for students and professionals. With expertise in computer engineering, we ensure high-quality repairs and diagnostics for all your devices.</p>
+        </div>
+        
+        <div id="services" class="section">
+            <h2>Our Services</h2>
+            <p>We offer a variety of repair and diagnostic services for all kinds of devices.</p>
         </div>
         
         <div id="contact" class="section">
