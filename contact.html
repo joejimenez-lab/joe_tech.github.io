@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - Joe's Tech Repair</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #1e1e2e, #2b2d42);
+            color: white;
+            text-align: center;
+            overflow-x: hidden;
+        }
+        .nav {
+            display: flex;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+        }
+        .nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            font-size: 1.2em;
+            transition: 0.3s;
+        }
+        .nav a:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+        }
+        .container {
+            padding: 100px 20px;
+        }
+        .about-section {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            max-width: 800px;
+            margin: auto;
+            transition: transform 0.3s ease;
+            animation: fadeIn 1s ease-in-out;
+        }
+        .about-section:hover {
+            transform: translateY(-5px);
+        }
+        .contact-form {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 10px;
+            max-width: 500px;
+            margin: auto;
+            margin-top: 50px;
+        }
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+        }
+        .contact-form button {
+            background: linear-gradient(to right, #ff416c, #ff4b2b);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1em;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background 0.3s ease;
+        }
+        .contact-form button:hover {
+            background: linear-gradient(to right, #ff4b2b, #ff416c);
+        }
+    </style>
+</head>
+<body>
+    <div class="nav">
+        <a href="index.html">Home</a>
+        <a href="#">About</a>
+        <a href="index.html#services">Services</a>
+        <a href="index.html#contact">Contact</a>
+    </div>
+    
+    <div class="container">
+        
+        <div class="contact-form">
+            <h2>Contact Us</h2>
+            <form id="contactForm">
+                <input type="text" id="name" name="name" placeholder="Your Name" required>
+                <input type="email" id="email" name="email" placeholder="Your Email" required>
+                <textarea id="message" name="message" placeholder="Your Message" rows="4" required></textarea>
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("contactForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            
+            const name = document.getElementById("name").value;
+            const email = document.getElementById("email").value;
+            const message = document.getElementById("message").value;
+            
+            const csvContent = `Name,Email,Message\n"${name}","${email}","${message}"\n`;
+            
+            const blob = new Blob([csvContent], { type: "text/csv" });
+            const a = document.createElement("a");
+            a.href = URL.createObjectURL(blob);
+            a.download = "contact_form_data.csv";
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            
+            alert("Your message has been saved.");
+        });
+    </script>
+</body>
+</html>
