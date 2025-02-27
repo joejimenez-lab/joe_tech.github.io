@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prices - Joe's Tech Repair</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #1e1e2e, #2b2d42);
+            color: white;
+            text-align: center;
+            overflow-x: hidden;
+        }
+        .nav {
+            display: flex;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+        }
+        .nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            font-size: 1.2em;
+            transition: 0.3s;
+        }
+        .nav a:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+        }
+        .container {
+            padding: 100px 20px;
+        }
+        .pricing-table {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 50px;
+        }
+        .pricing-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            max-width: 300px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        .pricing-card:hover {
+            transform: translateY(-10px);
+        }
+        .pricing-card h2 {
+            margin-bottom: 10px;
+        }
+        .price {
+            font-size: 2em;
+            font-weight: bold;
+            color: #00bcd4;
+        }
+    </style>
+</head>
+<body>
+    <div class="nav">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="prices.html">Prices</a>
+        <a href="index.html#services">Services</a>
+        <a href="index.html#contact">Contact</a>
+    </div>
+    
+    <div class="container">
+        <h1>Our Pricing</h1>
+        <p>Affordable and transparent pricing for all tech repairs.</p>
+        <div class="pricing-table">
+            <div class="pricing-card">
+                <h2>iPhone Screen Repair</h2>
+                <p class="price">$39 - $329</p>
+                <p>High-quality screen replacements for all iPhone models.</p>
+            </div>
+            <div class="pricing-card">
+                <h2>iPhone Battery Replacement</h2>
+                <p class="price">$39 - $99</p>
+                <p>Extend your device life with a brand-new battery.</p>
+            </div>
+            <div class="pricing-card">
+                <h2>Back Glass Repair</h2>
+                <p class="price">$89 - $199</p>
+                <p>Professional back glass replacements for your iPhone.</p>
+            </div>
+
+            <div class="pricing-card">
+                <h2>Charging Port Repair</h2>
+                <p class="price">$69 - $129</p>
+                <p>Fix connectivity issues with a charging port replacement.</p>
+            </div>
+            <div class="pricing-card">
+                <h2>Speaker & Microphone Repair</h2>
+                <p class="price">$49 - $89</p>
+                <p>Get your audio clarity back with expert speaker repairs.</p>
+            </div>
+            <div class="pricing-card">
+                <h2>Camera Repair</h2>
+                <p class="price">$69 - $149</p>
+                <p>Front and rear camera repairs for crisp photo quality.</p>
+            </div>
+            <div class="pricing-card">
+                <h2>Software Troubleshooting</h2>
+                <p class="price">$39</p>
+                <p>Resolve crashes, bugs, and software-related issues.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
