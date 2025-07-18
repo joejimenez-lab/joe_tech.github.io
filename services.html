@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services - Joe's Tech Repair</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #1e1e2e, #2b2d42);
+            color: white;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            font-size: 1.1em;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border-radius: 8px;
+        }
+
+        .nav a:hover, .nav a.active {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .hero-section {
+            padding: 120px 20px 80px;
+            text-align: center;
+            background: linear-gradient(135deg, rgba(0, 188, 212, 0.1), rgba(255, 65, 108, 0.1));
+        }
+
+        .hero-section h1 {
+            font-size: 3.5em;
+            font-weight: 700;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, #00bcd4, #ff416c);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-section p {
+            font-size: 1.3em;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            font-size: 2.5em;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(45deg, #00bcd4, #ff416c);
+            border-radius: 2px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+        }
+
+        .service-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(45deg, #00bcd4, #ff416c);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+        }
+
+        .service-icon {
+            font-size: 3.5em;
+            color: #00bcd4;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .service-card h3 {
+            font-size: 1.8em;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #fff;
+        }
+
+        .service-card p {
+            opacity: 0.9;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .service-features {
+            list-style: none;
+            margin: 20px 0;
+        }
+
+        .service-features li {
+            padding: 8px 0;
+            position: relative;
+            padding-left: 25px;
+            opacity: 0.8;
+        }
+
+        .service-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #00bcd4;
+            font-weight: bold;
+        }
+
+        .price-tag {
+            background: linear-gradient(45deg, #ff416c, #ff4b2b);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: 600;
+            display: inline-block;
+            margin-top: 15px;
+        }
+
+        .emergency-banner {
+            background: linear-gradient(135deg, rgba(255, 65, 108, 0.2), rgba(255, 75, 43, 0.2));
+            padding: 40px;
+            border-radius: 15px;
+            text-align: center;
+            margin: 60px 0;
+            border: 2px solid rgba(255, 65, 108, 0.3);
+        }
+
+        .emergency-banner h3 {
+            font-size: 1.8em;
+            margin-bottom: 15px;
+            color: #ff416c;
+        }
+
+        .process-section {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 80px 0;
+            margin: 80px 0;
+            border-radius: 20px;
+        }
+
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .process-step {
+            text-align: center;
+            position: relative;
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #00bcd4, #ff416c);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5em;
+            font-weight: bold;
+            margin: 0 auto 20px;
+        }
+
+        .process-step h4 {
+            font-size: 1.3em;
+            margin-bottom: 15px;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, rgba(0, 188, 212, 0.2), rgba(255, 65, 108, 0.2));
+            padding: 80px 0;
+            text-align: center;
+            border-radius: 20px;
+            margin: 80px 20px;
+        }
+
+        .button {
+            background: linear-gradient(45deg, #ff416c, #ff4b2b);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            font-weight: 600;
+            cursor: pointer;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            margin: 10px;
+        }
+
+        .button:hover {
+            background: linear-gradient(45deg, #ff4b2b, #ff416c);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(255, 65, 108, 0.4);
+        }
+
+        .button-secondary {
+            background: transparent;
+            border: 2px solid #00bcd4;
+            color: #00bcd4;
+        }
+
+        .button-secondary:hover {
+            background: #00bcd4;
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .hero-section h1 {
+                font-size: 2.5em;
+            }
+            
+            .nav {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .nav a {
+                font-size: 1em;
+                padding: 8px 15px;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+            
+            .process-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.8s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <div class="nav">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="services.html" class="active">Services</a>
+        <a href="prices.html">Pricing</a>
+        <a href="contact.html">Contact</a>
+    </div>
+
+    <div class="hero-section fade-in">
+        <h1>Our Services</h1>
+        <p>Comprehensive tech repair solutions for all your devices and technology needs</p>
+    </div>
+
+    <div class="container">
+        <section class="section">
+            <div class="services-grid">
+                <div class="service-card fade-in">
+                    <i class="fas fa-laptop-code service-icon"></i>
+                    <h3>Laptop & PC Repair</h3>
+                    <p>Complete hardware and software solutions for all computer systems, from basic troubleshooting to complex motherboard repairs.</p>
+                    <ul class="service-features">
+                        <li>Hardware diagnostics & replacement</li>
+                        <li>Operating system installation & repair</li>
+                        <li>Virus removal & security setup</li>
+                        <li>Performance optimization</li>
+                        <li>Data recovery services</li>
+                        <li>Liquid damage repair</li>
+                    </ul>
+                    <div class="price-tag">Starting at $50</div>
+                </div>
+
+                <div class="service-card fade-in">
+                    <i class="fas fa-mobile-alt service-icon"></i>
+                    <h3>Mobile Device Repair</h3>
+                    <p>Professional repair services for smartphones and tablets, including screen replacements, battery fixes, and water damage recovery.</p>
+                    <ul class="service-features">
+                        <li>Screen & digitizer replacement</li>
+                        <li>Battery replacement & optimization</li>
+                        <li>Camera & speaker repair</li>
+                        <li>Charging port fixes</li>
+                        <li>Water damage restoration</li>
+                        <li>Software troubleshooting</li>
+                    </ul>
+                    <div class="price-tag">Starting at $40</div>
+                </div>
+
+                <div class="service-card fade-in">
+                    <i class="fas fa-tools service-icon"></i>
+                    <h3>Advanced Diagnostics</h3>
+                    <p>Professional-grade diagnostic services to identify complex issues and provide accurate solutions for any tech problem.</p>
+                    <ul class="service-features">
+                        <li>Comprehensive system analysis</li>
+                        <li>Performance benchmarking</li>
+                        <li>Hardware stress testing</li>
+                        <li>Network connectivity issues</li>
+                        <li>Software conflict resolution</li>
+                        <li>Detailed repair reports</li>
+                    </ul>
+                    <div class="price-tag">Starting at $30</div>
+                </div>
+
+                <div class="service-card fade-in">
+                    <i class="fas fa-map-marker-alt service-icon"></i>
+                    <h3>Mobile Repair Service</h3>
+                    <p>Convenient on-location repair services at UCR campus and surrounding areas. We bring the expertise to you.</p>
+                    <ul class="service-features">
+                        <li>On-campus UCR service</li>
+                        <li>Dorm room repairs</li>
+                        <li>Library & study area pickup</li>
+                        <li>Emergency same-day service</li>
+                        <li>Flexible scheduling</li>
+                        <li>No additional travel fees on campus</li>
+                    </ul>
+                    <div class="price-tag">Free on UCR Campus</div>
+                </div>
+
+                <div class="service-card fade-in">
+                    <i class="fas fa-shield-alt service-icon"></i>
+                    <h3>Data Recovery</h3>
+                    <p>Specialized data recovery services for failed hard drives, corrupted storage, and accidentally deleted files.</p>
+                    <ul class="service-features">
+                        <li>Hard drive recovery</li>
+                        <li>SSD data restoration</li>
+                        <li>Photo & document recovery</li>
+                        <li>Corrupted file repair</li>
+                        <li>Backup solution setup</li>
+                        <li>Cloud migration services</li>
+                    </ul>
+                    <div class="price-tag">Starting at $75</div>
+                </div>
+
+                <div class="service-card fade-in">
+                    <i class="fas fa-network-wired service-icon"></i>
+                    <h3>Network & Connectivity</h3>
+                    <p>Network setup, troubleshooting, and optimization services for homes, dorms, and small offices.</p>
+                    <ul class="service-features">
+                        <li>WiFi setup & optimization</li>
+                        <li>Router configuration</li>
+                        <li>Network security setup</li>
+                        <li>Internet speed optimization</li>
+                        <li>Smart device integration</li>
+                        <li>VPN configuration</li>
+                    </ul>
+                    <div class="price-tag">Starting at $60</div>
+                </div>
+            </div>
+        </section>
+
+        <div class="emergency-banner">
+            <h3><i class="fas fa-exclamation-triangle"></i> Emergency Repair Service</h3>
+            <p>Need urgent repairs? We offer same-day emergency service for critical issues. Available 7 days a week with priority scheduling for students during finals and important deadlines.</p>
+            <a href="contact.html" class="button">Request Emergency Service</a>
+        </div>
+
+        <div class="process-section">
+            <div class="container">
+                <h2 class="section-title">Our Repair Process</h2>
+                <div class="process-grid">
+                    <div class="process-step">
+                        <div class="step-number">1</div>
+                        <h4>Contact & Diagnosis</h4>
+                        <p>Reach out via phone, text, or our website. We'll discuss your issue and provide initial troubleshooting guidance.</p>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number">2</div>
+                        <h4>Device Assessment</h4>
+                        <p>Comprehensive diagnostic testing to identify the root cause and provide you with a detailed repair quote.</p>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number">3</div>
+                        <h4>Professional Repair</h4>
+                        <p>Using quality parts and proven techniques, we perform the repair with precision and care.</p>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number">4</div>
+                        <h4>Quality Testing</h4>
+                        <p>Thorough testing to ensure everything works perfectly before returning your device to you.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="cta-section">
+        <div class="container">
+            <h2>Ready to Fix Your Device?</h2>
+            <p>Get professional repair service with student-friendly pricing and convenient campus pickup.</p>
+            <a href="contact.html" class="button">Book Repair Now</a>
+            <a href="prices.html" class="button button-secondary">View Pricing</a>
+        </div>
+    </div>
+
+    <script>
+        // Add scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'all 0.8s ease-out';
+            observer.observe(el);
+        });
+    </script>
+
+    <script async type='module' src='https://interfaces.zapier.com/assets/web-components/zapier-interfaces/zapier-interfaces.esm.js'></script>
+    <zapier-interfaces-chatbot-embed is-popup='true' chatbot-id='cm85jcmgj002chpjxiazqwz6g'></zapier-interfaces-chatbot-embed>
+</body>
+</html>
