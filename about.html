@@ -3,401 +3,156 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us - Joe's Tech Repair</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #1e1e2e, #2b2d42);
-            color: white;
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        .nav {
-            display: flex;
-            justify-content: center;
-            background: rgba(255, 255, 255, 0.1);
-            padding: 15px;
-            position: fixed;
-            top: 0;
-            width: 100%;
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .nav a {
-            color: white;
-            text-decoration: none;
-            padding: 10px 20px;
-            font-size: 1.1em;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            border-radius: 8px;
-        }
-
-        .nav a:hover, .nav a.active {
-            background: rgba(255, 255, 255, 0.2);
-            transform: translateY(-2px);
-        }
-
-        .hero-section {
-            padding: 120px 20px 80px;
-            text-align: center;
-            background: linear-gradient(135deg, rgba(52, 152, 219, 0.1), rgba(243, 156, 18, 0.1));
-        }
-
-        .hero-section h1 {
-            font-size: 3.5em;
-            font-weight: 700;
-            margin-bottom: 20px;
-            background: linear-gradient(45deg, #3498db, #f39c12);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .hero-section p {
-            font-size: 1.3em;
-            opacity: 0.9;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        .section {
-            padding: 80px 0;
-        }
-
-        .section-title {
-            font-size: 2.5em;
-            font-weight: 600;
-            text-align: center;
-            margin-bottom: 50px;
-            position: relative;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background: linear-gradient(45deg, #3498db, #f39c12);
-            border-radius: 2px;
-        }
-
-        .about-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
-            margin-top: 60px;
-        }
-
-        .about-card {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
-            transition: all 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .about-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
-        }
-
-        .about-card i {
-            font-size: 3em;
-            color: #3498db;
-            margin-bottom: 20px;
-            display: block;
-        }
-
-        .about-card h3 {
-            font-size: 1.5em;
-            font-weight: 600;
-            margin-bottom: 15px;
-        }
-
-        .about-card p {
-            opacity: 0.9;
-            line-height: 1.7;
-        }
-
-        .stats-section {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 80px 0;
-            margin: 80px 0;
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 40px;
-            text-align: center;
-        }
-
-        .stat-item {
-            padding: 30px;
-        }
-
-        .stat-number {
-            font-size: 3em;
-            font-weight: 700;
-            color: #3498db;
-            display: block;
-        }
-
-        .stat-label {
-            font-size: 1.1em;
-            opacity: 0.8;
-            margin-top: 10px;
-        }
-
-        .team-section {
-            text-align: center;
-        }
-
-        .team-card {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            padding: 40px;
-            border-radius: 20px;
-            max-width: 400px;
-            margin: 0 auto;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .team-avatar {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            background: linear-gradient(45deg, #3498db, #f39c12);
-            margin: 0 auto 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3em;
-            color: white;
-        }
-
-        .cta-section {
-            background: linear-gradient(135deg, rgba(52, 152, 219, 0.2), rgba(243, 156, 18, 0.2));
-            padding: 80px 0;
-            text-align: center;
-            border-radius: 20px;
-            margin: 80px 20px;
-        }
-
-        .button {
-            background: linear-gradient(45deg, #f39c12, #e67e22);
-            color: white;
-            border: none;
-            padding: 15px 30px;
-            font-size: 1.2em;
-            font-weight: 600;
-            cursor: pointer;
-            border-radius: 50px;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-block;
-            margin-top: 20px;
-        }
-
-        .button:hover {
-            background: linear-gradient(45deg, #e67e22, #f39c12);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(243, 156, 18, 0.4);
-        }
-
-        @media (max-width: 768px) {
-            .hero-section h1 {
-                font-size: 2.5em;
-            }
-            
-            .nav {
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-            
-            .nav a {
-                font-size: 1em;
-                padding: 8px 15px;
-            }
-            
-            .about-grid {
-                grid-template-columns: 1fr;
-                gap: 30px;
-            }
-            
-            .stats-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .fade-in {
-            animation: fadeInUp 0.8s ease-out;
-        }
-    </style>
+    <title>About Joe | Master's-Level Full-Stack Repair Engineer</title>
+    <meta name="description" content="Meet Joe, a master's CS student delivering professional tech repairs, automation, and research-backed reliability across Baldwin Park and Los Angeles.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
-<body>
-    <div class="nav">
-        <a href="index.html">Home</a>
-        <a href="about.html" class="active">About</a>
-        <a href="services.html">Services</a>
-        <a href="prices.html">Pricing</a>
-        <a href="contact.html">Contact</a>
-    </div>
+<body data-page="about">
+    <header class="site-header">
+        <div class="container navbar">
+            <a class="brand" href="index.html">
+                <span class="brand-logo">JT</span>
+                <span class="brand-text">Joe's Tech Repair</span>
+            </a>
+            <nav class="nav-links">
+                <a href="index.html" data-nav="home">Home</a>
+                <a href="services.html" data-nav="services">Services</a>
+                <a href="prices.html" data-nav="prices">Pricing</a>
+                <a href="about.html" data-nav="about">About</a>
+                <a href="contact.html" data-nav="contact">Contact</a>
+            </nav>
+            <button class="nav-toggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
 
-    <div class="hero-section fade-in">
-        <h1>About Joe's Tech Repair</h1>
-        <p>Your trusted partner for professional technology solutions and expert repairs</p>
-    </div>
-
-    <div class="container">
-        <section class="section">
-            <h2 class="section-title">Why Choose Us</h2>
-            <div class="about-grid">
-                <div class="about-card fade-in">
-                    <i class="fas fa-graduation-cap"></i>
-                    <h3>Expert Knowledge</h3>
-                    <p>Led by a Computer Engineering major with deep understanding of both hardware and software systems. We don't just fix problems - we understand them at the core level.</p>
-                </div>
-                <div class="about-card fade-in">
-                    <i class="fas fa-clock"></i>
-                    <h3>Fast Turnaround</h3>
-                    <p>We understand that your devices are essential to your daily life. Most repairs are completed within 24-48 hours, with emergency services available for critical issues.</p>
-                </div>
-                <div class="about-card fade-in">
-                    <i class="fas fa-shield-alt"></i>
-                    <h3>Quality Guarantee</h3>
-                    <p>All repairs come with a comprehensive warranty. We use only high-quality parts and proven repair techniques to ensure long-lasting solutions.</p>
-                </div>
-                <div class="about-card fade-in">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <h3>Convenient Service</h3>
-                    <p>Mobile repair services available in Baldwin Park and surrounding areas. We come to you, making tech repair convenient and accessible.</p>
-                </div>
-                <div class="about-card fade-in">
-                    <i class="fas fa-dollar-sign"></i>
-                    <h3>Affordable Pricing</h3>
-                    <p>Competitive rates for everyone. Quality repairs shouldn't break the bank&mdash;we offer fair, transparent pricing for all services.</p>
-                </div>
-                <div class="about-card fade-in">
-                    <i class="fas fa-tools"></i>
-                    <h3>Advanced Diagnostics</h3>
-                    <p>Using professional-grade diagnostic tools and techniques to identify issues quickly and accurately, ensuring the right fix the first time.</p>
-                </div>
-            </div>
-        </section>
-
-        <div class="stats-section">
+    <main>
+        <section class="page-hero">
             <div class="container">
-                <div class="stats-grid">
-                    <div class="stat-item">
-                        <span class="stat-number">500+</span>
-                        <div class="stat-label">Devices Repaired</div>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-number">98%</span>
-                        <div class="stat-label">Success Rate</div>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-number">24hr</span>
-                        <div class="stat-label">Average Turnaround</div>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-number">100%</span>
-                        <div class="stat-label">Customer Satisfaction</div>
-                    </div>
-                </div>
+                <p class="badge"><i class="fa-solid fa-graduation-cap"></i> Master's candidate · Systems innovator</p>
+                <h1>Hi, I'm Joe — your full-stack repair engineer</h1>
+                <p>Raised in Baldwin Park, now pursuing my Master's in Computer Science. I blend hardware mastery, academic research, and production-grade software to deliver repairs that actually transform how your devices perform.</p>
             </div>
-        </div>
+        </section>
 
-        <section class="section team-section">
-            <h2 class="section-title">Meet the Expert</h2>
-            <div class="team-card fade-in">
-                <div class="team-avatar">
-                    <i class="fas fa-user-tie"></i>
-                </div>
-                <h3>Joe - Founder & Lead Technician</h3>
-                <p><strong>Computer Engineering Major</strong></p>
-                <p>With years of hands-on experience in computer systems, mobile devices, and advanced diagnostics, Joe brings both academic knowledge and practical expertise to every repair. Specializing in complex hardware issues and software troubleshooting.</p>
-                <div style="margin-top: 20px;">
-                    <i class="fas fa-star" style="color: #ffd700;"></i>
-                    <i class="fas fa-star" style="color: #ffd700;"></i>
-                    <i class="fas fa-star" style="color: #ffd700;"></i>
-                    <i class="fas fa-star" style="color: #ffd700;"></i>
-                    <i class="fas fa-star" style="color: #ffd700;"></i>
-                    <p style="margin-top: 10px; opacity: 0.8;">Certified in multiple repair methodologies</p>
+        <section class="section">
+            <div class="container page-section">
+                <div class="grid-two columns">
+                    <div>
+                        <h2>Where engineering meets empathy</h2>
+                        <p>From volunteering at local community centers to leading infrastructure upgrades for LA startups, I've seen the frustration that downtime creates. My approach is simple: build resilient systems, communicate clearly, and deliver repairs that last. That means structured diagnostics, transparent pricing, and modern tooling that clients can trust.</p>
+                        <ul class="list-check">
+                            <li>MS Computer Science student specializing in predictive maintenance.</li>
+                            <li>8+ years repairing laptops, desktops, mobile devices, and embedded hardware.</li>
+                            <li>DevOps consultant for remote-first teams across Los Angeles County.</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h2>Certifications & research</h2>
+                        <ul class="list-check">
+                            <li>CompTIA A+ & Network+ certified.</li>
+                            <li>AWS Certified Cloud Practitioner.</li>
+                            <li>Apple & Dell authorized independent repair provider experience.</li>
+                            <li>Graduate research on IoT telemetry and predictive failure analysis.</li>
+                            <li>Published case study on proactive fleet maintenance for retail deployments.</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </section>
-    </div>
 
-    <div class="cta-section">
+        <section class="section">
+            <div class="container page-section">
+                <h2>How I work with clients</h2>
+                <div class="grid-two columns">
+                    <div class="card">
+                        <div class="card-icon"><i class="fa-solid fa-bolt"></i></div>
+                        <h3 class="card-title">Response with context</h3>
+                        <p>Every intake triggers an automated workflow: you get a secure portal link, tracking updates, and service history so you're never in the dark.</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon"><i class="fa-solid fa-clipboard-check"></i></div>
+                        <h3 class="card-title">Transparent diagnostics</h3>
+                        <p>Expect oscilloscope captures, kernel logs, and part-by-part status reports. You'll receive a human explanation plus the raw data.</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon"><i class="fa-solid fa-robot"></i></div>
+                        <h3 class="card-title">Automation built-in</h3>
+                        <p>Most repairs include optional API hooks to your communication platform for future alerting and service requests.</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon"><i class="fa-solid fa-people-carry-box"></i></div>
+                        <h3 class="card-title">Community-first</h3>
+                        <p>I sponsor robotics teams in Baldwin Park and run free weekend clinics to keep families connected.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container page-section">
+                <h2>Timeline & experience</h2>
+                <div class="timeline">
+                    <div class="timeline-item" data-step="2016">
+                        <h3>Neighborhood repair beginnings</h3>
+                        <p>Started repairing laptops and consoles for families in Baldwin Park, emphasizing data preservation and quick turnaround.</p>
+                    </div>
+                    <div class="timeline-item" data-step="2019">
+                        <h3>University infrastructure lead</h3>
+                        <p>Led a student team upgrading campus network equipment and implementing device management automations.</p>
+                    </div>
+                    <div class="timeline-item" data-step="2021">
+                        <h3>Startup systems engineer</h3>
+                        <p>Joined a Los Angeles fintech to design monitoring pipelines, automate deployments, and support remote hardware.</p>
+                    </div>
+                    <div class="timeline-item" data-step="2023">
+                        <h3>Master's research</h3>
+                        <p>Developing machine learning models that predict device failure using sensor telemetry and maintenance logs.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
         <div class="container">
-            <h2>Ready to Get Your Device Fixed?</h2>
-            <p>Join hundreds of satisfied customers who trust Joe's Tech Repair for their technology needs.</p>
-            <a href="contact.html" class="button">Get Started Today</a>
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <span class="brand-logo">JT</span>
+                    <p>Full-stack computer and mobile repair by a master's-level engineer serving Baldwin Park & Los Angeles.</p>
+                </div>
+                <div>
+                    <h4>Quick links</h4>
+                    <div class="footer-links">
+                        <a href="index.html">Home</a>
+                        <a href="services.html">Services</a>
+                        <a href="prices.html">Pricing</a>
+                        <a href="contact.html">Schedule</a>
+                    </div>
+                </div>
+                <div>
+                    <h4>Connect</h4>
+                    <div class="footer-links">
+                        <a href="mailto:joe@joestechrepair.com"><i class="fa-solid fa-envelope"></i> joe@joestechrepair.com</a>
+                        <a href="tel:16265551024"><i class="fa-solid fa-phone"></i> (626) 555-1024</a>
+                        <a href="https://www.linkedin.com/in/joetech" target="_blank" rel="noopener"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>© <span id="current-year"></span> Joe's Tech Repair. Built with love in Baldwin Park.</span>
+                <span>Licenses & insured · CS Master's candidate</span>
+            </div>
         </div>
-    </div>
+    </footer>
 
-    <script>
-        // Add scroll animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.fade-in').forEach(el => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(30px)';
-            el.style.transition = 'all 0.8s ease-out';
-            observer.observe(el);
-        });
-    </script>
-
-    <script async type='module' src='https://interfaces.zapier.com/assets/web-components/zapier-interfaces/zapier-interfaces.esm.js'></script>
-    <zapier-interfaces-chatbot-embed is-popup='true' chatbot-id='cm85jcmgj002chpjxiazqwz6g'></zapier-interfaces-chatbot-embed>
+    <script src="assets/js/main.js" defer></script>
 </body>
 </html>
