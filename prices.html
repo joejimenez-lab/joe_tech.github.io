@@ -3,570 +3,168 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pricing - Joe's Tech Repair</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #1e1e2e, #2b2d42);
-            color: white;
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        .nav {
-            display: flex;
-            justify-content: center;
-            background: rgba(255, 255, 255, 0.1);
-            padding: 15px;
-            position: fixed;
-            top: 0;
-            width: 100%;
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .nav a {
-            color: white;
-            text-decoration: none;
-            padding: 10px 20px;
-            font-size: 1.1em;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            border-radius: 8px;
-        }
-
-        .nav a:hover, .nav a.active {
-            background: rgba(255, 255, 255, 0.2);
-            transform: translateY(-2px);
-        }
-
-        .hero-section {
-            padding: 120px 20px 80px;
-            text-align: center;
-            background: linear-gradient(135deg, rgba(52, 152, 219, 0.1), rgba(243, 156, 18, 0.1));
-        }
-
-        .hero-section h1 {
-            font-size: 3.5em;
-            font-weight: 700;
-            margin-bottom: 20px;
-            background: linear-gradient(45deg, #3498db, #f39c12);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .hero-section p {
-            font-size: 1.3em;
-            opacity: 0.9;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        .section {
-            padding: 80px 0;
-        }
-
-        .section-title {
-            font-size: 2.5em;
-            font-weight: 600;
-            text-align: center;
-            margin-bottom: 50px;
-            position: relative;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background: linear-gradient(45deg, #3498db, #f39c12);
-            border-radius: 2px;
-        }
-
-        .pricing-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 30px;
-            margin-top: 60px;
-        }
-
-        .pricing-card {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
-            transition: all 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            position: relative;
-            text-align: center;
-        }
-
-        .pricing-card.featured {
-            border: 2px solid #3498db;
-            transform: scale(1.05);
-        }
-
-        .pricing-card.featured::before {
-            content: 'MOST POPULAR';
-            position: absolute;
-            top: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: linear-gradient(45deg, #3498db, #f39c12);
-            color: white;
-            padding: 8px 20px;
-            border-radius: 20px;
-            font-size: 0.8em;
-            font-weight: bold;
-        }
-
-        .pricing-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
-        }
-
-        .pricing-card.featured:hover {
-            transform: scale(1.05) translateY(-10px);
-        }
-
-        .service-icon {
-            font-size: 3em;
-            color: #3498db;
-            margin-bottom: 20px;
-        }
-
-        .pricing-card h3 {
-            font-size: 1.8em;
-            font-weight: 600;
-            margin-bottom: 15px;
-        }
-
-        .price {
-            font-size: 3em;
-            font-weight: 700;
-            color: #f39c12;
-            margin: 20px 0;
-        }
-
-        .price-note {
-            font-size: 0.9em;
-            opacity: 0.7;
-            margin-bottom: 30px;
-        }
-
-        .features-list {
-            list-style: none;
-            text-align: left;
-            margin: 30px 0;
-        }
-
-        .features-list li {
-            padding: 10px 0;
-            position: relative;
-            padding-left: 30px;
-            opacity: 0.9;
-        }
-
-        .features-list li::before {
-            content: '✓';
-            position: absolute;
-            left: 0;
-            color: #3498db;
-            font-weight: bold;
-            font-size: 1.2em;
-        }
-
-        .pricing-table {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 20px;
-            padding: 40px;
-            margin: 80px 0;
-            overflow-x: auto;
-        }
-
-        .table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 30px;
-        }
-
-        .table th,
-        .table td {
-            padding: 15px;
-            text-align: left;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .table th {
-            background: rgba(52, 152, 219, 0.2);
-            font-weight: 600;
-            color: #3498db;
-        }
-
-        .table tr:hover {
-            background: rgba(255, 255, 255, 0.05);
-        }
-
-        .price-cell {
-            font-weight: 600;
-            color: #f39c12;
-        }
-
-        .guarantee-section {
-            background: linear-gradient(135deg, rgba(52, 152, 219, 0.1), rgba(243, 156, 18, 0.1));
-            padding: 60px 40px;
-            border-radius: 20px;
-            text-align: center;
-            margin: 80px 0;
-        }
-
-        .guarantee-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            margin-top: 40px;
-        }
-
-        .guarantee-item {
-            text-align: center;
-        }
-
-        .guarantee-item i {
-            font-size: 2.5em;
-            color: #3498db;
-            margin-bottom: 15px;
-        }
-
-        .guarantee-item h4 {
-            font-size: 1.3em;
-            margin-bottom: 10px;
-        }
-
-        .community-discount {
-            background: linear-gradient(135deg, rgba(243, 156, 18, 0.2), rgba(230, 126, 34, 0.2));
-            padding: 40px;
-            border-radius: 15px;
-            text-align: center;
-            margin: 60px 0;
-            border: 2px solid rgba(243, 156, 18, 0.3);
-        }
-
-        .discount-badge {
-            background: linear-gradient(45deg, #f39c12, #e67e22);
-            color: white;
-            padding: 10px 20px;
-            border-radius: 25px;
-            font-weight: bold;
-            display: inline-block;
-            margin-bottom: 20px;
-            font-size: 1.2em;
-        }
-
-        .button {
-            background: linear-gradient(45deg, #f39c12, #e67e22);
-            color: white;
-            border: none;
-            padding: 15px 30px;
-            font-size: 1.2em;
-            font-weight: 600;
-            cursor: pointer;
-            border-radius: 50px;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-block;
-            margin-top: 20px;
-        }
-
-        .button:hover {
-            background: linear-gradient(45deg, #e67e22, #f39c12);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(243, 156, 18, 0.4);
-        }
-
-        .button-secondary {
-            background: transparent;
-            border: 2px solid #3498db;
-            color: #3498db;
-        }
-
-        .button-secondary:hover {
-            background: #3498db;
-            color: white;
-        }
-
-        @media (max-width: 768px) {
-            .hero-section h1 {
-                font-size: 2.5em;
-            }
-            
-            .nav {
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-            
-            .nav a {
-                font-size: 1em;
-                padding: 8px 15px;
-            }
-            
-            .pricing-grid {
-                grid-template-columns: 1fr;
-                gap: 25px;
-            }
-            
-            .pricing-card.featured {
-                transform: none;
-            }
-            
-            .pricing-card.featured:hover {
-                transform: translateY(-10px);
-            }
-            
-            .table {
-                font-size: 0.9em;
-            }
-            
-            .guarantee-grid {
-                grid-template-columns: 1fr;
-                gap: 30px;
-            }
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .fade-in {
-            animation: fadeInUp 0.8s ease-out;
-        }
-    </style>
+    <title>Pricing | Joe's Tech Repair</title>
+    <meta name="description" content="Straightforward pricing for laptop, desktop, and mobile repairs in Baldwin Park and Los Angeles, plus support plan options.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
-<body>
-    <div class="nav">
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="services.html">Services</a>
-        <a href="prices.html" class="active">Pricing</a>
-        <a href="contact.html">Contact</a>
-    </div>
+<body data-page="prices">
+    <header class="site-header">
+        <div class="container navbar">
+            <a class="brand" href="index.html">
+                <span class="brand-logo">JT</span>
+                <span class="brand-text">Joe's Tech Repair</span>
+            </a>
+            <nav class="nav-links">
+                <a href="index.html" data-nav="home">Home</a>
+                <a href="services.html" data-nav="services">Services</a>
+                <a href="prices.html" data-nav="prices">Pricing</a>
+                <a href="about.html" data-nav="about">About</a>
+                <a href="contact.html" data-nav="contact">Contact</a>
+            </nav>
+            <button class="nav-toggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
 
-    <div class="hero-section fade-in">
-        <h1>Transparent Pricing</h1>
-        <p>Student-friendly rates with no hidden fees. Quality repairs at affordable prices.</p>
-    </div>
-
-    <div class="container">
-        <section class="section">
-            <div class="pricing-grid">
-                <div class="pricing-card fade-in">
-                    <i class="fas fa-search service-icon"></i>
-                    <h3>Diagnostic</h3>
-                    <div class="price">$30</div>
-                    <div class="price-note">One-time fee</div>
-                    <ul class="features-list">
-                        <li>Complete system analysis</li>
-                        <li>Problem identification</li>
-                        <li>Detailed repair estimate</li>
-                        <li>Performance assessment</li>
-                        <li>Free if you proceed with repair</li>
-                    </ul>
-                    <a href="contact.html" class="button">Book Diagnostic</a>
-                </div>
-
-                <div class="pricing-card featured fade-in">
-                    <i class="fas fa-laptop service-icon"></i>
-                    <h3>Computer Repair</h3>
-                    <div class="price">$50+</div>
-                    <div class="price-note">Starting price + parts</div>
-                    <ul class="features-list">
-                        <li>Hardware troubleshooting</li>
-                        <li>Software installation & repair</li>
-                        <li>Virus removal & cleanup</li>
-                        <li>Performance optimization</li>
-                        <li>Data backup & recovery</li>
-                        <li>30-day warranty included</li>
-                    </ul>
-                    <a href="contact.html" class="button">Get Quote</a>
-                </div>
-
-                <div class="pricing-card fade-in">
-                    <i class="fas fa-mobile-alt service-icon"></i>
-                    <h3>Mobile Repair</h3>
-                    <div class="price">$40+</div>
-                    <div class="price-note">Starting price + parts</div>
-                    <ul class="features-list">
-                        <li>Screen replacement</li>
-                        <li>Battery replacement</li>
-                        <li>Camera & speaker repair</li>
-                        <li>Charging port fixes</li>
-                        <li>Water damage recovery</li>
-                        <li>90-day warranty on parts</li>
-                    </ul>
-                    <a href="contact.html" class="button">Schedule Repair</a>
-                </div>
+    <main>
+        <section class="page-hero">
+            <div class="container">
+                <p class="badge"><i class="fa-solid fa-receipt"></i> Transparent pricing</p>
+                <h1>Clear prices for common repairs</h1>
+                <p>Every job starts with a conversation. You'll always know the cost, the plan, and how long it will take before work begins.</p>
             </div>
         </section>
 
-        <div class="community-discount fade-in">
-            <div class="discount-badge">LOCAL SPECIAL</div>
-            <h3>Neighborhood Discount</h3>
-            <p>First-time customers from Baldwin Park get 15% off all repair services. We appreciate our local community and want to keep your tech running without breaking the bank.</p>
-            <p><strong>Plus:</strong> Free local pickup and delivery!</p>
-        </div>
+        <section class="section">
+            <div class="container page-section">
+                <h2>Repair menu</h2>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Service</th>
+                            <th>What's included</th>
+                            <th>Turnaround</th>
+                            <th>Investment</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Laptop diagnostic</td>
+                            <td>Full hardware and software check with written summary.</td>
+                            <td>24 hours</td>
+                            <td>$79</td>
+                        </tr>
+                        <tr>
+                            <td>Logic board repair</td>
+                            <td>Component repair, replacement parts, and thorough testing.</td>
+                            <td>2-4 days</td>
+                            <td>$229 - $449</td>
+                        </tr>
+                        <tr>
+                            <td>Mobile device restoration</td>
+                            <td>Screen, battery, and port service with quality replacement parts.</td>
+                            <td>Same-day / mobile lab</td>
+                            <td>$149 - $299</td>
+                        </tr>
+                        <tr>
+                            <td>Data rescue & migration</td>
+                            <td>Back up, transfer, and verify files between devices.</td>
+                            <td>48 hours</td>
+                            <td>$189 - $399</td>
+                        </tr>
+                        <tr>
+                            <td>Smart home & network tune-up</td>
+                            <td>Wi-Fi boost, device setup, and safety check.</td>
+                            <td>Same-day</td>
+                            <td>$159</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p class="form-note">Need something custom? <a href="contact.html" class="highlight">Book a strategy call</a> for project-based pricing and retainer plans.</p>
+            </div>
+        </section>
 
-        <div class="pricing-table fade-in">
-            <h2 class="section-title">Detailed Pricing Guide</h2>
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>Service Category</th>
-                        <th>Common Issues</th>
-                        <th>Price Range</th>
-                        <th>Turnaround Time</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><strong>Laptop Hardware</strong></td>
-                        <td>Screen replacement, keyboard repair, fan cleaning</td>
-                        <td class="price-cell">$50 - $200</td>
-                        <td>1-3 days</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Desktop PC</strong></td>
-                        <td>Component replacement, upgrades, assembly</td>
-                        <td class="price-cell">$60 - $150</td>
-                        <td>1-2 days</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Phone Screen</strong></td>
-                        <td>Cracked screen, digitizer issues</td>
-                        <td class="price-cell">$80 - $250</td>
-                        <td>Same day</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Phone Battery</strong></td>
-                        <td>Poor battery life, charging issues</td>
-                        <td class="price-cell">$40 - $80</td>
-                        <td>2-4 hours</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Software Issues</strong></td>
-                        <td>OS installation, virus removal, optimization</td>
-                        <td class="price-cell">$50 - $100</td>
-                        <td>Same day</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Data Recovery</strong></td>
-                        <td>Failed drives, deleted files, corruption</td>
-                        <td class="price-cell">$75 - $300</td>
-                        <td>2-5 days</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Network Setup</strong></td>
-                        <td>WiFi configuration, router setup</td>
-                        <td class="price-cell">$60 - $120</td>
-                        <td>Same day</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Emergency Service</strong></td>
-                        <td>Urgent same-day repairs</td>
-                        <td class="price-cell">+$25 rush fee</td>
-                        <td>Same day</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-
-        <div class="guarantee-section fade-in">
-            <h2>Our Guarantee</h2>
-            <p>We stand behind our work with comprehensive warranties and guarantees</p>
-            <div class="guarantee-grid">
-                <div class="guarantee-item">
-                    <i class="fas fa-shield-alt"></i>
-                    <h4>Warranty Protection</h4>
-                    <p>30-90 day warranty on all repairs and replacement parts</p>
-                </div>
-                <div class="guarantee-item">
-                    <i class="fas fa-undo"></i>
-                    <h4>No Fix, No Fee</h4>
-                    <p>If we can't fix it, you don't pay (diagnostic fee waived)</p>
-                </div>
-                <div class="guarantee-item">
-                    <i class="fas fa-clock"></i>
-                    <h4>Time Guarantee</h4>
-                    <p>Most repairs completed within promised timeframe or discount applied</p>
-                </div>
-                <div class="guarantee-item">
-                    <i class="fas fa-dollar-sign"></i>
-                    <h4>Price Match</h4>
-                    <p>We'll match any legitimate competitor's quote for the same service</p>
+        <section class="section">
+            <div class="container page-section">
+                <h2>Support plans</h2>
+                <div class="cards-grid">
+                    <article class="card">
+                        <div class="card-icon"><i class="fa-solid fa-rocket"></i></div>
+                        <h3 class="card-title">Launch</h3>
+                        <p>Perfect for students and solopreneurs who need fast support with predictable pricing.</p>
+                        <ul class="list-check">
+                            <li>2 priority incidents / month</li>
+                            <li>Remote check-ins for 3 devices</li>
+                            <li>Email and text updates for every ticket</li>
+                        </ul>
+                        <p class="highlight">$89 / month</p>
+                    </article>
+                    <article class="card">
+                        <div class="card-icon"><i class="fa-solid fa-building"></i></div>
+                        <h3 class="card-title">Growth</h3>
+                        <p>Designed for teams up to 20 employees needing onsite and remote support coverage.</p>
+                        <ul class="list-check">
+                            <li>Priority onsite visits in LA County</li>
+                            <li>Remote check-ins for 12 devices</li>
+                            <li>Monthly review of backups and security</li>
+                        </ul>
+                        <p class="highlight">$299 / month</p>
+                    </article>
+                    <article class="card">
+                        <div class="card-icon"><i class="fa-solid fa-city"></i></div>
+                        <h3 class="card-title">Enterprise</h3>
+                        <p>Tailored for multi-site operations and research labs requiring compliance-ready workflows.</p>
+                        <ul class="list-check">
+                            <li>Dedicated planning sessions and tailored documentation</li>
+                            <li>Unlimited incidents with scheduled after-hours care</li>
+                            <li>Quarterly training for your staff or family</li>
+                        </ul>
+                        <p class="highlight">Custom proposal</p>
+                    </article>
                 </div>
             </div>
-        </div>
-    </div>
+        </section>
+    </main>
 
-    <div style="background: linear-gradient(135deg, rgba(52, 152, 219, 0.2), rgba(243, 156, 18, 0.2)); padding: 80px 0; text-align: center; border-radius: 20px; margin: 80px 20px;">
+    <footer class="site-footer">
         <div class="container">
-            <h2>Ready to Get Started?</h2>
-            <p>Get a free quote for your repair needs. No obligation, transparent pricing.</p>
-            <a href="contact.html" class="button">Get Free Quote</a>
-            <a href="services.html" class="button button-secondary">View All Services</a>
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <span class="brand-logo">JT</span>
+                    <p>Computer, mobile, and network repair from Baldwin Park to Los Angeles — proudly helping neighbors since 2016.</p>
+                </div>
+                <div>
+                    <h4>Quick links</h4>
+                    <div class="footer-links">
+                        <a href="index.html">Home</a>
+                        <a href="services.html">Services</a>
+                        <a href="prices.html">Pricing</a>
+                        <a href="contact.html">Schedule</a>
+                    </div>
+                </div>
+                <div>
+                    <h4>Connect</h4>
+                    <div class="footer-links">
+                        <a href="mailto:joe@joestechrepair.com"><i class="fa-solid fa-envelope"></i> joe@joestechrepair.com</a>
+                        <a href="tel:16265551024"><i class="fa-solid fa-phone"></i> (626) 555-1024</a>
+                        <a href="https://www.linkedin.com/in/joetech" target="_blank" rel="noopener"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>© <span id="current-year"></span> Joe's Tech Repair. Based in Baldwin Park, CA.</span>
+                <span>CS Master's student · Serving the LA area since 2016</span>
+            </div>
         </div>
-    </div>
+    </footer>
 
-    <script>
-        // Add scroll animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.fade-in').forEach(el => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(30px)';
-            el.style.transition = 'all 0.8s ease-out';
-            observer.observe(el);
-        });
-    </script>
-
-    <script async type='module' src='https://interfaces.zapier.com/assets/web-components/zapier-interfaces/zapier-interfaces.esm.js'></script>
-    <zapier-interfaces-chatbot-embed is-popup='true' chatbot-id='cm85jcmgj002chpjxiazqwz6g'></zapier-interfaces-chatbot-embed>
+    <script src="assets/js/main.js" defer></script>
 </body>
 </html>
