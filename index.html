@@ -1,288 +1,899 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Joe's Tech Repair | Full-Stack Device Care in Baldwin Park & Los Angeles</title>
-    <meta name="description" content="Joe's Tech Repair delivers professional laptop, desktop, and mobile fixes across Baldwin Park and the Los Angeles area. Full-stack solutions backed by a CS master's student.">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-o9N1j7kGStGkG8JxkG6f3c5pVTl28rjz7A2JbMm0C9k=" crossorigin=""/>
-    <link rel="stylesheet" href="assets/css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Joe's Tech Repair - Expert Device Repair Services</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Custom CSS Variables */
+    :root {
+      --background: oklch(0.145 0 0);
+      --foreground: oklch(0.985 0 0);
+      --card: oklch(0.18 0 0);
+      --primary: oklch(0.65 0.25 250);
+      --accent: oklch(0.75 0.2 180);
+      --border: oklch(0.269 0 0);
+      --muted: oklch(0.708 0 0);
+    }
+
+    body {
+      background-color: var(--background);
+      color: var(--foreground);
+      font-family: system-ui, -apple-system, sans-serif;
+    }
+
+    /* Floating animations with 3D transforms */
+    @keyframes float-3d {
+      0%, 100% {
+        transform: translateY(0px) translateX(0px) rotateX(0deg) rotateY(0deg);
+      }
+      25% {
+        transform: translateY(-20px) translateX(10px) rotateX(5deg) rotateY(5deg);
+      }
+      50% {
+        transform: translateY(-10px) translateX(-10px) rotateX(-5deg) rotateY(-5deg);
+      }
+      75% {
+        transform: translateY(-25px) translateX(5px) rotateX(3deg) rotateY(-3deg);
+      }
+    }
+
+    @keyframes float-slow {
+      0%, 100% {
+        transform: translateY(0px) rotate(0deg);
+      }
+      50% {
+        transform: translateY(-30px) rotate(5deg);
+      }
+    }
+
+    @keyframes float-medium {
+      0%, 100% {
+        transform: translateY(0px) translateX(0px);
+      }
+      33% {
+        transform: translateY(-15px) translateX(15px);
+      }
+      66% {
+        transform: translateY(-25px) translateX(-10px);
+      }
+    }
+
+    @keyframes gradient-shift {
+      0%, 100% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+    }
+
+    @keyframes pulse-glow {
+      0%, 100% {
+        opacity: 0.3;
+        transform: scale(1);
+      }
+      50% {
+        opacity: 0.5;
+        transform: scale(1.1);
+      }
+    }
+
+    @keyframes slide-up-fade {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes scale-in {
+      from {
+        opacity: 0;
+        transform: scale(0.9);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    .animate-float-3d {
+      animation: float-3d 6s ease-in-out infinite;
+    }
+
+    .animate-float-slow {
+      animation: float-slow 8s ease-in-out infinite;
+    }
+
+    .animate-float-medium {
+      animation: float-medium 5s ease-in-out infinite;
+    }
+
+    .animate-gradient {
+      background-size: 200% 200%;
+      animation: gradient-shift 8s ease infinite;
+    }
+
+    .animate-pulse-glow {
+      animation: pulse-glow 4s ease-in-out infinite;
+    }
+
+    .animate-slide-up-fade {
+      animation: slide-up-fade 0.6s ease-out forwards;
+    }
+
+    .animate-scale-in {
+      animation: scale-in 0.5s ease-out forwards;
+    }
+
+    .bg-grid-pattern {
+      background-image: 
+        linear-gradient(to right, rgba(100, 150, 255, 0.1) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(100, 150, 255, 0.1) 1px, transparent 1px);
+      background-size: 50px 50px;
+    }
+
+    .bg-gradient-animated {
+      background: linear-gradient(
+        -45deg,
+        rgba(100, 150, 255, 0.2),
+        rgba(150, 200, 255, 0.2),
+        rgba(100, 150, 255, 0.3),
+        rgba(150, 200, 255, 0.1)
+      );
+      background-size: 400% 400%;
+    }
+
+    .card-3d {
+      transform-style: preserve-3d;
+      transition: transform 0.6s ease, box-shadow 0.3s ease;
+    }
+
+    .card-3d:hover {
+      transform: rotateY(5deg) rotateX(5deg) scale(1.05);
+      box-shadow: 0 20px 40px rgba(100, 150, 255, 0.3);
+    }
+
+    .hover-lift {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .hover-lift:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 20px 40px rgba(100, 150, 255, 0.3);
+    }
+
+    .gradient-text {
+      background: linear-gradient(to right, var(--primary), var(--accent), var(--primary));
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: gradient-shift 8s ease infinite;
+    }
+
+    .scroll-animate {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .scroll-animate.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Header styles */
+    header {
+      transition: all 0.3s ease;
+    }
+
+    header.scrolled {
+      background-color: rgba(20, 20, 30, 0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    /* Custom scrollbar */
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: var(--background);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--primary);
+      border-radius: 5px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--accent);
+    }
+  </style>
 </head>
-<body data-page="home">
-    <header class="site-header">
-        <div class="container navbar">
-            <a class="brand" href="index.html">
-                <span class="brand-logo">JT</span>
-                <span class="brand-text">Joe's Tech Repair</span>
-            </a>
-            <nav class="nav-links">
-                <a href="index.html" data-nav="home">Home</a>
-                <a href="services.html" data-nav="services">Services</a>
-                <a href="prices.html" data-nav="prices">Pricing</a>
-                <a href="about.html" data-nav="about">About</a>
-                <a href="contact.html" data-nav="contact">Contact</a>
-            </nav>
-            <button class="nav-toggle" aria-label="Toggle navigation">
-                <span></span>
-                <span></span>
-                <span></span>
+<body class="antialiased">
+  
+  <!-- Header -->
+  <header id="header" class="fixed top-0 left-0 right-0 z-50">
+    <div class="container mx-auto px-4 py-4">
+      <div class="flex items-center justify-between">
+        <div class="flex items-center gap-2">
+          <div class="bg-blue-500 p-2 rounded-lg">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.121 14.121L19 19m-7-7l7-7m-7 7l-2.879 2.879M12 12L9.121 9.121m0 5.758a3 3 0 10-4.243 4.243 3 3 0 004.243-4.243zm0-5.758a3 3 0 10-4.243-4.243 3 3 0 004.243 4.243z" />
+            </svg>
+          </div>
+          <span class="text-xl font-bold">Joe's Tech Repair</span>
+        </div>
+
+        <!-- Desktop Navigation -->
+        <nav class="hidden md:flex items-center gap-8">
+          <a href="#services" class="text-gray-300 hover:text-white transition-colors">Services</a>
+          <a href="#why-us" class="text-gray-300 hover:text-white transition-colors">Why Us</a>
+          <a href="#process" class="text-gray-300 hover:text-white transition-colors">Process</a>
+          
+          <a href="#booking" class="bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded-lg transition-colors">Book Repair</a>
+        </nav>
+
+        <!-- Mobile Menu Button -->
+        <button id="mobile-menu-btn" class="md:hidden text-white">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+
+      <!-- Mobile Navigation -->
+      <nav id="mobile-menu" class="hidden md:hidden mt-4 pb-4 flex-col gap-4">
+        <a href="#services" class="text-gray-300 hover:text-white transition-colors">Services</a>
+        <a href="#why-us" class="text-gray-300 hover:text-white transition-colors">Why Us</a>
+        <a href="#process" class="text-gray-300 hover:text-white transition-colors">Process</a>
+        
+        <a href="#booking" class="bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded-lg transition-colors text-center">Book Repair</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+    <div class="absolute inset-0 bg-grid-pattern opacity-20"></div>
+    <div class="absolute inset-0 bg-gradient-animated animate-gradient"></div>
+
+    <!-- Floating Icons -->
+    <div class="absolute inset-0 overflow-hidden pointer-events-none" id="floating-icons">
+      <svg class="absolute top-20 left-10 w-12 h-12 text-blue-500 opacity-30 animate-float-3d" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <rect x="5" y="2" width="14" height="20" rx="2" ry="2" stroke-width="2"/>
+      </svg>
+      <svg class="absolute top-40 right-20 w-16 h-16 text-cyan-400 opacity-30 animate-float-slow" style="animation-delay: 1s" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <rect x="2" y="3" width="20" height="14" rx="2" ry="2" stroke-width="2"/>
+        <line x1="8" y1="21" x2="16" y2="21" stroke-width="2"/>
+        <line x1="12" y1="17" x2="12" y2="21" stroke-width="2"/>
+      </svg>
+      <svg class="absolute bottom-40 left-20 w-14 h-14 text-blue-400 opacity-25 animate-float-medium" style="animation-delay: 2s" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <rect x="4" y="2" width="16" height="20" rx="2" ry="2" stroke-width="2"/>
+      </svg>
+      <svg class="absolute bottom-20 right-10 w-10 h-10 text-cyan-300 opacity-25 animate-float-3d" style="animation-delay: 1.5s" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="7" stroke-width="2"/>
+      </svg>
+    </div>
+
+    <div class="container mx-auto px-4 relative z-10">
+      <div class="max-w-4xl mx-auto text-center">
+        <div class="inline-block mb-4 px-4 py-2 bg-blue-500 bg-opacity-10 border border-blue-500 border-opacity-20 rounded-full animate-slide-up-fade backdrop-blur-sm">
+          <span class="text-blue-400 text-sm font-medium">Expert Tech Repair Since 2015</span>
+        </div>
+
+        <h1 class="text-5xl md:text-7xl font-bold mb-6 leading-tight animate-slide-up-fade" style="animation-delay: 0.1s">
+          Your Devices,
+          <span class="gradient-text"> Restored</span> 
+          to Perfection
+        </h1>
+
+        <p class="text-xl md:text-2xl text-gray-400 mb-8 leading-relaxed max-w-2xl mx-auto animate-slide-up-fade" style="animation-delay: 0.2s">
+          Professional repair services for smartphones, laptops, tablets, and more. Fast turnaround, quality guaranteed, and prices that won't break the bank.
+        </p>
+
+        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center animate-slide-up-fade" style="animation-delay: 0.3s">
+          <a href="#booking" class="bg-blue-500 hover:bg-blue-600 text-white text-lg px-8 py-4 rounded-lg hover-lift inline-flex items-center gap-2">
+            Book a Repair
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </a>
+          <a href="#services" class="border border-blue-500 border-opacity-30 hover:bg-blue-500 hover:bg-opacity-10 text-white text-lg px-8 py-4 rounded-lg hover-lift">
+            View Services
+          </a>
+        </div>
+
+        <div class="grid grid-cols-3 gap-8 mt-16 max-w-2xl mx-auto">
+          <div class="animate-scale-in" style="animation-delay: 0.4s">
+            <div class="text-4xl font-bold text-blue-400 mb-2 counter" data-target="10000">0</div>
+            <div class="text-sm text-gray-500">Devices Repaired</div>
+          </div>
+          <div class="animate-scale-in" style="animation-delay: 0.5s">
+            <div class="text-4xl font-bold text-blue-400 mb-2 counter" data-target="24">0</div>
+            <div class="text-sm text-gray-500">Hour Turnaround</div>
+          </div>
+          <div class="animate-scale-in" style="animation-delay: 0.6s">
+            <div class="text-4xl font-bold text-blue-400 mb-2 counter" data-target="98">0</div>
+            <div class="text-sm text-gray-500">Success Rate</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-blue-500 opacity-20 rounded-full blur-[120px] animate-pulse-glow"></div>
+    <div class="absolute top-1/4 right-0 w-[400px] h-[400px] bg-cyan-400 opacity-15 rounded-full blur-[100px] animate-pulse-glow" style="animation-delay: 2s"></div>
+  </section>
+
+  <!-- Services Section -->
+  <section id="services" class="py-24 relative overflow-hidden">
+    <div class="absolute top-20 right-0 w-96 h-96 bg-blue-500 opacity-10 rounded-full blur-[120px] animate-pulse-glow"></div>
+    <div class="absolute bottom-20 left-0 w-96 h-96 bg-cyan-400 opacity-10 rounded-full blur-[120px] animate-pulse-glow" style="animation-delay: 1s"></div>
+
+    <div class="container mx-auto px-4 relative z-10">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl md:text-5xl font-bold mb-4 scroll-animate">
+          Comprehensive <span class="gradient-text">Repair Services</span>
+        </h2>
+        <p class="text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed scroll-animate">
+          From cracked screens to water damage, we fix it all with precision and care
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- Service Cards -->
+        <div class="bg-gray-900 border border-gray-800 rounded-lg p-6 card-3d scroll-animate hover:border-blue-500 transition-all duration-500">
+          <div class="w-12 h-12 bg-blue-500 bg-opacity-10 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <rect x="5" y="2" width="14" height="20" rx="2" ry="2" stroke-width="2"/>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold mb-2">Phone Repair</h3>
+          <p class="text-gray-400 mb-4 leading-relaxed">Screen replacement, battery, charging port, camera, and more</p>
+          <div class="text-blue-400 font-semibold text-lg">From $49</div>
+        </div>
+
+        <div class="bg-gray-900 border border-gray-800 rounded-lg p-6 card-3d scroll-animate hover:border-blue-500 transition-all duration-500">
+          <div class="w-12 h-12 bg-blue-500 bg-opacity-10 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <rect x="2" y="3" width="20" height="14" rx="2" ry="2" stroke-width="2"/>
+              <line x1="8" y1="21" x2="16" y2="21" stroke-width="2"/>
+              <line x1="12" y1="17" x2="12" y2="21" stroke-width="2"/>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold mb-2">Laptop Repair</h3>
+          <p class="text-gray-400 mb-4 leading-relaxed">Hardware upgrades, screen replacement, keyboard, motherboard repair</p>
+          <div class="text-blue-400 font-semibold text-lg">From $79</div>
+        </div>
+
+        <div class="bg-gray-900 border border-gray-800 rounded-lg p-6 card-3d scroll-animate hover:border-blue-500 transition-all duration-500">
+          <div class="w-12 h-12 bg-blue-500 bg-opacity-10 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <rect x="4" y="2" width="16" height="20" rx="2" ry="2" stroke-width="2"/>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold mb-2">Tablet Repair</h3>
+          <p class="text-gray-400 mb-4 leading-relaxed">Screen digitizer, battery replacement, charging issues, software fixes</p>
+          <div class="text-blue-400 font-semibold text-lg">From $59</div>
+        </div>
+
+        <div class="bg-gray-900 border border-gray-800 rounded-lg p-6 card-3d scroll-animate hover:border-blue-500 transition-all duration-500">
+          <div class="w-12 h-12 bg-blue-500 bg-opacity-10 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="7" stroke-width="2"/>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold mb-2">Smartwatch Repair</h3>
+          <p class="text-gray-400 mb-4 leading-relaxed">Screen replacement, battery, band replacement, water damage</p>
+          <div class="text-blue-400 font-semibold text-lg">From $39</div>
+        </div>
+
+        <div class="bg-gray-900 border border-gray-800 rounded-lg p-6 card-3d scroll-animate hover:border-blue-500 transition-all duration-500">
+          <div class="w-12 h-12 bg-blue-500 bg-opacity-10 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold mb-2">Audio Devices</h3>
+          <p class="text-gray-400 mb-4 leading-relaxed">Headphone repair, speaker replacement, connectivity issues</p>
+          <div class="text-blue-400 font-semibold text-lg">From $29</div>
+        </div>
+
+        <div class="bg-gray-900 border border-gray-800 rounded-lg p-6 card-3d scroll-animate hover:border-blue-500 transition-all duration-500">
+          <div class="w-12 h-12 bg-blue-500 bg-opacity-10 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <rect x="2" y="3" width="20" height="14" rx="2" ry="2" stroke-width="2"/>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold mb-2">Monitor Repair</h3>
+          <p class="text-gray-400 mb-4 leading-relaxed">Display issues, power problems, color calibration, dead pixels</p>
+          <div class="text-blue-400 font-semibold text-lg">From $69</div>
+        </div>
+
+        <div class="bg-gray-900 border border-gray-800 rounded-lg p-6 card-3d scroll-animate hover:border-blue-500 transition-all duration-500">
+          <div class="w-12 h-12 bg-blue-500 bg-opacity-10 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <rect x="1" y="6" width="18" height="12" rx="2" ry="2" stroke-width="2"/>
+              <line x1="23" y1="13" x2="23" y2="11" stroke-width="2"/>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold mb-2">Battery Replacement</h3>
+          <p class="text-gray-400 mb-4 leading-relaxed">All device types, genuine parts, same-day service available</p>
+          <div class="text-blue-400 font-semibold text-lg">From $39</div>
+        </div>
+
+        <div class="bg-gray-900 border border-gray-800 rounded-lg p-6 card-3d scroll-animate hover:border-blue-500 transition-all duration-500">
+          <div class="w-12 h-12 bg-blue-500 bg-opacity-10 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold mb-2">Water Damage</h3>
+          <p class="text-gray-400 mb-4 leading-relaxed">Emergency water damage repair, component cleaning, data recovery</p>
+          <div class="text-blue-400 font-semibold text-lg">From $89</div>
+        </div>
+      </div>
+
+      <div class="mt-12 text-center scroll-animate">
+        <p class="text-gray-400">
+          Don't see your device? 
+          <a href="#booking" class="text-blue-400 hover:underline font-medium hover:text-cyan-400 transition-colors">Contact us</a> 
+          for a custom quote
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Choose Us Section -->
+  <section id="why-us" class="py-24 bg-gray-900 bg-opacity-30 relative overflow-hidden">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl md:text-5xl font-bold mb-4 scroll-animate">
+          Why Choose <span class="text-blue-400">Joe's Tech Repair</span>?
+        </h2>
+        <p class="text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed scroll-animate">
+          We're not just another repair shop. Here's what sets us apart.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <div class="text-center scroll-animate">
+          <div class="w-16 h-16 bg-blue-500 bg-opacity-10 rounded-full flex items-center justify-center mx-auto mb-4 animate-float-slow">
+            <svg class="w-8 h-8 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold mb-2">Fast Turnaround</h3>
+          <p class="text-gray-400 leading-relaxed">Most repairs completed within 24 hours. Same-day service available for urgent cases.</p>
+        </div>
+
+        <div class="text-center scroll-animate">
+          <div class="w-16 h-16 bg-blue-500 bg-opacity-10 rounded-full flex items-center justify-center mx-auto mb-4 animate-float-slow" style="animation-delay: 0.5s">
+            <svg class="w-8 h-8 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold mb-2">Quality Guaranteed</h3>
+          <p class="text-gray-400 leading-relaxed">90-day warranty on all repairs. We use only high-quality, tested parts.</p>
+        </div>
+
+        <div class="text-center scroll-animate">
+          <div class="w-16 h-16 bg-blue-500 bg-opacity-10 rounded-full flex items-center justify-center mx-auto mb-4 animate-float-slow" style="animation-delay: 1s">
+            <svg class="w-8 h-8 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold mb-2">Fair Pricing</h3>
+          <p class="text-gray-400 leading-relaxed">Transparent pricing with no hidden fees. Free diagnostics on all devices.</p>
+        </div>
+
+        <div class="text-center scroll-animate">
+          <div class="w-16 h-16 bg-blue-500 bg-opacity-10 rounded-full flex items-center justify-center mx-auto mb-4 animate-float-slow" style="animation-delay: 1.5s">
+            <svg class="w-8 h-8 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold mb-2">Expert Technicians</h3>
+          <p class="text-gray-400 leading-relaxed">Certified professionals with 10+ years of experience in device repair.</p>
+        </div>
+
+        <div class="text-center scroll-animate">
+          <div class="w-16 h-16 bg-blue-500 bg-opacity-10 rounded-full flex items-center justify-center mx-auto mb-4 animate-float-slow" style="animation-delay: 2s">
+            <svg class="w-8 h-8 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold mb-2">Data Security</h3>
+          <p class="text-gray-400 leading-relaxed">Your privacy matters. We never access your personal data during repairs.</p>
+        </div>
+
+        <div class="text-center scroll-animate">
+          <div class="w-16 h-16 bg-blue-500 bg-opacity-10 rounded-full flex items-center justify-center mx-auto mb-4 animate-float-slow" style="animation-delay: 2.5s">
+            <svg class="w-8 h-8 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold mb-2">Customer Support</h3>
+          <p class="text-gray-400 leading-relaxed">Friendly support team available 7 days a week to answer your questions.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process Section -->
+  <section id="process" class="py-24 relative overflow-hidden">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl md:text-5xl font-bold mb-4 scroll-animate">
+          Our Simple <span class="gradient-text">Repair Process</span>
+        </h2>
+        <p class="text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed scroll-animate">
+          Getting your device fixed is easy. Here's how it works.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 max-w-6xl mx-auto">
+        <div class="text-center scroll-animate">
+          <div class="w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold">1</div>
+          <h3 class="text-xl font-bold mb-2">Book Online</h3>
+          <p class="text-gray-400 leading-relaxed">Schedule your repair online or walk into our store</p>
+        </div>
+
+        <div class="text-center scroll-animate">
+          <div class="w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold">2</div>
+          <h3 class="text-xl font-bold mb-2">Free Diagnosis</h3>
+          <p class="text-gray-400 leading-relaxed">We'll examine your device and provide a quote</p>
+        </div>
+
+        <div class="text-center scroll-animate">
+          <div class="w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold">3</div>
+          <h3 class="text-xl font-bold mb-2">Expert Repair</h3>
+          <p class="text-gray-400 leading-relaxed">Our technicians fix your device with care</p>
+        </div>
+
+        <div class="text-center scroll-animate">
+          <div class="w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold">4</div>
+          <h3 class="text-xl font-bold mb-2">Pick Up</h3>
+          <p class="text-gray-400 leading-relaxed">Get your device back, good as new!</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Booking Section -->
+  <section id="booking" class="py-24 relative">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl md:text-5xl font-bold mb-4 scroll-animate">
+          Ready to <span class="text-blue-400">Fix Your Device</span>?
+        </h2>
+        <p class="text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed scroll-animate">
+          Book your repair online or visit us in-store. We're here to help!
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
+        <!-- Booking Form -->
+        <div class="bg-gray-900 border border-gray-800 rounded-lg p-8 scroll-animate">
+          <h3 class="text-2xl font-bold mb-2">Book Your Repair</h3>
+          <p class="text-gray-400 mb-6">Fill out the form and we'll get back to you within 1 hour</p>
+          
+          <form id="booking-form" class="space-y-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-sm font-medium mb-2">Full Name</label>
+                <input type="text" required class="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:border-blue-500" placeholder="John Doe">
+              </div>
+              <div>
+                <label class="block text-sm font-medium mb-2">Phone Number</label>
+                <input type="tel" required class="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:border-blue-500" placeholder="1">
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-sm font-medium mb-2">Email</label>
+              <input type="email" required class="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:border-blue-500" placeholder="john@example.com">
+            </div>
+
+            <div>
+              <label class="block text-sm font-medium mb-2">Device Type</label>
+              <select required class="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:border-blue-500">
+                <option value="">Select device type</option>
+                <option value="phone">Smartphone</option>
+                <option value="laptop">Laptop</option>
+                <option value="tablet">Tablet</option>
+                <option value="watch">Smartwatch</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="block text-sm font-medium mb-2">Describe the Issue</label>
+              <textarea required rows="4" class="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:border-blue-500" placeholder="e.g., Cracked screen, won't turn on, battery drains fast..."></textarea>
+            </div>
+
+            <button type="submit" class="w-full bg-blue-500 hover:bg-blue-600 text-white py-3 rounded-lg font-semibold transition-colors">
+              Book Repair
             </button>
+          </form>
         </div>
-    </header>
 
-    <main>
-        <section class="hero">
-            <div class="container hero-grid">
-                <div class="hero-content">
-                    <div class="hero-eyebrow">
-                        <i class="fa-solid fa-screwdriver-wrench"></i>
-                        Full-stack repair & automation for home and business
-                    </div>
-                    <h1 class="hero-title">Premium device care for <span>Baldwin Park & Los Angeles</span></h1>
-                    <p class="hero-description">I'm Joe, a master's student in Computer Science and a full-stack repair engineer. From motherboard microsoldering to fleet device automation, I combine hands-on hardware expertise with cloud-powered APIs to keep your tech fast, secure, and field-ready.</p>
-                    <div class="hero-cta">
-                        <a class="button button-primary" href="contact.html">Book a diagnostic</a>
-                        <a class="button button-ghost" href="services.html">Explore services</a>
-                    </div>
-
-                    <div class="hero-meta">
-                        <div class="meta-card">
-                            <h4>45 min</h4>
-                            <p>Average onsite arrival for Baldwin Park & San Gabriel Valley calls.</p>
-                        </div>
-                        <div class="meta-card">
-                            <h4>99.2%</h4>
-                            <p>Successful repair rate backed by transparent diagnostics and QA reports.</p>
-                        </div>
-                        <div class="meta-card">
-                            <h4>24/7</h4>
-                            <p>Remote monitoring with automated alerts powered by custom APIs.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="hero-visual">
-                    <div class="data-panel" data-weather>
-                        <div class="status-pill">
-                            <i class="fa-solid fa-satellite-dish"></i>
-                            Live Operations Feed
-                        </div>
-                        <h3>Field Readiness Snapshot</h3>
-                        <div class="panel-grid">
-                            <div class="panel-item">
-                                <span>Weather sync</span>
-                                <span data-weather-temp>--</span>
-                            </div>
-                            <div class="panel-item">
-                                <span data-weather-status>Checking network...</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="data-panel" data-github>
-                        <div class="status-pill">
-                            <i class="fa-solid fa-code-branch"></i>
-                            Engineering Pipeline
-                        </div>
-                        <h3>Latest full-stack project</h3>
-                        <div class="panel-grid">
-                            <div class="panel-item">
-                                <span>Repository</span>
-                                <span data-repo-name>—</span>
-                            </div>
-                            <div class="panel-item">
-                                <span>Stars</span>
-                                <span data-repo-stars>—</span>
-                            </div>
-                            <div class="panel-item">
-                                <span>Updated</span>
-                                <span data-repo-updated>—</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="section" id="services">
-            <div class="container">
-                <div class="section-header">
-                    <p class="badge"><i class="fa-solid fa-microchip"></i> What I fix</p>
-                    <h2 class="section-title">Hardware precision meets cloud intelligence</h2>
-                    <p class="section-subtitle">Whether it's a MacBook logic board rescue, onsite workstation deployment, or mobile device fleet support, I build solutions that bridge hardware repairs with intelligent automation.</p>
-                </div>
-                <div class="cards-grid">
-                    <article class="card">
-                        <div class="card-icon"><i class="fa-solid fa-laptop-medical"></i></div>
-                        <h3 class="card-title">Laptop & desktop rebuilds</h3>
-                        <p>Thermal repasting, SSD migrations, board-level diagnostics, and OS rebuilds with zero data-loss workflows.</p>
-                    </article>
-                    <article class="card">
-                        <div class="card-icon"><i class="fa-solid fa-mobile-screen"></i></div>
-                        <h3 class="card-title">Mobile & tablet repair</h3>
-                        <p>iOS and Android screen, battery, and port repairs with genuine-grade parts plus mobile lab for onsite service.</p>
-                    </article>
-                    <article class="card">
-                        <div class="card-icon"><i class="fa-solid fa-cloud"></i></div>
-                        <h3 class="card-title">Cloud & API integration</h3>
-                        <p>Device enrollment automations, webhook health alerts, and remote maintenance dashboards built in-house.</p>
-                    </article>
-                    <article class="card">
-                        <div class="card-icon"><i class="fa-solid fa-shield-halved"></i></div>
-                        <h3 class="card-title">Security hardening</h3>
-                        <p>Zero-trust network setups, MFA rollouts, and proactive patch management for small teams and startups.</p>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-        <section class="section" id="process">
-            <div class="container">
-                <div class="section-header">
-                    <p class="badge"><i class="fa-solid fa-route"></i> Engagement flow</p>
-                    <h2 class="section-title">From pickup to deployment in four steps</h2>
-                    <p class="section-subtitle">A modern repair experience designed for founders, families, and remote teams across Baldwin Park and greater Los Angeles.</p>
-                </div>
-                <div class="timeline">
-                    <div class="timeline-item" data-step="1">
-                        <h3>Rapid intake</h3>
-                        <p>Mobile pickup or secure mail-in. You receive an automated intake summary and tracking link the moment your device is tagged.</p>
-                    </div>
-                    <div class="timeline-item" data-step="2">
-                        <h3>Deep diagnostics</h3>
-                        <p>Bench testing with oscilloscope captures, kernel logs, and component telemetry. Findings are shared via a web dashboard.</p>
-                    </div>
-                    <div class="timeline-item" data-step="3">
-                        <h3>Precision repair</h3>
-                        <p>Microsoldering, part replacement, or cloud remediation. Every change is versioned and traceable via my service API.</p>
-                    </div>
-                    <div class="timeline-item" data-step="4">
-                        <h3>Deployment & automation</h3>
-                        <p>Delivery with QA report, plus optional monitoring agents and webhook integrations to alert you before downtime hits.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="section" id="apis">
-            <div class="container">
-                <div class="section-header">
-                    <p class="badge"><i class="fa-solid fa-plug-circle-check"></i> API advantage</p>
-                    <h2 class="section-title">Full-stack capability that keeps your fleet connected</h2>
-                    <p class="section-subtitle">Graduate-level engineering means repairs that don't stop at hardware. I build the automation, analytics, and documentation to keep your systems resilient.</p>
-                </div>
-                <div class="api-panels">
-                    <div class="api-card">
-                        <h3><i class="fa-solid fa-diagram-project"></i> Service automation</h3>
-                        <div class="api-output">
-                            <span>• Intake events broadcast to Slack, Teams, or SMS via custom webhooks.</span>
-                            <span>• Asset audits backed by serverless endpoints I maintain.</span>
-                            <span>• Real-time weather and power alerts to protect onsite visits.</span>
-                        </div>
-                    </div>
-                    <div class="api-card">
-                        <h3><i class="fa-solid fa-server"></i> Tech stack</h3>
-                        <div class="api-output">
-                            <span>Python · Node.js · Next.js · Postgres · AWS Lambda · Docker</span>
-                            <span>CI/CD pipelines orchestrated with GitHub Actions.</span>
-                            <span>Master's research on predictive maintenance models.</span>
-                        </div>
-                    </div>
-                    <div class="api-card">
-                        <h3><i class="fa-solid fa-chart-line"></i> Reporting</h3>
-                        <div class="api-output">
-                            <span>Interactive dashboards with Grafana & Supabase APIs.</span>
-                            <span>Documentation portal with autogenerated change logs.</span>
-                            <span>Client portal access with role-based permissions.</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="section" id="testimonials">
-            <div class="container">
-                <div class="section-header">
-                    <p class="badge"><i class="fa-solid fa-users"></i> Community trust</p>
-                    <h2 class="section-title">Trusted by founders, families, and faculty</h2>
-                    <p class="section-subtitle">Joe's Tech Repair is the go-to partner in Baldwin Park, Pasadena, and Los Angeles for lightning-fast response and engineering-grade solutions.</p>
-                </div>
-                <div class="testimonials-grid">
-                    <article class="testimonial-card">
-                        <p>“Joe revived our startup's production server overnight and delivered an automation pipeline that prevents the issue from ever happening again.”</p>
-                        <p class="testimonial-author">Rafael M.</p>
-                        <p class="testimonial-role">CTO, LA Fintech Lab</p>
-                    </article>
-                    <article class="testimonial-card">
-                        <p>“He picked up my MacBook from Baldwin Park, swapped the logic board, and restored my grad school research data in under 48 hours.”</p>
-                        <p class="testimonial-author">Dr. Alina G.</p>
-                        <p class="testimonial-role">Research Scientist, Caltech</p>
-                    </article>
-                    <article class="testimonial-card">
-                        <p>“The remote monitoring dashboard Joe built means our retail stores can request onsite support with one tap and see exactly when he's arriving.”</p>
-                        <p class="testimonial-author">Kimberly S.</p>
-                        <p class="testimonial-role">Operations Director, Baldwin Park Retail Collective</p>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-        <section class="section" id="coverage">
-            <div class="container">
-                <div class="section-header">
-                    <p class="badge"><i class="fa-solid fa-location-dot"></i> Service radius</p>
-                    <h2 class="section-title">Onsite & mobile lab service across LA County</h2>
-                    <p class="section-subtitle">Dispatch from Baldwin Park with coverage to downtown Los Angeles, Pasadena, the San Gabriel Valley, and select remote clients via courier.</p>
-                </div>
-                <div class="map-card">
-                    <div id="service-map" role="img" aria-label="Map showing Baldwin Park, Los Angeles, and Pasadena service coverage"></div>
-                    <ul class="service-areas">
-                        <li><span>Baldwin Park • West Covina • El Monte</span><span>Same-day</span></li>
-                        <li><span>Los Angeles • Glendale • Burbank</span><span>Next-day</span></li>
-                        <li><span>Pasadena • Monrovia • San Gabriel</span><span>Same-day</span></li>
-                        <li><span>Remote & mobile deployments</span><span>By appointment</span></li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer class="site-footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-brand">
-                    <span class="brand-logo">JT</span>
-                    <p>Full-stack computer and mobile repair by a master's-level engineer serving Baldwin Park & Los Angeles.</p>
-                </div>
+        <!-- Contact Info -->
+        <div class="space-y-6">
+          <div class="bg-gray-900 border border-gray-800 rounded-lg p-8 scroll-animate">
+            <h3 class="text-2xl font-bold mb-2">Visit Our Store</h3>
+            <p class="text-gray-400 mb-6">Walk-ins welcome! No appointment necessary.</p>
+            
+            <div class="space-y-4">
+              <div class="flex items-start gap-3">
+                <svg class="w-5 h-5 text-blue-400 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
                 <div>
-                    <h4>Quick links</h4>
-                    <div class="footer-links">
-                        <a href="index.html">Home</a>
-                        <a href="services.html">Services</a>
-                        <a href="prices.html">Pricing</a>
-                        <a href="contact.html">Schedule</a>
-                    </div>
+                  <div class="font-semibold mb-1">Location</div>
+                  <div class="text-gray-400">
+                    Baldwin Park<br>
+                    Los Angeles Area
+                  </div>
                 </div>
+              </div>
+
+              <div class="flex items-start gap-3">
+                <svg class="w-5 h-5 text-blue-400 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                </svg>
                 <div>
-                    <h4>Connect</h4>
-                    <div class="footer-links">
-                        <a href="mailto:joe@joestechrepair.com"><i class="fa-solid fa-envelope"></i> joe@joestechrepair.com</a>
-                        <a href="tel:16265551024"><i class="fa-solid fa-phone"></i> (626) 555-1024</a>
-                        <a href="https://www.linkedin.com/in/joetech" target="_blank" rel="noopener"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
-                    </div>
+                  <div class="font-semibold mb-1">Phone</div>
+                  <div class="text-gray-400">1</div>
                 </div>
+              </div>
+
+              <div class="flex items-start gap-3">
+                <svg class="w-5 h-5 text-blue-400 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+                <div>
+                  <div class="font-semibold mb-1">Email</div>
+                  <div class="text-gray-400">joe@joestechrepair.com</div>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-3">
+                <svg class="w-5 h-5 text-blue-400 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                </svg>
+                <div>
+                  <div class="font-semibold mb-1">Hours</div>
+                  <div class="text-gray-400">
+                    Mon-Fri: 9:00 AM - 7:00 PM<br>
+                    Sat: 10:00 AM - 6:00 PM<br>
+                    Sun: 11:00 AM - 5:00 PM
+                  </div>
+                </div>
+              </div>
             </div>
-            <div class="footer-bottom">
-                <span>© <span id="current-year"></span> Joe's Tech Repair. Built with love in Baldwin Park.</span>
-                <span>Licenses & insured · CS Master's candidate</span>
-            </div>
+          </div>
+
+          <div class="bg-gradient-to-br from-blue-500 from-opacity-10 to-cyan-400 to-opacity-10 border border-blue-500 border-opacity-20 rounded-lg p-8 scroll-animate">
+            <h3 class="text-xl font-semibold mb-2">Emergency Repair?</h3>
+            <p class="text-gray-400 mb-4 leading-relaxed">
+              Need urgent repair? Call us for same-day service availability.
+            </p>
+            <a href="tel:1" class="inline-block border border-blue-500 border-opacity-30 hover:bg-blue-500 hover:bg-opacity-10 px-6 py-2 rounded-lg transition-colors">
+              Call Now: 
+            </a>
+          </div>
         </div>
-    </footer>
+      </div>
+    </div>
+  </section>
 
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-o9N1j7kGStGkG8JxkG6f3c5pVTl28rjz7A2JbMm0C9k=" crossorigin=""></script>
-    <script src="assets/js/main.js" defer></script>
+  <!-- Footer -->
+  <footer class="bg-gray-900 bg-opacity-50 border-t border-gray-800 py-12">
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+        <div>
+          <div class="flex items-center gap-2 mb-4">
+            <div class="bg-blue-500 p-2 rounded-lg">
+              <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.121 14.121L19 19m-7-7l7-7m-7 7l-2.879 2.879M12 12L9.121 9.121m0 5.758a3 3 0 10-4.243 4.243 3 3 0 004.243-4.243zm0-5.758a3 3 0 10-4.243-4.243 3 3 0 004.243 4.243z" />
+              </svg>
+            </div>
+            <span class="text-xl font-bold">Joe's Tech Repair</span>
+          </div>
+          <p class="text-gray-400 leading-relaxed">Your trusted partner for all device repairs since 2015.</p>
+        </div>
+
+        <div>
+          <h4 class="font-semibold mb-4">Services</h4>
+          <ul class="space-y-2 text-gray-400">
+            <li><a href="#services" class="hover:text-blue-400 transition-colors">Phone Repair</a></li>
+            <li><a href="#services" class="hover:text-blue-400 transition-colors">Laptop Repair</a></li>
+            <li><a href="#services" class="hover:text-blue-400 transition-colors">Tablet Repair</a></li>
+            <li><a href="#services" class="hover:text-blue-400 transition-colors">Water Damage</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="font-semibold mb-4">Company</h4>
+          <ul class="space-y-2 text-gray-400">
+            <li><a href="#why-us" class="hover:text-blue-400 transition-colors">About Us</a></li>
+            
+            <li><a href="#" class="hover:text-blue-400 transition-colors">Careers</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="font-semibold mb-4">Connect</h4>
+          <div class="flex gap-4">
+            <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-blue-500 transition-colors">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            </a>
+            <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-blue-500 transition-colors">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/></svg>
+            </a>
+            <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-blue-500 transition-colors">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.061 1.17-.256 1.805-.421 2.227-.224.562-.479.96-.899 1.382-.419.419-.824.679-1.38.896-.42.164-1.065.36-2.235.413-1.274.057-1.649.07-4.859.07-3.211 0-3.586-.015-4.859-.074-1.171-.061-1.816-.256-2.236-.421-.569-.224-.96-.479-1.379-.899-.421-.419-.69-.824-.9-1.38-.165-.42-.359-1.065-.42-2.235-.045-1.26-.061-1.649-.061-4.844 0-3.196.016-3.586.061-4.861.061-1.17.255-1.814.42-2.234.21-.57.479-.96.9-1.381.419-.419.81-.689 1.379-.898.42-.166 1.051-.361 2.221-.421 1.275-.045 1.65-.06 4.859-.06l.045.03zm0 3.678c-3.405 0-6.162 2.76-6.162 6.162 0 3.405 2.76 6.162 6.162 6.162 3.405 0 6.162-2.76 6.162-6.162 0-3.405-2.76-6.162-6.162-6.162zM12 16c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm7.846-10.405c0 .795-.646 1.44-1.44 1.44-.795 0-1.44-.646-1.44-1.44 0-.794.646-1.439 1.44-1.439.793-.001 1.44.645 1.44 1.439z"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="border-t border-gray-800 pt-8 text-center text-gray-400">
+        <p>&copy; 2025 Joe's Tech Repair. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="fixed bottom-8 right-8 bg-green-500 text-white px-6 py-4 rounded-lg shadow-lg transform translate-y-32 transition-transform duration-300 z-50">
+    <div class="flex items-center gap-3">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+      </svg>
+      <div>
+        <div class="font-semibold">Booking Confirmed!</div>
+        <div class="text-sm">We'll contact you shortly to confirm your appointment.</div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Header scroll effect
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 20) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+
+    // Mobile menu toggle
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    mobileMenuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+      mobileMenu.classList.toggle('flex');
+    });
+
+    // Smooth scroll for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth' });
+          // Close mobile menu if open
+          mobileMenu.classList.add('hidden');
+          mobileMenu.classList.remove('flex');
+        }
+      });
+    });
+
+    // Animated counters
+    function animateCounter(element) {
+      const target = parseInt(element.dataset.target);
+      const duration = 2000;
+      const start = 0;
+      const startTime = performance.now();
+
+      function update(currentTime) {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        const current = Math.floor(progress * target);
+        
+        if (target > 1000) {
+          element.textContent = (current / 1000).toFixed(0) + 'K+';
+        } else {
+          element.textContent = current + (target === 24 ? 'hr' : target === 98 ? '%' : '');
+        }
+
+        if (progress < 1) {
+          requestAnimationFrame(update);
+        }
+      }
+
+      requestAnimationFrame(update);
+    }
+
+    // Intersection Observer for scroll animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          
+          // Animate counters when they come into view
+          if (entry.target.classList.contains('counter')) {
+            animateCounter(entry.target);
+          }
+        }
+      });
+    }, observerOptions);
+
+    // Observe all scroll-animate elements
+    document.querySelectorAll('.scroll-animate').forEach(el => {
+      observer.observe(el);
+    });
+
+    // Observe counters
+    document.querySelectorAll('.counter').forEach(el => {
+      observer.observe(el);
+    });
+
+    // Parallax effect for floating icons
+    const floatingIcons = document.getElementById('floating-icons');
+    let mouseX = 0;
+    let mouseY = 0;
+
+    document.addEventListener('mousemove', (e) => {
+      mouseX = (e.clientX / window.innerWidth - 0.5) * 20;
+      mouseY = (e.clientY / window.innerHeight - 0.5) * 20;
+      
+      const icons = floatingIcons.querySelectorAll('svg');
+      icons.forEach((icon, index) => {
+        const speed = (index + 1) * 0.1;
+        icon.style.transform = `translate(${mouseX * speed}px, ${mouseY * speed}px)`;
+      });
+    });
+
+    // Form submission
+    const bookingForm = document.getElementById('booking-form');
+    const toast = document.getElementById('toast');
+
+    bookingForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      
+      // Show toast notification
+      toast.style.transform = 'translateY(0)';
+      
+      // Hide toast after 3 seconds
+      setTimeout(() => {
+        toast.style.transform = 'translateY(8rem)';
+      }, 3000);
+      
+      // Reset form
+      bookingForm.reset();
+    });
+
+    // Add stagger animation delays to service cards
+    document.querySelectorAll('.card-3d').forEach((card, index) => {
+      card.style.transitionDelay = `${index * 100}ms`;
+    });
+  </script>
 </body>
 </html>
