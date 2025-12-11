@@ -25,11 +25,15 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    initPageIntro();
+    initScrollReveal();
+    initTerminal();
     initServiceMap();
     hydrateWeatherPanel();
     hydrateGithubPanel();
     initContactForm();
     initAccordion();
+    initTypingText();
 });
 
 function initServiceMap() {
@@ -158,16 +162,12 @@ function initContactForm() {
             alertBox.classList.add('alert');
         }
 
-        fetch('https://httpbin.org/post', {
+        fetch('/.netlify/functions/contact', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({
-                source: 'joe-tech.github.io',
-                submittedAt: new Date().toISOString(),
-                payload
-            })
+            body: JSON.stringify(payload)
         })
             .then(res => {
                 if (!res.ok) throw new Error('Network response was not ok');
@@ -181,7 +181,7 @@ function initContactForm() {
             })
             .catch(() => {
                 if (alertBox) {
-                    alertBox.textContent = 'We could not reach the scheduling service. Please call or text (626) 555-1024.';
+                    alertBox.textContent = 'We could not reach the scheduling service. Please call or text 626 344 2562.';
                 }
             });
     });
@@ -203,4 +203,197 @@ function initAccordion() {
             }
         });
     });
+}
+
+function initTypingText() {
+    const typers = document.querySelectorAll('.typing-text');
+    typers.forEach(typer => {
+        const phrases = JSON.parse(typer.dataset.typing || '[]');
+        if (!phrases.length) return;
+
+        let phraseIndex = 0;
+        let charIndex = 0;
+        let deleting = false;
+        const typingSpeed = 80;
+        const deletingSpeed = 40;
+        const pause = 1800;
+
+        const type = () => {
+            const currentPhrase = phrases[phraseIndex];
+            if (!deleting) {
+                typer.textContent = currentPhrase.slice(0, charIndex + 1);
+                charIndex += 1;
+                if (charIndex === currentPhrase.length) {
+                    deleting = true;
+                    setTimeout(type, pause);
+                    return;
+                }
+            } else {
+                typer.textContent = currentPhrase.slice(0, charIndex - 1);
+                charIndex -= 1;
+                if (charIndex === 0) {
+                    deleting = false;
+                    phraseIndex = (phraseIndex + 1) % phrases.length;
+                }
+            }
+            setTimeout(type, deleting ? deletingSpeed : typingSpeed);
+        };
+
+        type();
+    });
+}
+
+function initPageIntro() {
+    const loader = document.querySelector('.page-loader');
+    if (!loader) return;
+
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const hideLoader = () => {
+        loader.classList.add('is-hidden');
+        document.body.classList.add('page-loaded');
+    };
+
+    if (prefersReducedMotion) {
+        hideLoader();
+        return;
+    }
+
+    if (document.readyState === 'complete') {
+        setTimeout(hideLoader, 350);
+    } else {
+        window.addEventListener('load', () => setTimeout(hideLoader, 350), { once: true });
+    }
+}
+
+function initScrollReveal() {
+    const revealEls = document.querySelectorAll('.reveal-up');
+    if (!revealEls.length) return;
+
+    if (!('IntersectionObserver' in window) || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        revealEls.forEach(el => el.classList.add('is-visible'));
+        return;
+    }
+
+    const observer = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                obs.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.2 });
+
+    revealEls.forEach(el => observer.observe(el));
+}
+
+function initTerminal() {
+    const terminal = document.querySelector('[data-terminal]');
+    if (!terminal) return;
+
+    const outputEl = terminal.querySelector('[data-terminal-output]');
+    if (!outputEl) return;
+
+    const sidePanel = document.querySelector('[data-terminal-side]');
+    const sideStatus = sidePanel ? sidePanel.querySelector('[data-side-status]') : null;
+    const sideReveals = sidePanel ? Array.from(sidePanel.querySelectorAll('[data-side-reveal]')) : [];
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const lines = [
+        'whoami -> joe_jimenez (ms cs @ csla)',
+        'git clone git@github.com:joe-tech/portfolio && cd portfolio',
+        'pnpm install --frozen-lockfile',
+        'pnpm lint && pnpm test --runInBand',
+        'render_about_panel --mode slide-in',
+        'duckdb : export ./data/telemetry.parquet -> dashboards/',
+        'simulate_phone_repair.sh [#####-----] reseat usb-c port',
+        'simulate_phone_repair.sh [##########] thermal check = ok',
+        'netlify deploy --prod --message "portfolio refresh"',
+        'status: build green · ready to share'
+    ];
+
+    let lineIndex = 0;
+    const cursor = document.createElement('span');
+    cursor.className = 'terminal-cursor';
+    outputEl.appendChild(cursor);
+
+    const pulseSide = () => {
+        if (!sidePanel) return;
+        sidePanel.classList.add('pulse');
+        setTimeout(() => sidePanel.classList.remove('pulse'), 420);
+    };
+
+    const revealSideContent = () => {
+        if (!sidePanel) return;
+        sidePanel.classList.add('is-open');
+        if (!sideReveals.length) return;
+        sideReveals.forEach((el, idx) => {
+            setTimeout(() => el.classList.add('visible'), prefersReducedMotion ? 0 : 80 * idx);
+        });
+        if (sideStatus) {
+            setTimeout(() => sideStatus.textContent = 'Panel synced.', prefersReducedMotion ? 0 : 80 * sideReveals.length);
+        }
+    };
+
+    const typeLine = () => {
+        if (lineIndex >= lines.length) {
+            cursor.classList.add('idle');
+            setTimeout(() => {
+                outputEl.innerHTML = '';
+                outputEl.appendChild(cursor);
+                cursor.classList.remove('idle');
+                lineIndex = 0;
+                typeLine();
+            }, 2800);
+            return;
+        }
+
+        const line = lines[lineIndex];
+        const lineEl = document.createElement('div');
+        lineEl.className = 'terminal-line';
+
+        const prompt = document.createElement('span');
+        prompt.className = 'prompt';
+        prompt.textContent = 'joe@repair:~$';
+        const textSpan = document.createElement('span');
+
+        lineEl.appendChild(prompt);
+        lineEl.appendChild(textSpan);
+        outputEl.insertBefore(lineEl, cursor);
+        pulseSide();
+
+        let charIndex = 0;
+        const stepTime = prefersReducedMotion ? 0 : 12;
+
+        const typeChar = () => {
+            textSpan.textContent = line.slice(0, charIndex + 1);
+            charIndex += 1;
+            outputEl.scrollTop = outputEl.scrollHeight;
+
+            if (charIndex < line.length) {
+                setTimeout(typeChar, stepTime);
+            } else {
+                lineIndex += 1;
+                if (line.includes('render_about_panel')) {
+                    revealSideContent();
+                }
+                setTimeout(typeLine, prefersReducedMotion ? 0 : 160);
+            }
+        };
+
+        if (prefersReducedMotion) {
+            textSpan.textContent = line;
+            lineIndex += 1;
+            if (line.includes('render_about_panel')) {
+                revealSideContent();
+            }
+            setTimeout(typeLine, 0);
+        } else {
+            typeChar();
+        }
+    };
+
+    if (prefersReducedMotion && sidePanel) {
+        revealSideContent();
+    }
+
+    typeLine();
 }

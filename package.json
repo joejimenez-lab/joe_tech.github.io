@@ -1,0 +1,12 @@
+{
+  "name": "joe-tech-site",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Joe's Tech Repair static frontend and Netlify Functions backend",
+  "scripts": {
+    "dev": "netlify dev"
+  },
+  "dependencies": {
+    "nodemailer": "^7.0.11"
+  }
+}

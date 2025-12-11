@@ -5,218 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Joe's Tech Repair - Expert Device Repair Services</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    /* Custom CSS Variables */
-    :root {
-      --background: oklch(0.145 0 0);
-      --foreground: oklch(0.985 0 0);
-      --card: oklch(0.18 0 0);
-      --primary: oklch(0.65 0.25 250);
-      --accent: oklch(0.75 0.2 180);
-      --border: oklch(0.269 0 0);
-      --muted: oklch(0.708 0 0);
-    }
-
-    body {
-      background-color: var(--background);
-      color: var(--foreground);
-      font-family: system-ui, -apple-system, sans-serif;
-    }
-
-    /* Floating animations with 3D transforms */
-    @keyframes float-3d {
-      0%, 100% {
-        transform: translateY(0px) translateX(0px) rotateX(0deg) rotateY(0deg);
-      }
-      25% {
-        transform: translateY(-20px) translateX(10px) rotateX(5deg) rotateY(5deg);
-      }
-      50% {
-        transform: translateY(-10px) translateX(-10px) rotateX(-5deg) rotateY(-5deg);
-      }
-      75% {
-        transform: translateY(-25px) translateX(5px) rotateX(3deg) rotateY(-3deg);
-      }
-    }
-
-    @keyframes float-slow {
-      0%, 100% {
-        transform: translateY(0px) rotate(0deg);
-      }
-      50% {
-        transform: translateY(-30px) rotate(5deg);
-      }
-    }
-
-    @keyframes float-medium {
-      0%, 100% {
-        transform: translateY(0px) translateX(0px);
-      }
-      33% {
-        transform: translateY(-15px) translateX(15px);
-      }
-      66% {
-        transform: translateY(-25px) translateX(-10px);
-      }
-    }
-
-    @keyframes gradient-shift {
-      0%, 100% {
-        background-position: 0% 50%;
-      }
-      50% {
-        background-position: 100% 50%;
-      }
-    }
-
-    @keyframes pulse-glow {
-      0%, 100% {
-        opacity: 0.3;
-        transform: scale(1);
-      }
-      50% {
-        opacity: 0.5;
-        transform: scale(1.1);
-      }
-    }
-
-    @keyframes slide-up-fade {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    @keyframes scale-in {
-      from {
-        opacity: 0;
-        transform: scale(0.9);
-      }
-      to {
-        opacity: 1;
-        transform: scale(1);
-      }
-    }
-
-    .animate-float-3d {
-      animation: float-3d 6s ease-in-out infinite;
-    }
-
-    .animate-float-slow {
-      animation: float-slow 8s ease-in-out infinite;
-    }
-
-    .animate-float-medium {
-      animation: float-medium 5s ease-in-out infinite;
-    }
-
-    .animate-gradient {
-      background-size: 200% 200%;
-      animation: gradient-shift 8s ease infinite;
-    }
-
-    .animate-pulse-glow {
-      animation: pulse-glow 4s ease-in-out infinite;
-    }
-
-    .animate-slide-up-fade {
-      animation: slide-up-fade 0.6s ease-out forwards;
-    }
-
-    .animate-scale-in {
-      animation: scale-in 0.5s ease-out forwards;
-    }
-
-    .bg-grid-pattern {
-      background-image: 
-        linear-gradient(to right, rgba(100, 150, 255, 0.1) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(100, 150, 255, 0.1) 1px, transparent 1px);
-      background-size: 50px 50px;
-    }
-
-    .bg-gradient-animated {
-      background: linear-gradient(
-        -45deg,
-        rgba(100, 150, 255, 0.2),
-        rgba(150, 200, 255, 0.2),
-        rgba(100, 150, 255, 0.3),
-        rgba(150, 200, 255, 0.1)
-      );
-      background-size: 400% 400%;
-    }
-
-    .card-3d {
-      transform-style: preserve-3d;
-      transition: transform 0.6s ease, box-shadow 0.3s ease;
-    }
-
-    .card-3d:hover {
-      transform: rotateY(5deg) rotateX(5deg) scale(1.05);
-      box-shadow: 0 20px 40px rgba(100, 150, 255, 0.3);
-    }
-
-    .hover-lift {
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .hover-lift:hover {
-      transform: translateY(-8px) scale(1.02);
-      box-shadow: 0 20px 40px rgba(100, 150, 255, 0.3);
-    }
-
-    .gradient-text {
-      background: linear-gradient(to right, var(--primary), var(--accent), var(--primary));
-      background-size: 200% auto;
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-      animation: gradient-shift 8s ease infinite;
-    }
-
-    .scroll-animate {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
-    }
-
-    .scroll-animate.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* Header styles */
-    header {
-      transition: all 0.3s ease;
-    }
-
-    header.scrolled {
-      background-color: rgba(20, 20, 30, 0.95);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
-    }
-
-    /* Custom scrollbar */
-    ::-webkit-scrollbar {
-      width: 10px;
-    }
-
-    ::-webkit-scrollbar-track {
-      background: var(--background);
-    }
-
-    ::-webkit-scrollbar-thumb {
-      background: var(--primary);
-      border-radius: 5px;
-    }
-
-    ::-webkit-scrollbar-thumb:hover {
-      background: var(--accent);
-    }
-  </style>
+  <link rel="stylesheet" href="assets/css/index.css">
 </head>
 <body class="antialiased">
   
@@ -234,12 +23,14 @@
         </div>
 
         <!-- Desktop Navigation -->
-        <nav class="hidden md:flex items-center gap-8">
+        <nav class="hidden md:flex items-center gap-6">
           <a href="#services" class="text-gray-300 hover:text-white transition-colors">Services</a>
           <a href="#why-us" class="text-gray-300 hover:text-white transition-colors">Why Us</a>
           <a href="#process" class="text-gray-300 hover:text-white transition-colors">Process</a>
-          
-          <a href="#booking" class="bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded-lg transition-colors">Book Repair</a>
+          <a href="about.html" class="text-gray-300 hover:text-white transition-colors">About</a>
+          <a href="portfolio.html" class="text-gray-300 hover:text-white transition-colors">Portfolio</a>
+          <a href="contact.html" class="text-gray-300 hover:text-white transition-colors">Contact</a>
+          <a href="#booking" class="bg-blue-500 hover:bg-blue-600 text-white px-5 py-2 rounded-lg transition-colors">Book Repair</a>
         </nav>
 
         <!-- Mobile Menu Button -->
@@ -255,7 +46,9 @@
         <a href="#services" class="text-gray-300 hover:text-white transition-colors">Services</a>
         <a href="#why-us" class="text-gray-300 hover:text-white transition-colors">Why Us</a>
         <a href="#process" class="text-gray-300 hover:text-white transition-colors">Process</a>
-        
+        <a href="about.html" class="text-gray-300 hover:text-white transition-colors">About</a>
+        <a href="portfolio.html" class="text-gray-300 hover:text-white transition-colors">Portfolio</a>
+        <a href="contact.html" class="text-gray-300 hover:text-white transition-colors">Contact</a>
         <a href="#booking" class="bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded-lg transition-colors text-center">Book Repair</a>
       </nav>
     </div>
@@ -296,8 +89,8 @@
           to Perfection
         </h1>
 
-        <p class="text-xl md:text-2xl text-gray-400 mb-8 leading-relaxed max-w-2xl mx-auto animate-slide-up-fade" style="animation-delay: 0.2s">
-          Professional repair services for smartphones, laptops, tablets, and more. Fast turnaround, quality guaranteed, and prices that won't break the bank.
+        <p class="typing-headline text-xl md:text-2xl text-gray-400 mb-8 leading-relaxed max-w-2xl mx-auto animate-slide-up-fade" style="animation-delay: 0.2s" data-phrases='["Professional repair services for smartphones, laptops, tablets, and more.","Fast turnaround and transparent pricing.","Data-safe repairs with master-level engineering oversight."]'>
+          Professional repair services for smartphones, laptops, tablets, and more.
         </p>
 
         <div class="flex flex-col sm:flex-row gap-4 justify-center items-center animate-slide-up-fade" style="animation-delay: 0.3s">
@@ -590,22 +383,22 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
                 <label class="block text-sm font-medium mb-2">Full Name</label>
-                <input type="text" required class="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:border-blue-500" placeholder="John Doe">
+                <input type="text" name="fullName" required class="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:border-blue-500" placeholder="John Doe">
               </div>
               <div>
                 <label class="block text-sm font-medium mb-2">Phone Number</label>
-                <input type="tel" required class="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:border-blue-500" placeholder="1">
+                <input type="tel" name="phoneNumber" required class="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:border-blue-500" placeholder="626 344 2562">
               </div>
             </div>
 
             <div>
               <label class="block text-sm font-medium mb-2">Email</label>
-              <input type="email" required class="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:border-blue-500" placeholder="john@example.com">
+              <input type="email" name="email" required class="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:border-blue-500" placeholder="john@example.com">
             </div>
 
             <div>
               <label class="block text-sm font-medium mb-2">Device Type</label>
-              <select required class="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:border-blue-500">
+              <select name="deviceType" required class="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:border-blue-500">
                 <option value="">Select device type</option>
                 <option value="phone">Smartphone</option>
                 <option value="laptop">Laptop</option>
@@ -617,7 +410,7 @@
 
             <div>
               <label class="block text-sm font-medium mb-2">Describe the Issue</label>
-              <textarea required rows="4" class="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:border-blue-500" placeholder="e.g., Cracked screen, won't turn on, battery drains fast..."></textarea>
+              <textarea name="issue" required rows="4" class="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:border-blue-500" placeholder="e.g., Cracked screen, won't turn on, battery drains fast..."></textarea>
             </div>
 
             <button type="submit" class="w-full bg-blue-500 hover:bg-blue-600 text-white py-3 rounded-lg font-semibold transition-colors">
@@ -653,7 +446,7 @@
                 </svg>
                 <div>
                   <div class="font-semibold mb-1">Phone</div>
-                  <div class="text-gray-400">1</div>
+                  <div class="text-gray-400">626 344 2562</div>
                 </div>
               </div>
 
@@ -688,8 +481,8 @@
             <p class="text-gray-400 mb-4 leading-relaxed">
               Need urgent repair? Call us for same-day service availability.
             </p>
-            <a href="tel:1" class="inline-block border border-blue-500 border-opacity-30 hover:bg-blue-500 hover:bg-opacity-10 px-6 py-2 rounded-lg transition-colors">
-              Call Now: 
+            <a href="tel:16263442562" class="inline-block border border-blue-500 border-opacity-30 hover:bg-blue-500 hover:bg-opacity-10 px-6 py-2 rounded-lg transition-colors">
+              Call Now: 626 344 2562
             </a>
           </div>
         </div>
@@ -715,6 +508,12 @@
 
         <div>
           <h4 class="font-semibold mb-4">Services</h4>
+          <div class="float-icons" data-animate-icon>
+            <span>🔧</span>
+            <span>⚡</span>
+            <span>📱</span>
+            <span>💻</span>
+          </div>
           <ul class="space-y-2 text-gray-400">
             <li><a href="#services" class="hover:text-blue-400 transition-colors">Phone Repair</a></li>
             <li><a href="#services" class="hover:text-blue-400 transition-colors">Laptop Repair</a></li>
@@ -767,133 +566,6 @@
     </div>
   </div>
 
-  <script>
-    // Header scroll effect
-    const header = document.getElementById('header');
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 20) {
-        header.classList.add('scrolled');
-      } else {
-        header.classList.remove('scrolled');
-      }
-    });
-
-    // Mobile menu toggle
-    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-    const mobileMenu = document.getElementById('mobile-menu');
-    mobileMenuBtn.addEventListener('click', () => {
-      mobileMenu.classList.toggle('hidden');
-      mobileMenu.classList.toggle('flex');
-    });
-
-    // Smooth scroll for navigation links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-          target.scrollIntoView({ behavior: 'smooth' });
-          // Close mobile menu if open
-          mobileMenu.classList.add('hidden');
-          mobileMenu.classList.remove('flex');
-        }
-      });
-    });
-
-    // Animated counters
-    function animateCounter(element) {
-      const target = parseInt(element.dataset.target);
-      const duration = 2000;
-      const start = 0;
-      const startTime = performance.now();
-
-      function update(currentTime) {
-        const elapsed = currentTime - startTime;
-        const progress = Math.min(elapsed / duration, 1);
-        const current = Math.floor(progress * target);
-        
-        if (target > 1000) {
-          element.textContent = (current / 1000).toFixed(0) + 'K+';
-        } else {
-          element.textContent = current + (target === 24 ? 'hr' : target === 98 ? '%' : '');
-        }
-
-        if (progress < 1) {
-          requestAnimationFrame(update);
-        }
-      }
-
-      requestAnimationFrame(update);
-    }
-
-    // Intersection Observer for scroll animations
-    const observerOptions = {
-      threshold: 0.1,
-      rootMargin: '0px 0px -50px 0px'
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          
-          // Animate counters when they come into view
-          if (entry.target.classList.contains('counter')) {
-            animateCounter(entry.target);
-          }
-        }
-      });
-    }, observerOptions);
-
-    // Observe all scroll-animate elements
-    document.querySelectorAll('.scroll-animate').forEach(el => {
-      observer.observe(el);
-    });
-
-    // Observe counters
-    document.querySelectorAll('.counter').forEach(el => {
-      observer.observe(el);
-    });
-
-    // Parallax effect for floating icons
-    const floatingIcons = document.getElementById('floating-icons');
-    let mouseX = 0;
-    let mouseY = 0;
-
-    document.addEventListener('mousemove', (e) => {
-      mouseX = (e.clientX / window.innerWidth - 0.5) * 20;
-      mouseY = (e.clientY / window.innerHeight - 0.5) * 20;
-      
-      const icons = floatingIcons.querySelectorAll('svg');
-      icons.forEach((icon, index) => {
-        const speed = (index + 1) * 0.1;
-        icon.style.transform = `translate(${mouseX * speed}px, ${mouseY * speed}px)`;
-      });
-    });
-
-    // Form submission
-    const bookingForm = document.getElementById('booking-form');
-    const toast = document.getElementById('toast');
-
-    bookingForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      
-      // Show toast notification
-      toast.style.transform = 'translateY(0)';
-      
-      // Hide toast after 3 seconds
-      setTimeout(() => {
-        toast.style.transform = 'translateY(8rem)';
-      }, 3000);
-      
-      // Reset form
-      bookingForm.reset();
-    });
-
-    // Add stagger animation delays to service cards
-    document.querySelectorAll('.card-3d').forEach((card, index) => {
-      card.style.transitionDelay = `${index * 100}ms`;
-    });
-  </script>
+  <script src="assets/js/index.js"></script>
 </body>
 </html>

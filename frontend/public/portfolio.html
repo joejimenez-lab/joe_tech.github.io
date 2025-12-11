@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joe Jimenez | Portfolio</title>
+    <meta name="description" content="Portfolio for Joe Jimenez – full-stack repair engineer and master's-level computer science student showcasing projects, experience, and skills.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js" defer></script>
+</head>
+<body data-page="portfolio">
+    <div class="page-loader" aria-hidden="true">
+        <div class="page-loader__beam"></div>
+        <div class="page-loader__content">
+            <span class="loader-label">Booting portfolio</span>
+            <div class="loader-dots"><span></span><span></span><span></span></div>
+        </div>
+    </div>
+    <header class="site-header">
+        <div class="container navbar">
+            <a class="brand" href="index.html">
+                <span class="brand-logo">JT</span>
+                <span class="brand-text">Joe's Tech Repair</span>
+            </a>
+            <nav class="nav-links">
+                <a href="index.html" data-nav="home">Home</a>
+                <a href="services.html" data-nav="services">Services</a>
+                <a href="prices.html" data-nav="prices">Pricing</a>
+                <a href="portfolio.html" data-nav="portfolio">Portfolio</a>
+                <a href="about.html" data-nav="about">About</a>
+                <a href="contact.html" data-nav="contact">Contact</a>
+            </nav>
+            <button class="nav-toggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-hero portfolio-hero">
+            <div class="container">
+                <div class="portfolio-hero-content reveal-up">
+                    <p class="badge"><i class="fa-solid fa-toolbox"></i> Repair · Engineering · Research</p>
+                    <h1 class="glitch-title" data-text="Joe Jimenez">Joe Jimenez</h1>
+                    <p class="hero-subtitle typing-text" data-typing='["Full-stack computer & mobile repair engineer","Master’s-level CS student @ Cal State LA","Automation-focused builder across hardware & software"]'>Full-stack computer & mobile repair engineer</p>
+                    <p>I keep devices and systems online for families, classrooms, and early-stage teams. Currently pursuing my M.S. in Computer Science at Cal State LA while running Joe's Tech Repair in Baldwin Park.</p>
+                    <div class="hero-cta">
+                        <a class="button button-primary" href="https://www.linkedin.com/in/joeyahirjimenez" target="_blank" rel="noopener">
+                            <i class="fa-brands fa-linkedin"></i>
+                            LinkedIn
+                        </a>
+                        <a class="button button-secondary" href="mailto:joe@joestechrepair.com">
+                            <i class="fa-solid fa-envelope"></i>
+                            Email me
+                        </a>
+                    </div>
+                </div>
+                <div class="portfolio-hero-visual-small reveal-up">
+                    <lottie-player src="https://assets7.lottiefiles.com/packages/lf20_ktwnwv5m.json" background="transparent" speed="1" loop autoplay></lottie-player>
+                </div>
+            </div>
+        </section>
+
+        <section class="section projects-section">
+            <div class="container">
+                <div class="section-heading reveal-up">
+                    <h2>⭐ Featured Projects</h2>
+                    <lottie-player src="https://assets7.lottiefiles.com/packages/lf20_kuhijlvx.json" background="transparent" speed="1" loop autoplay></lottie-player>
+                </div>
+                <div class="cards-grid projects-grid">
+                    <article class="card reveal-up">
+                        <div class="card-header">
+                            <h3 class="card-title">EDA Dashboard</h3>
+                            <a href="https://github.com/" target="_blank" rel="noopener" class="repo-link"><i class="fa-brands fa-github"></i></a>
+                        </div>
+                        <p>Interactive analytics platform using Streamlit, FastAPI, and DuckDB for data drift, fairness checks, and Plotly dashboards.</p>
+                        <ul class="list-check">
+                            <li>Real-time alerts on fairness & drift metrics</li>
+                            <li>Reusable data ingestion pipelines</li>
+                            <li>Packaged with Docker Compose for rapid demos</li>
+                        </ul>
+                    </article>
+                    <article class="card reveal-up">
+                        <div class="card-header">
+                            <h3 class="card-title">Schedulify Class Sync</h3>
+                            <a href="https://github.com/" target="_blank" rel="noopener" class="repo-link"><i class="fa-brands fa-github"></i></a>
+                        </div>
+                        <p>Next.js + FastAPI scheduling tool to visualize and manage university class schedules.</p>
+                        <ul class="list-check">
+                            <li>ICS import/export + conflict detection</li>
+                            <li>Role-based view for advisors/students</li>
+                            <li>Deployed via Netlify & Railway</li>
+                        </ul>
+                    </article>
+                    <article class="card reveal-up">
+                        <div class="card-header">
+                            <h3 class="card-title">IoT & Embedded Systems</h3>
+                            <a href="https://github.com/" target="_blank" rel="noopener" class="repo-link"><i class="fa-brands fa-github"></i></a>
+                        </div>
+                        <p>Multi-display OLED interfaces, sensor-based monitoring prototypes, and microcontroller automation workflows.</p>
+                        <ul class="list-check">
+                            <li>Arduino + ESP32 telemetry collectors</li>
+                            <li>Edge ML inference for battery-limited devices</li>
+                            <li>Custom enclosures designed in Fusion 360</li>
+                        </ul>
+                    </article>
+                    <article class="card reveal-up">
+                        <div class="card-header">
+                    <h3 class="card-title">Topic Modeling Research Tools</h3>
+                    <a href="https://github.com/" target="_blank" rel="noopener" class="repo-link"><i class="fa-brands fa-github"></i></a>
+                </div>
+                <p>Exploratory NLP pipelines using Python, scikit-learn, and Jupyter notebooks.</p>
+                <ul class="list-check">
+                    <li>Automatically surfaces themes in service tickets</li>
+                    <li>Interactive Streamlit dashboards for SMEs</li>
+                    <li>Exports annotated corpora to DuckDB/S3</li>
+                </ul>
+            </article>
+        </div>
+    </div>
+</section>
+
+        <section class="section projects-section">
+            <div class="container">
+                <div class="section-heading reveal-up">
+                    <h2>Experience & Education</h2>
+                    <lottie-player src="https://assets2.lottiefiles.com/packages/lf20_4kx2q32n.json" background="transparent" speed="1" loop autoplay></lottie-player>
+                </div>
+                <div class="portfolio-timeline-grid">
+                    <div>
+                        <h3 class="timeline-heading">Education</h3>
+                        <div class="timeline align-center">
+                            <div class="timeline-item reveal-up" data-step="2025">
+                                <div>
+                                    <h3>M.S. Computer Science · Cal State LA</h3>
+                                    <p>Focusing on AI, ML, data systems, and reliability with projects spanning EDA dashboards, explainable ML, and containerized workflows.</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item reveal-up" data-step="2021">
+                                <div>
+                                    <h3>B.S. Computer Engineering · UC Riverside</h3>
+                                    <p>Completed compiler design, embedded labs, and systems programming projects that shaped my repair methodology.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="timeline-heading">Experience</h3>
+                        <div class="timeline">
+                            <div class="timeline-item reveal-up" data-step="2022–Present">
+                                <div>
+                                    <h3>Founder · Joe’s Tech Repair</h3>
+                                    <p>Board-level repairs, data recovery, diagnostics, and on-site support for Baldwin Park & LA clients with transparent workflows.</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item reveal-up" data-step="2022–2023">
+                                <div>
+                                    <h3>STEM Instructor & Mentor</h3>
+                                    <p>Taught and mentored K–12 students in coding and engineering fundamentals while maintaining classroom device fleets.</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item reveal-up" data-step="2016–2021">
+                                <div>
+                                    <h3>Community repair specialist</h3>
+                                    <p>Repaired phones, laptops, and consoles for families and students, building early trust through rapid and safe turnarounds.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container page-section terminal-section">
+                <div class="terminal-grid">
+                    <div class="terminal-side-card reveal-up" data-terminal-side>
+                        <p class="eyebrow side-reveal" data-side-reveal>About in 10s</p>
+                        <h3 class="side-reveal" data-side-reveal>Joe Jimenez</h3>
+                        <p class="side-reveal" data-side-reveal>Builder at the intersection of hardware + software. I ship products, teach STEM, and keep devices alive.</p>
+                        <p class="terminal-side-status side-reveal" data-side-status data-side-reveal>Panel ready.</p>
+                        <ul class="terminal-about-list">
+                            <li class="side-reveal" data-side-reveal><i class="fa-solid fa-microchip"></i> Arduino / ESP32 prototyping & telemetry</li>
+                            <li class="side-reveal" data-side-reveal><i class="fa-solid fa-code"></i> Streamlit, FastAPI, Next.js, DuckDB</li>
+                            <li class="side-reveal" data-side-reveal><i class="fa-solid fa-screwdriver-wrench"></i> Console, laptop, and phone repair</li>
+                            <li class="side-reveal" data-side-reveal><i class="fa-solid fa-chalkboard-user"></i> STEM instructor & community mentor</li>
+                        </ul>
+                    </div>
+                    <div class="terminal-card reveal-up" data-terminal>
+                        <div class="terminal-header">
+                            <div class="terminal-dots"><span></span><span></span><span></span></div>
+                            <span class="terminal-title">~/portfolio/run.sh</span>
+                            <span class="terminal-pill">live</span>
+                        </div>
+                        <div class="terminal-body" data-terminal-output></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container page-section">
+                <h2>Recent wins</h2>
+                <div class="cards-grid">
+                    <article class="card reveal-up">
+                        <h3 class="card-title">Student laptop recovery</h3>
+                        <p>Recovered a water-damaged MacBook for a college student, migrating data safely and replacing the failing charge port.</p>
+                        <ul class="list-check">
+                            <li>Zero data loss + new backup routine created</li>
+                            <li>Battery & thermal diagnostics included</li>
+                            <li>Delivered preventative maintenance checklist</li>
+                        </ul>
+                    </article>
+                    <article class="card reveal-up">
+                        <h3 class="card-title">Home network stabilization</h3>
+                        <p>Optimized a family’s Wi-Fi setup to eliminate dead zones and drops during remote classes.</p>
+                        <ul class="list-check">
+                            <li>Mesh placement + channel tuning</li>
+                            <li>New router configuration & parental controls</li>
+                            <li>45% improvement in signal coverage</li>
+                        </ul>
+                    </article>
+                    <article class="card reveal-up">
+                        <h3 class="card-title">STEM classroom device refresh</h3>
+                        <p>Restored Chromebooks/iPads so a community program could launch the school year without downtime.</p>
+                        <ul class="list-check">
+                            <li>Clean OS loads, updated firmware, removed bloat</li>
+                            <li>Verified batteries, keyboards, and chargers</li>
+                            <li>Documented outstanding issues for IT follow-up</li>
+                        </ul>
+                    </article>
+                    <article class="card reveal-up">
+                        <h3 class="card-title">Console + handheld repairs</h3>
+                        <p>Fixed Nintendo Switch drift, PlayStation HDMI faults, and Xbox power failures.</p>
+                        <ul class="list-check">
+                            <li>Precision soldering + micro repairs</li>
+                            <li>System cleanup + thermal repaste</li>
+                            <li>Firmware/OS verification before handoff</li>
+                        </ul>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container page-section">
+                <h2>Deliverables you can measure</h2>
+                <p class="reveal-up">Whether it’s a laptop repair or an embedded prototype, every job includes transparent diagnostics, before/after notes, and optional follow-up support.</p>
+                <div class="stats-cards">
+                    <div class="stat-card reveal-up">
+                        <span class="stat-value">48 hrs</span>
+                        <span class="stat-label">Typical turnaround for most repairs</span>
+                    </div>
+                    <div class="stat-card reveal-up">
+                        <span class="stat-value">4.9/5</span>
+                        <span class="stat-label">Average rating from local clients</span>
+                    </div>
+                    <div class="stat-card reveal-up">
+                        <span class="stat-value">8+ years</span>
+                        <span class="stat-label">Experience repairing phones, laptops, desktops, consoles</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container page-section">
+                <div class="grid-two columns">
+                    <div class="card reveal-up">
+                        <div class="card-icon"><i class="fa-solid fa-comments"></i></div>
+                        <h3 class="card-title">Client highlight</h3>
+                        <p>"Joe explained everything clearly and saved my data when my MacBook wouldn’t turn on. He even showed me how to prevent the issue from happening again." — Local Baldwin Park client</p>
+                    </div>
+                    <div class="reveal-up">
+                        <h2>Skills & tooling</h2>
+                        <div class="skills-grid">
+                            <div class="skill-pill">Hardware diagnostics</div>
+                            <div class="skill-pill">Board-level repair</div>
+                            <div class="skill-pill">Streamlit / FastAPI</div>
+                            <div class="skill-pill">Next.js</div>
+                            <div class="skill-pill">DuckDB & SQL</div>
+                            <div class="skill-pill">Docker & Compose</div>
+                            <div class="skill-pill">Python / C++</div>
+                            <div class="skill-pill">Embedded / Arduino</div>
+                            <div class="skill-pill">Edge ML</div>
+                            <div class="skill-pill">Network tuning</div>
+                            <div class="skill-pill">Customer support</div>
+                            <div class="skill-pill">Technical writing</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container page-section portfolio-cta">
+                <div>
+                    <h2>Let’s build or repair something together</h2>
+                    <p>I'm currently open to contract repair work, embedded projects, and full-stack roles that blend hardware with software automation.</p>
+                </div>
+                <div class="hero-cta reveal-up">
+                    <a class="button button-primary" href="contact.html">Schedule intro</a>
+                    <a class="button button-secondary" href="mailto:joe@joestechrepair.com">Email resume</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="portfolio-footer">
+        <div class="container">
+            <div class="portfolio-footer__header">
+                <span class="brand-logo">JT</span>
+                <div>
+                    <h3>Joe’s Tech Repair</h3>
+                    <p>Serving Baldwin Park & Los Angeles · Master’s student in Computer Science at Cal State LA</p>
+                </div>
+            </div>
+            <div class="portfolio-footer__grid">
+                <div>
+                    <h4>Quick links</h4>
+                    <div class="footer-links">
+                        <a href="index.html">Home</a>
+                        <a href="services.html">Services</a>
+                        <a href="prices.html">Pricing</a>
+                        <a href="contact.html">Schedule</a>
+                        <a href="portfolio.html">Portfolio</a>
+                    </div>
+                </div>
+                <div>
+                    <h4>Connect</h4>
+                    <div class="footer-links">
+                        <a href="mailto:joe@joestechrepair.com"><i class="fa-solid fa-envelope"></i> joe@joestechrepair.com</a>
+                        <a href="tel:16263442562"><i class="fa-solid fa-phone"></i> 626 344 2562</a>
+                        <a href="https://www.linkedin.com/in/joeyahirjimenez" target="_blank" rel="noopener"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>© 2025 Joe’s Tech Repair. Built with care in Baldwin Park.</span>
+                <span>Licensed & insured · CS Master’s Candidate</span>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/main.js" defer></script>
+</body>
+</html>
