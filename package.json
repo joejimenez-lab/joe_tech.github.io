@@ -7,6 +7,20 @@
     "dev": "netlify dev"
   },
   "dependencies": {
+    "mongoose": "^9.0.1",
     "nodemailer": "^7.0.11"
-  }
+  },
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joejimenez-lab/joe_tech.github.io.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/joejimenez-lab/joe_tech.github.io/issues"
+  },
+  "homepage": "https://github.com/joejimenez-lab/joe_tech.github.io#readme"
 }
