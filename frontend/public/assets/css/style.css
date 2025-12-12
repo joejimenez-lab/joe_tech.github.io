@@ -118,6 +118,10 @@ img {
     display: block;
 }
 
+.is-hidden {
+    display: none !important;
+}
+
 .container {
     width: min(1200px, 90vw);
     margin: 0 auto;

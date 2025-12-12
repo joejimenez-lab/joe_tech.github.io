@@ -181,7 +181,7 @@ function initContactForm() {
             })
             .catch(() => {
                 if (alertBox) {
-                    alertBox.textContent = 'We could not reach the scheduling service. Please call or text 626 344 2562.';
+                    alertBox.textContent = 'I could not reach the scheduling service. Please call or text 626 344 2562.';
                 }
             });
     });

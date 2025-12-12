@@ -127,7 +127,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       showToast({
         title: 'Booking Confirmed!',
-        body: 'We received your request and will contact you shortly.'
+        body: 'Joe received your request and will contact you shortly.'
       });
       bookingForm.reset();
     } catch (error) {
