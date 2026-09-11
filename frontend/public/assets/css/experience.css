@@ -1,4 +1,22 @@
 /* Three-dimensional repair experience; original photos retain their full frame. */
+.teardown-stage { min-width: 0; width: 100%; border: 1px solid #28303d; background: #090c12; border-radius: 18px; overflow: hidden; }
+.teardown-heading { display: flex; justify-content: space-between; gap: 16px; padding: 20px 22px; color: #afbed2; font-size: .6875rem; letter-spacing: .1em; border-bottom: 1px solid #ffffff0a; }
+.teardown-heading span:last-child { letter-spacing: 0; color: #8491a5; }
+.teardown-window { position: relative; height: 540px; }
+.teardown-window iframe { display: block; width: 100%; height: 100%; border: 0; }
+.teardown-controls { padding: 20px 22px 8px; border-top: 1px solid #28303d; }
+.teardown-controls[hidden] { display: none; }
+.teardown-slider-label { display: flex; justify-content: space-between; align-items: center; gap: 12px; font-size: .875rem; }
+.teardown-slider-label output { color: #a8bde2; font-size: .75rem; }
+.teardown-controls input { width: 100%; min-height: 40px; margin: 6px 0; accent-color: #a8bde2; cursor: ew-resize; }
+.teardown-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.teardown-actions button { background: #172132; color: #e5eeff; border: 1px solid #3a4a62; border-radius: 6px; padding: 10px 13px; min-height: 44px; font-size: .8125rem; }
+.teardown-actions button:hover { background: #283b59; }
+.teardown-actions span { color: #8998af; font-size: .6875rem; margin-left: auto; }
+.teardown-credit { color: #8190a6; font-size: .6875rem; padding: 12px 22px 18px; }
+.teardown-credit a { color: #b6c7df; text-decoration: underline; text-underline-offset: 3px; }
+@media (max-width: 800px) { .teardown-stage { margin-top: 28px; }.teardown-window { height: 490px; } }
+@media (max-width: 540px) { .teardown-window { height: 430px; }.teardown-heading,.teardown-controls { padding-inline: 16px; }.teardown-actions span { flex-basis: 100%; margin: 5px 0 0; }.teardown-credit { padding-inline: 16px; } }
 .home-experience { background: #090c12; color: #f0f3fa; --muted: #a4adbd; --line: #29303c; --blue: #719bff; --blue-hover: #aac3ff; }
 .home-experience .site-header { background: #090c12; border-color: #252b35; }
 .home-experience .nav-wrap { min-height: 94px; }
