@@ -61,6 +61,16 @@ def main():
             if relative.as_posix() not in PAGES:
                 assets.add(relative)
 
+    # Transitive ES module dependencies and the bundled library license.
+    for relative in ('assets/js/teardown-model.js', 'assets/vendor/meshopt/meshopt_decoder.mjs', 'assets/vendor/meshopt/LICENSE.md', 'assets/vendor/three/three.module.min.js',
+                     'assets/vendor/three/three.core.min.js', 'assets/vendor/three/LICENSE',
+                     'assets/vendor/three/GLTFLoader.js', 'assets/vendor/three/BufferGeometryUtils.js',
+                     'assets/models/iphone-12-teardown.glb'):
+        relative = Path(relative)
+        if not (PUBLIC / relative).is_file():
+            raise ValueError(f'Missing 3D dependency: {relative}')
+        assets.add(relative)
+
     # Only replace the generated directory owned by this script.
     if OUTPUT.exists():
         if not (OUTPUT / '.repair-build').is_file():

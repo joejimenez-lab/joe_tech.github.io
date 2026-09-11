@@ -11,11 +11,10 @@
 <meta property="og:type" content="website">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="assets/css/repair.css?v=18">
-<link rel="stylesheet" href="assets/css/experience.css?v=19">
+<link rel="stylesheet" href="assets/css/experience.css?v=18">
 <script src="assets/js/repair.js?v=18" defer></script>
 <script src="assets/js/headline.js?v=14" defer></script>
-<script src="https://static.sketchfab.com/api/sketchfab-viewer-1.12.1.js" defer></script>
-<script src="assets/js/teardown-viewer.js?v=19" defer></script>
+<script type="module" src="assets/js/phone-scene.js?v=20"></script>
 </head>
 <body class="home-experience">
 <a class="skip-link" href="#main">Skip to content</a>
@@ -36,17 +35,14 @@
 </div>
 <p class="hero-other">Also working on laptops, tablets &amp; game consoles.</p>
 </div>
-<div class="teardown-stage" data-teardown>
-<div class="teardown-heading"><span>INSIDE AN iPHONE</span><span>12 / Teardown</span></div>
-<div class="teardown-window">
-<iframe id="teardown-viewer" title="Interactive iPhone 12 teardown: rotate, zoom, and explore the internal components" src="https://sketchfab.com/models/708eaa5d195544918e5f70b69eedcdfa/embed?autostart=1&amp;animation_autoplay=0&amp;camera=0&amp;dnt=1&amp;ui_theme=dark&amp;scrollwheel=0" allow="autoplay; fullscreen; xr-spatial-tracking" allowfullscreen></iframe>
+<div class="phone-stage" data-phone-stage>
+<div class="scene-top" aria-hidden="true"><span class="scene-state">Exploded iPhone</span><span>iPhone 12</span></div>
+<figure class="scene-fallback"><a href="assets/images/iphone-overview.webp" class="photo-link" data-photo aria-label="Enlarge photo: iPhone repair at my workbench"><img src="assets/images/iphone-overview.webp" alt="An entire open iPhone with its battery and camera components visible beside a purple screwdriver" width="1350" height="1800" fetchpriority="high"><span class="photo-expand">View photo <span aria-hidden="true">↗</span></span></a><figcaption>iPhone repair at my workbench</figcaption></figure>
+<canvas hidden tabindex="0" role="img" aria-label="Interactive exploded iPhone with battery, logic board, rear cameras, Taptic Engine, loudspeaker, charging flex, and wireless charging coil. Drag or use arrow keys to rotate. Use Inside view to see the internal parts more closely."></canvas>
+<div class="scene-controls" hidden>
+<div class="scene-controls-main"><button class="scene-open" type="button" data-assemble-phone aria-label="Assemble the iPhone">Assemble</button><button class="scene-reset" type="button" data-inside-phone aria-pressed="false">Inside view</button><button class="scene-reset" type="button" data-turn-phone aria-label="Rotate iPhone to the back">Flip phone</button><button class="scene-reset" type="button" data-reset-phone>Reset</button></div>
+<div class="scene-help"><span>Drag to rotate · Arrow keys also work</span><button class="scene-pause" type="button" data-pause-phone aria-pressed="false">Pause motion</button><a class="scene-credit" href="assets/models/IPHONE12-CREDITS.txt" target="_blank" rel="noopener">3D model credits</a></div>
 </div>
-<div class="teardown-controls" hidden>
-<div class="teardown-slider-label"><label for="teardown-progress">Explore the layers</label><output for="teardown-progress">Assembled</output></div>
-<input id="teardown-progress" type="range" min="0" max="100" value="0" aria-label="Phone disassembly progress">
-<div class="teardown-actions"><button type="button" data-teardown-play>Play teardown</button><button type="button" data-teardown-reset>Reset view</button><span>Drag to rotate · Pinch to zoom</span></div>
-</div>
-<p class="teardown-credit">iPhone 12 Teardown by <a href="https://sketchfab.com/better_peter" target="_blank" rel="noopener noreferrer">Peter_D</a> · <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer">CC BY 4.0</a></p>
 </div></section>
 </div>
 <div class="bench-strip"><div class="wrap"><span>Independent repair. Baldwin Park, CA.</span><span class="strip-note">iPhone · iPad · Computers · Consoles</span><a href="https://www.instagram.com/joetechrepair/" target="_blank" rel="noopener noreferrer">@joetechrepair ↗</a></div></div>

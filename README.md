@@ -21,4 +21,6 @@ The build validates the six site pages and packages their assets into `dist`. Gi
 
 The contact form prepares an email for the customer to send. It does not require the older backend included in this repository.
 
-The interactive iPhone 12 teardown is embedded in the page using Sketchfab’s viewer. Model by [Peter_D](https://sketchfab.com/3d-models/iphone-12-teardown-708eaa5d195544918e5f70b69eedcdfa), licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). The viewer requires an internet connection to Sketchfab. The previous iPhone 15 study remains in source history and is no longer included in the published build.
+The iPhone 12 teardown runs in the site’s own Three.js renderer with local geometry, textures, and decoder files. No embedded player or third-party viewer connection is used.
+
+Model by Peter_D, licensed under CC BY 4.0; see `frontend/public/assets/models/IPHONE12-CREDITS.txt`. Original component geometry is preserved, with compact web textures and Meshopt compression. Three.js and Meshoptimizer licenses are included with the libraries.

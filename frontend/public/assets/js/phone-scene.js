@@ -1,5 +1,5 @@
 import * as THREE from '../vendor/three/three.module.min.js';
-import { loadPhone, fitPhoneCamera } from './phone-model.js?v=16';
+import { loadPhone, fitPhoneCamera } from './teardown-model.js?v=20';
 
 const stage = document.querySelector('[data-phone-stage]');
 if (stage) {
