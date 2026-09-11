@@ -93,6 +93,8 @@ async function initPhone(stage) {
     wake();
   });
   assembly.addEventListener('click',()=>{
+    // Assembly must restore the display and rear glass hidden by Inside view.
+    if(inside){inside=false;phone.setInsideView(false);insideButton.textContent='Inside view';insideButton.setAttribute('aria-pressed','false');}
     targetAmount=targetAmount?0:1;
     assembly.textContent=targetAmount?'Assemble':'Disassemble';
     assembly.setAttribute('aria-label',targetAmount?'Assemble the iPhone':'Disassemble the iPhone');
@@ -110,7 +112,15 @@ async function initPhone(stage) {
     wake();
   });
   pause.addEventListener('click',()=>{paused=!paused;setPauseText();wake();});
-  reset.addEventListener('click',()=>{yaw=showingBack?rearAngle:frontAngle;pitch=.12;wake();});
+  reset.addEventListener('click',()=>{
+    inside=false;phone.setInsideView(false);showingBack=false;
+    targetAmount=1;yaw=frontAngle;pitch=.14;phase=0;lightX=3;lightY=5;
+    assembly.textContent='Assemble';assembly.setAttribute('aria-label','Assemble the iPhone');
+    insideButton.textContent='Inside view';insideButton.setAttribute('aria-pressed','false');
+    toggle.setAttribute('aria-label','Rotate iPhone to the back');state.textContent='Exploded iPhone';
+    if(motionQuery.matches){currentYaw=yaw;currentPitch=pitch;amount=targetAmount;}
+    wake();
+  });
   motionQuery.addEventListener('change',event=>{paused=event.matches;setPauseText();wake();});
   const observer=new IntersectionObserver(entries=>{visible=entries[0].isIntersecting;if(visible){lastTime=performance.now();wake();}else{cancelAnimationFrame(frame);frame=0;}},{threshold:.01});observer.observe(stage);
   document.addEventListener('visibilitychange',()=>{if(document.hidden){cancelAnimationFrame(frame);frame=0;}else{lastTime=performance.now();wake();}});
