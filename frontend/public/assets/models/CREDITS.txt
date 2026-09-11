@@ -1,0 +1,22 @@
+3D iPhone model
+
+"Apple iPhone 15 Pro Max Black" by polyman (Polyman_3D)
+https://sketchfab.com/Polyman_3D
+https://sketchfab.com/3d-models/apple-iphone-15-pro-max-black-df17520841214c1792fb8a44c6783ee7
+
+Licensed under Creative Commons Attribution 4.0 International:
+https://creativecommons.org/licenses/by/4.0/
+
+The author, title, source, and license above are preserved in the GLB's original embedded asset metadata. The file was obtained from:
+https://github.com/quentin-pla/phone-mockup-studio/blob/main/source/apple_iphone_15_pro_max_black(2).glb
+
+The original model file is unmodified. This website adjusts its display scale, orientation, studio lighting, and screen material at runtime. Display, rear glass, and the three original camera assemblies are regrouped without altering their geometry, then translated at runtime. Camera optics retain their rear-facing orientation and travel with the rear glass so their openings stay aligned. An opaque internal filler surface is hidden to expose the added components.
+
+Added internal component visualization
+The battery, logic board, metal shields, camera sensor housings, Taptic Engine, loudspeaker, copper flex cables, and wireless charging coil are original illustrative geometry authored for this website. They are not part of polyman's GLB and are not a dimensionally exact Apple service model. Their layout was informed by the repair reference below; no third-party repair photographs or textures are included.
+https://www.ifixit.com/Guide/iPhone+15+Pro+Max+Battery+Replacement/166239
+https://www.ifixit.com/Guide/iPhone+15+Pro+Max+Chip+ID/165320
+
+Three.js 0.180.0 and its GLTFLoader and BufferGeometryUtils: MIT license, included in assets/vendor/three/LICENSE. Loader import paths adjusted for local hosting.
+
+This is an artist-created model. Joe's Tech Repair is an independent repair business and is not affiliated with Apple.

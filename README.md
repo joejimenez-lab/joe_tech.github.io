@@ -1,41 +1,24 @@
-# Joe's Tech Repair
+# Joe’s Tech Repair
 
-This repo is now split into a dedicated frontend (static site) and backend (Node/Express API) so you can iterate on each independently.
+Repair services in Baldwin Park, California, with an interactive iPhone teardown, display options, repair photos, and Joe’s portfolio.
 
-## Project Structure
+## Run locally
 
-```
-frontend/
-  public/
-    index.html, about.html, ...
-    assets/css, assets/js, images...
-backend/
-  server.js
-  package.json
-README.md
-CNAME (GitHub Pages / custom domain reference)
+```sh
+python3 -m http.server 8891 --directory frontend/public
 ```
 
-## Frontend
+Open http://localhost:8891.
 
-The frontend remains a static Tailwind + vanilla JS site, organized under `frontend/public`. Update the HTML/CSS/JS there. If you still deploy via GitHub Pages, point the build to that folder.
+## Validate and build
 
-## Backend
-
-Simple Express server that:
-
-- exposes `/api/health`, `/api/contact`, and `/api/bookings`
-- logs contact/booking submissions in the console for now
-- serves the static frontend for local testing
-
-### Run locally
-
-```bash
-cd backend
-npm install
-npm run dev   # or `npm start`
+```sh
+python3 scripts/build-repair.py
+node scripts/check-phone-model.mjs
 ```
 
-Visit [http://localhost:3000](http://localhost:3000) to view the site through the backend.
+The build validates the six site pages and packages their assets into `dist`. GitHub Pages publishes that build when changes are pushed to `main`.
 
-Contact form + hero booking form both post to the backend endpoints.
+The contact form prepares an email for the customer to send. It does not require the older backend included in this repository.
+
+Third-party model credits are in `frontend/public/assets/models/CREDITS.txt`; the bundled Three.js license is in `frontend/public/assets/vendor/three/LICENSE`.

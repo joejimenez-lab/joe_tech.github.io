@@ -1,171 +1,51 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pricing | Joe's Tech Repair</title>
-    <meta name="description" content="Transparent pricing for laptop, desktop, and mobile device repairs. Review service tiers, subscriptions, and response times for Baldwin Park & LA clients.">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="assets/css/style.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#14181d">
+<title>Repair Pricing | Joe’s Tech Repair</title>
+<meta name="description" content="Contact Joe for a device repair quote. Send your phone or computer model and describe the issue. Call or text (626) 344-2562.">
+<meta property="og:title" content="Repair Pricing | Joe’s Tech Repair">
+<meta property="og:description" content="Contact Joe for a device repair quote. Send your phone or computer model and describe the issue. Call or text (626) 344-2562.">
+<meta property="og:type" content="website">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/css/repair.css?v=4">
+<script src="assets/js/repair.js?v=7" defer></script>
 </head>
-<body data-page="prices">
-    <header class="site-header">
-        <div class="container navbar">
-            <a class="brand" href="index.html">
-                <span class="brand-logo">JT</span>
-                <span class="brand-text">Joe's Tech Repair</span>
-            </a>
-            <nav class="nav-links">
-                <a href="index.html" data-nav="home">Home</a>
-                <a href="services.html" data-nav="services">Services</a>
-                <a href="prices.html" data-nav="prices" class="is-hidden">Pricing</a>
-                <a href="portfolio.html" data-nav="portfolio">Portfolio</a>
-                <a href="about.html" data-nav="about">About</a>
-                <a href="contact.html" data-nav="contact">Contact</a>
-            </nav>
-            <button class="nav-toggle" aria-label="Toggle navigation">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-        </div>
-    </header>
-
-    <main>
-        <section class="page-hero">
-            <div class="container">
-                <p class="badge"><i class="fa-solid fa-receipt"></i> Transparent pricing</p>
-                <h1>Investment in uptime, designed for clarity</h1>
-                <p>No hidden fees. Every repair includes diagnostics, service documentation, and optional API integrations to keep you informed.</p>
-            </div>
-        </section>
-
-        <section class="section">
-            <div class="container page-section">
-                <h2>Repair menu</h2>
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>Service</th>
-                            <th>What's included</th>
-                            <th>Turnaround</th>
-                            <th>Investment</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Laptop premium diagnostic</td>
-                            <td>Thermal, storage, power, and board telemetry analysis with API-backed report.</td>
-                            <td>24 hours</td>
-                            <td>$79</td>
-                        </tr>
-                        <tr>
-                            <td>Logic board repair</td>
-                            <td>Microsoldering, replacement components, firmware reflash, QA stress testing.</td>
-                            <td>2-4 days</td>
-                            <td>$229 - $449</td>
-                        </tr>
-                        <tr>
-                            <td>Mobile device restoration</td>
-                            <td>Screen, battery, and port service with calibration and performance analytics.</td>
-                            <td>Same-day / mobile lab</td>
-                            <td>$149 - $299</td>
-                        </tr>
-                        <tr>
-                            <td>Data rescue & migration</td>
-                            <td>Clean-room workflow with encrypted backups and verified restorations.</td>
-                            <td>48 hours</td>
-                            <td>$189 - $399</td>
-                        </tr>
-                        <tr>
-                            <td>Smart home & network tune-up</td>
-                            <td>Wi-Fi optimization, security hardening, and automation scripts.</td>
-                            <td>Same-day</td>
-                            <td>$159</td>
-                        </tr>
-                    </tbody>
-                </table>
-                <p class="form-note">Need something custom? <a href="contact.html" class="highlight">Book a strategy call</a> for project-based pricing and retainer plans.</p>
-            </div>
-        </section>
-
-        <section class="section">
-            <div class="container page-section">
-                <h2>Managed service tiers</h2>
-                <div class="cards-grid">
-                    <article class="card">
-                        <div class="card-icon"><i class="fa-solid fa-rocket"></i></div>
-                        <h3 class="card-title">Launch</h3>
-                        <p>Perfect for students and solopreneurs who need fast support with predictable pricing.</p>
-                        <ul class="list-check">
-                            <li>2 priority incidents / month</li>
-                            <li>Remote monitoring for 3 devices</li>
-                            <li>Portal access for real-time updates</li>
-                        </ul>
-                        <p class="highlight">$89 / month</p>
-                    </article>
-                    <article class="card">
-                        <div class="card-icon"><i class="fa-solid fa-building"></i></div>
-                        <h3 class="card-title">Growth</h3>
-                        <p>Designed for teams up to 20 employees needing onsite and remote support coverage.</p>
-                        <ul class="list-check">
-                            <li>Guaranteed 4-hour onsite response in LA County</li>
-                            <li>Remote monitoring for 12 devices</li>
-                            <li>Monthly automation & security review</li>
-                        </ul>
-                        <p class="highlight">$299 / month</p>
-                    </article>
-                    <article class="card">
-                        <div class="card-icon"><i class="fa-solid fa-city"></i></div>
-                        <h3 class="card-title">Enterprise</h3>
-                        <p>Tailored for multi-site operations and research labs requiring compliance-ready workflows.</p>
-                        <ul class="list-check">
-                            <li>Dedicated virtual CTO & custom dashboards</li>
-                            <li>Unlimited incidents with 24/7 support</li>
-                            <li>Quarterly infrastructure roadmap & training</li>
-                        </ul>
-                        <p class="highlight">Custom proposal</p>
-                    </article>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer class="site-footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-brand">
-                    <span class="brand-logo">JT</span>
-                    <p>Full-stack computer and mobile repair by a master's-level engineer serving Baldwin Park & Los Angeles.</p>
-                </div>
-                <div>
-                    <h4>Quick links</h4>
-                    <div class="footer-links">
-                        <a href="index.html">Home</a>
-                        <a href="services.html">Services</a>
-                        <a href="prices.html" class="is-hidden">Pricing</a>
-                        <a href="contact.html">Schedule</a>
-                    </div>
-                </div>
-                <div>
-                    <h4>Connect</h4>
-                    <div class="footer-links">
-                        <a href="mailto:joe@joestechrepair.com"><i class="fa-solid fa-envelope"></i> joe@joestechrepair.com</a>
-                        <a href="tel:16263442562"><i class="fa-solid fa-phone"></i> 626 344 2562</a>
-                        <a href="https://www.linkedin.com/in/joeyahirjimenez" target="_blank" rel="noopener"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <span>© <span id="current-year"></span> Joe's Tech Repair. Built with love in Baldwin Park.</span>
-                <span>Licenses & insured · CS Master's candidate</span>
-            </div>
-        </div>
-    </footer>
-
-    <script src="assets/js/main.js" defer></script>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="wrap nav-wrap">
+<a class="brand" href="index.html" aria-label="Joe’s Tech Repair">Joe’s<span>TECH REPAIR</span></a><button class="menu-toggle" aria-expanded="false" aria-controls="navigation">Menu</button><nav id="navigation" aria-label="Main navigation"><a href="services.html">Services</a><a href="prices.html" aria-current="page">Pricing</a><a href="about.html">About Joe</a><a href="portfolio.html">Portfolio</a><a href="contact.html" class="button nav-contact">Contact Joe</a></nav>
+</div></header>
+<main id="main"><section class="page-intro wrap"><h1>Repair pricing</h1>
+<p class="lead">Prices depend on your device model, the damage, and the parts needed. Contact me for a quote before arranging your repair.</p></section><section class="wrap price-layout"><div>
+<h2>Send me these details</h2>
+<ul>
+<li>Your device make and model</li>
+<li>What’s broken or not working</li>
+<li>A photo of the damage, if you have one</li>
+</ul>
+<p>I’ll check the repair options and pricing. Some problems need an in-person assessment before I can give a final price.</p>
+<p>You can also ask about timing, part options, and any assessment fees before we go ahead.</p>
+</div>
+<aside class="price-note"><h2>A message like this works</h2>
+<p class="example">“Hi Joe, I have an iPhone 13 with a cracked screen. Touch still works. How much would it cost to fix?”</p>
+<a class="button" href="sms:+16263442562">Text Joe for a quote</a></aside></section><section class="faq-section"><div class="wrap faq">
+<h2>Pricing questions</h2>
+<details><summary>Can I choose the type of replacement display?</summary><p>Yes. I offer budget, premium, and original Apple displays. Send your iPhone model and I’ll explain the options, confirm availability, and quote each choice so you can decide.</p></details>
+<details><summary>Can I get an estimate without bringing it in?</summary><p>Yes. Send me the model and a description of the problem. I’ll let you know if I need to see the device first.</p></details><details><summary>Is an older device worth repairing?</summary><p>We can compare the repair cost with the device’s age and condition. Then you can decide whether it makes sense to fix it.</p></details>
+</div></section></main>
+<footer class="site-footer"><div class="wrap footer-main">
+<div>
+<a class="brand" href="index.html" aria-label="Joe’s Tech Repair">Joe’s<span>TECH REPAIR</span></a><p>Baldwin Park &amp; the San Gabriel Valley</p>
+</div>
+<div class="footer-links">
+<a href="tel:+16263442562">(626) 344-2562</a><a href="mailto:joe@joestechrepair.com">joe@joestechrepair.com</a><a href="https://www.instagram.com/joetechrepair/" target="_blank" rel="noopener noreferrer">@joetechrepair on Instagram</a>
+</div>
+</div>
+<div class="wrap footer-bottom">
+<span>© <span data-year>2026</span> Joe’s Tech Repair</span><a href="contact.html">Get in touch to arrange a repair.</a>
+</div></footer>
 </body>
 </html>

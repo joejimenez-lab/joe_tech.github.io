@@ -1,168 +1,74 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Services | Joe's Tech Repair</title>
-    <meta name="description" content="Browse laptop, desktop, and mobile repair services alongside automation, security, and managed support tailored for Baldwin Park and Los Angeles.">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="assets/css/style.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#14181d">
+<title>Repair Services | Joe’s Tech Repair</title>
+<meta name="description" content="iPhone, laptop, tablet, and game console repair in Baldwin Park. Ask Joe about your device and repair options.">
+<meta property="og:title" content="Repair Services | Joe’s Tech Repair">
+<meta property="og:description" content="iPhone, laptop, tablet, and game console repair in Baldwin Park. Ask Joe about your device and repair options.">
+<meta property="og:type" content="website">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/css/repair.css?v=4">
+<script src="assets/js/repair.js?v=7" defer></script>
 </head>
-<body data-page="services">
-    <header class="site-header">
-        <div class="container navbar">
-            <a class="brand" href="index.html">
-                <span class="brand-logo">JT</span>
-                <span class="brand-text">Joe's Tech Repair</span>
-            </a>
-            <nav class="nav-links">
-                <a href="index.html" data-nav="home">Home</a>
-                <a href="services.html" data-nav="services">Services</a>
-                <a href="prices.html" data-nav="prices" class="is-hidden">Pricing</a>
-                <a href="portfolio.html" data-nav="portfolio">Portfolio</a>
-                <a href="about.html" data-nav="about">About</a>
-                <a href="contact.html" data-nav="contact">Contact</a>
-            </nav>
-            <button class="nav-toggle" aria-label="Toggle navigation">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-        </div>
-    </header>
-
-    <main>
-        <section class="page-hero">
-            <div class="container">
-                <p class="badge"><i class="fa-solid fa-sitemap"></i> Comprehensive repair & support catalog</p>
-                <h1>Services engineered for momentum</h1>
-                <p>Every offering is built to keep Baldwin Park and Los Angeles businesses, creatives, and families moving. Onsite, remote, and mobile lab repairs — all backed by software-driven insights.</p>
-            </div>
-        </section>
-
-        <section class="section">
-            <div class="container page-section">
-                <h2>Hardware repair packages</h2>
-                <div class="grid-two columns">
-                    <article class="card">
-                        <div class="card-icon"><i class="fa-solid fa-microchip"></i></div>
-                        <h3 class="card-title">Logic board & component</h3>
-                        <p>Microsoldering, component replacements, and circuit-level diagnostics for laptops, desktops, and gaming rigs.</p>
-                        <ul class="list-check">
-                            <li>Advanced BGA rework and power rail troubleshooting.</li>
-                            <li>Thermal system redesign for performance rigs.</li>
-                            <li>Firmware repair for BIOS/UEFI and embedded controllers.</li>
-                        </ul>
-                    </article>
-                    <article class="card">
-                        <div class="card-icon"><i class="fa-solid fa-mobile-screen"></i></div>
-                        <h3 class="card-title">Mobile device lab</h3>
-                        <p>Apple, Samsung, Google, and Surface device repairs with OEM-grade parts and calibration.</p>
-                        <ul class="list-check">
-                            <li>Screen and OLED replacements with color calibration reports.</li>
-                            <li>Battery & port service with life-cycle analytics.</li>
-                            <li>Water damage recovery and data extractions.</li>
-                        </ul>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-        <section class="section">
-            <div class="container page-section">
-                <h2>Automation & managed services</h2>
-                <div class="grid-two columns">
-                    <article class="card">
-                        <div class="card-icon"><i class="fa-solid fa-tower-broadcast"></i></div>
-                        <h3 class="card-title">Remote monitoring</h3>
-                        <p>Deploy lightweight agents that alert you to disk health, temperature spikes, and security anomalies.</p>
-                        <ul class="list-check">
-                            <li>Webhook integrations with Slack, Teams, or SMS.</li>
-                            <li>Grafana dashboards with uptime and ticket metrics.</li>
-                            <li>Automated patching windows with rollback plans.</li>
-                        </ul>
-                    </article>
-                    <article class="card">
-                        <div class="card-icon"><i class="fa-solid fa-shield"></i></div>
-                        <h3 class="card-title">Security hardening</h3>
-                        <p>Zero-trust network configuration, MFA deployment, and compliance readiness for HIPAA/SOC2-lite.</p>
-                        <ul class="list-check">
-                            <li>Vulnerability scans with prioritized remediation plans.</li>
-                            <li>Cloud identity design for hybrid teams.</li>
-                            <li>Incident response runbooks and tabletop exercises.</li>
-                        </ul>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-        <section class="section">
-            <div class="container page-section">
-                <h2>FAQs & quick references</h2>
-                <div class="page-section" style="background: rgba(5,10,20,0.35);">
-                    <button class="button button-ghost" data-accordion-toggle data-target="faq1" aria-expanded="false">
-                        <span>How fast can you arrive in Baldwin Park?</span>
-                        <span>+</span>
-                    </button>
-                    <div id="faq1" hidden>
-                        <p>Same-day appointments are the default within Baldwin Park, West Covina, El Monte, and the San Gabriel Valley. You receive arrival ETA tracking via SMS and the client portal.</p>
-                    </div>
-
-                    <button class="button button-ghost" data-accordion-toggle data-target="faq2" aria-expanded="false">
-                        <span>Do you support fully remote repairs?</span>
-                        <span>+</span>
-                    </button>
-                    <div id="faq2" hidden>
-                        <p>Yes! I provide secure remote support sessions, ship pre-configured loaner hardware, and coordinate courier pickups for devices that need bench work.</p>
-                    </div>
-
-                    <button class="button button-ghost" data-accordion-toggle data-target="faq3" aria-expanded="false">
-                        <span>Can you integrate with our existing ticketing tools?</span>
-                        <span>+</span>
-                    </button>
-                    <div id="faq3" hidden>
-                        <p>Absolutely. I build connectors for Jira, Linear, Zendesk, and custom in-house tools so that repair updates automatically sync to your source of truth.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer class="site-footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-brand">
-                    <span class="brand-logo">JT</span>
-                    <p>Full-stack computer and mobile repair by a master's-level engineer serving Baldwin Park & Los Angeles.</p>
-                </div>
-                <div>
-                    <h4>Quick links</h4>
-                    <div class="footer-links">
-                        <a href="index.html">Home</a>
-                        <a href="services.html">Services</a>
-                        <a href="prices.html" class="is-hidden">Pricing</a>
-                        <a href="contact.html">Schedule</a>
-                    </div>
-                </div>
-                <div>
-                    <h4>Connect</h4>
-                    <div class="footer-links">
-                        <a href="mailto:joe@joestechrepair.com"><i class="fa-solid fa-envelope"></i> joe@joestechrepair.com</a>
-                        <a href="tel:16263442562"><i class="fa-solid fa-phone"></i> 626 344 2562</a>
-                        <a href="https://www.linkedin.com/in/joeyahirjimenez" target="_blank" rel="noopener"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <span>© <span id="current-year"></span> Joe's Tech Repair. Built with love in Baldwin Park.</span>
-                <span>Licenses & insured · CS Master's candidate</span>
-            </div>
-        </div>
-    </footer>
-
-    <script src="assets/js/main.js" defer></script>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="wrap nav-wrap">
+<a class="brand" href="index.html" aria-label="Joe’s Tech Repair">Joe’s<span>TECH REPAIR</span></a><button class="menu-toggle" aria-expanded="false" aria-controls="navigation">Menu</button><nav id="navigation" aria-label="Main navigation"><a href="services.html" aria-current="page">Services</a><a href="prices.html">Pricing</a><a href="about.html">About Joe</a><a href="portfolio.html">Portfolio</a><a href="contact.html" class="button nav-contact">Contact Joe</a></nav>
+</div></header>
+<main id="main"><section class="page-intro wrap"><h1>Repair services</h1>
+<p class="lead">I work on iPhones, computers, tablets, and game consoles. Send the model and describe the problem so I can check parts and repair options.</p></section><section class="wrap service-detail-list"><article class="service-detail"><h2>iPhone &amp; phone repair</h2>
+<div>
+<p>Screen and battery replacements, charging issues, and other phone problems.</p>
+<ul>
+<li>Cracked screens and faulty displays</li>
+<li>Budget, premium, and original Apple display options</li>
+<li>Batteries, charging ports, cameras, and speakers</li>
+<li>Phones that won’t turn on</li>
+</ul>
+</div>
+<a class="plain-link" href="contact.html?repair=Screen%20repair">Ask about your phone</a></article><article class="service-detail"><h2>Laptops &amp; desktops</h2>
+<div>
+<p>Repairs and upgrades for computers that are damaged, running slowly, or not starting.</p>
+<ul>
+<li>Displays, keyboards, and batteries</li>
+<li>Storage and memory upgrades</li>
+<li>Hardware and software troubleshooting</li>
+</ul>
+</div>
+<a class="plain-link" href="contact.html?repair=Computer%20repair">Ask about your computer</a></article><article class="service-detail"><h2>iPads &amp; tablets</h2>
+<div>
+<p>Repair options depend on your tablet model and the damage.</p>
+<ul>
+<li>Broken glass and touch problems</li>
+<li>Batteries and charging issues</li>
+<li>Setup and troubleshooting</li>
+</ul>
+</div>
+<a class="plain-link" href="contact.html?repair=Tablet%20repair">Ask about your tablet</a></article><article class="service-detail"><h2>Consoles &amp; other devices</h2>
+<div>
+<p>I work on other electronics too. Contact me to check whether I can help with yours.</p>
+<ul>
+<li>Game console power and overheating issues</li>
+<li>Connection and accessory problems</li>
+</ul>
+</div>
+<a class="plain-link" href="contact.html?repair=Other%20device">Describe your device</a></article></section><section class="faq-section"><div class="wrap faq">
+<h2>Before arranging a repair</h2>
+<details><summary>How long will it take?</summary><p>It depends on the repair and whether I have the parts. Send your model and the issue so I can check availability and give you an estimate.</p></details><details><summary>What if I don’t know what’s wrong?</summary><p>Tell me what happens when you try to use it. Does it turn on? Does it charge? A photo or short video helps.</p></details><details><summary>Can you look at water damage?</summary><p>Contact me about an assessment. Repair and data recovery depend on how much damage there is.</p></details>
+</div></section></main>
+<footer class="site-footer"><div class="wrap footer-main">
+<div>
+<a class="brand" href="index.html" aria-label="Joe’s Tech Repair">Joe’s<span>TECH REPAIR</span></a><p>Baldwin Park &amp; the San Gabriel Valley</p>
+</div>
+<div class="footer-links">
+<a href="tel:+16263442562">(626) 344-2562</a><a href="mailto:joe@joestechrepair.com">joe@joestechrepair.com</a><a href="https://www.instagram.com/joetechrepair/" target="_blank" rel="noopener noreferrer">@joetechrepair on Instagram</a>
+</div>
+</div>
+<div class="wrap footer-bottom">
+<span>© <span data-year>2026</span> Joe’s Tech Repair</span><a href="contact.html">Get in touch to arrange a repair.</a>
+</div></footer>
 </body>
 </html>

@@ -1,133 +1,81 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Schedule Service | Joe's Tech Repair</title>
-    <meta name="description" content="Schedule a repair, mobile lab visit, or strategy session with Joe's Tech Repair. Serving Baldwin Park, Los Angeles, and remote clients with full-stack solutions.">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="assets/css/style.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#14181d">
+<title>Contact Joe | Joe’s Tech Repair</title>
+<meta name="description" content="Call or text Joe at (626) 344-2562, email joe@joestechrepair.com, or message @joetechrepair about a repair in Baldwin Park.">
+<meta property="og:title" content="Contact Joe | Joe’s Tech Repair">
+<meta property="og:description" content="Call or text Joe at (626) 344-2562, email joe@joestechrepair.com, or message @joetechrepair about a repair in Baldwin Park.">
+<meta property="og:type" content="website">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/css/repair.css?v=4">
+<script src="assets/js/repair.js?v=7" defer></script>
 </head>
-<body data-page="contact">
-    <header class="site-header">
-        <div class="container navbar">
-            <a class="brand" href="index.html">
-                <span class="brand-logo">JT</span>
-                <span class="brand-text">Joe's Tech Repair</span>
-            </a>
-            <nav class="nav-links">
-                <a href="index.html" data-nav="home">Home</a>
-                <a href="services.html" data-nav="services">Services</a>
-                <a href="prices.html" data-nav="prices" class="is-hidden">Pricing</a>
-                <a href="portfolio.html" data-nav="portfolio">Portfolio</a>
-                <a href="about.html" data-nav="about">About</a>
-                <a href="contact.html" data-nav="contact">Contact</a>
-            </nav>
-            <button class="nav-toggle" aria-label="Toggle navigation">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-        </div>
-    </header>
-
-    <main>
-        <section class="page-hero">
-            <div class="container">
-                <p class="badge"><i class="fa-solid fa-calendar-check"></i> Book your service</p>
-                <h1>Let's get your devices back online</h1>
-                <p>Send a request for onsite repair, mobile lab service, or a virtual strategy session. I respond within one business hour for Baldwin Park and LA area clients.</p>
-            </div>
-        </section>
-
-        <section class="section">
-            <div class="container contact-grid">
-                <div class="contact-card">
-                    <h3>Direct support</h3>
-                    <p>I operate a rolling mobile lab and remote support desk. Call, text, or email anytime and I'll align the right service plan for you.</p>
-                    <ul class="list-check">
-                        <li>Same-day onsite dispatch for Baldwin Park & San Gabriel Valley.</li>
-                        <li>Next-day coverage for Los Angeles, Glendale, Pasadena.</li>
-                        <li>Remote diagnostics & courier service for statewide clients.</li>
-                    </ul>
-                    <div class="footer-links" style="margin-top:1.5rem;">
-                        <a href="tel:16263442562"><i class="fa-solid fa-phone"></i> 626 344 2562</a>
-                        <a href="mailto:joe@joestechrepair.com"><i class="fa-solid fa-envelope"></i> joe@joestechrepair.com</a>
-                    </div>
-                </div>
-                <div class="contact-card">
-                    <h3>Request a visit</h3>
-                    <form id="contact-form" class="contact-form">
-                        <label>
-                            Name
-                            <input type="text" name="name" placeholder="Your full name" required>
-                        </label>
-                        <label>
-                            Email
-                            <input type="email" name="email" placeholder="you@example.com" required>
-                        </label>
-                        <label>
-                            Phone
-                            <input type="tel" name="phone" placeholder="626 344 2562" required>
-                        </label>
-                        <label>
-                            Service type
-                            <select name="service" required>
-                                <option value="">Select a service</option>
-                                <option value="onsite">Onsite repair</option>
-                                <option value="mobile">Mobile lab pickup</option>
-                                <option value="remote">Remote support</option>
-                                <option value="strategy">Automation strategy session</option>
-                            </select>
-                        </label>
-                        <label>
-                            Describe your issue
-                            <textarea name="message" rows="4" placeholder="Share symptoms, error messages, or goals" required></textarea>
-                        </label>
-                        <p class="form-note">By submitting, you agree to receive updates via email/SMS. No spam — only service updates and scheduling confirmations.</p>
-                        <div data-form-alert class="form-note"></div>
-                        <button type="submit" class="button button-primary">Send request</button>
-                    </form>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer class="site-footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-brand">
-                    <span class="brand-logo">JT</span>
-                    <p>Full-stack computer and mobile repair by a master's-level engineer serving Baldwin Park & Los Angeles.</p>
-                </div>
-                <div>
-                    <h4>Quick links</h4>
-                    <div class="footer-links">
-                        <a href="index.html">Home</a>
-                        <a href="services.html">Services</a>
-                        <a href="prices.html" class="is-hidden">Pricing</a>
-                        <a href="contact.html">Schedule</a>
-                    </div>
-                </div>
-                <div>
-                    <h4>Connect</h4>
-                    <div class="footer-links">
-                        <a href="mailto:joe@joestechrepair.com"><i class="fa-solid fa-envelope"></i> joe@joestechrepair.com</a>
-                        <a href="tel:16263442562"><i class="fa-solid fa-phone"></i> 626 344 2562</a>
-                        <a href="https://www.linkedin.com/in/joeyahirjimenez" target="_blank" rel="noopener"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <span>© <span id="current-year"></span> Joe's Tech Repair. Built with love in Baldwin Park.</span>
-                <span>Licenses & insured · CS Master's candidate</span>
-            </div>
-        </div>
-    </footer>
-
-    <script src="assets/js/main.js" defer></script>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="wrap nav-wrap">
+<a class="brand" href="index.html" aria-label="Joe’s Tech Repair">Joe’s<span>TECH REPAIR</span></a><button class="menu-toggle" aria-expanded="false" aria-controls="navigation">Menu</button><nav id="navigation" aria-label="Main navigation"><a href="services.html">Services</a><a href="prices.html">Pricing</a><a href="about.html">About Joe</a><a href="portfolio.html">Portfolio</a><a href="contact.html" class="button nav-contact" aria-current="page">Contact Joe</a></nav>
+</div></header>
+<main id="main"><section class="page-intro wrap"><h1>Contact Joe</h1>
+<p class="lead">Text, call, or send me a message on Instagram. Include your device model and what’s wrong if you’re asking for a repair quote.</p></section><section class="wrap contact-layout" id="booking"><div>
+<h2>Call or message me</h2>
+<div class="contact-options">
+<a class="contact-option" href="sms:+16263442562"><small>Text</small><span>(626) 344-2562</span></a><a class="contact-option" href="tel:+16263442562"><small>Call</small><span>(626) 344-2562</span></a><a class="contact-option" href="https://www.instagram.com/joetechrepair/" target="_blank" rel="noopener noreferrer"><small>Instagram</small><span>@joetechrepair</span></a><a class="contact-option" href="mailto:joe@joestechrepair.com"><small>Email</small><span>joe@joestechrepair.com</span></a>
+</div>
+<p class="contact-location">Baldwin Park, CA<br>Contact me before heading over so we can arrange a time.</p>
+</div>
+<form class="repair-form" id="repair-form">
+<h2>Email a repair request</h2>
+<p>Fill this out to open an email draft. Send it from your email app when you’re ready.</p>
+<div class="field-row">
+<div class="field">
+<label for="name">Your name</label><input id="name" name="name" autocomplete="name" maxlength="100" required>
+</div>
+<div class="field">
+<label for="phone">Phone <span>(optional)</span></label><input id="phone" name="phone" type="tel" autocomplete="tel" maxlength="40">
+</div>
+</div>
+<div class="field">
+<label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email" maxlength="150" required>
+</div>
+<div class="field">
+<label for="device">Device model</label><input id="device" name="device" placeholder="e.g. iPhone 13 or MacBook Air" maxlength="150" required>
+</div>
+<div class="field">
+<label for="service">What do you need help with?</label><select id="service" name="service" required><option value="">Choose a repair</option>
+<option>Screen repair</option>
+<option>Battery replacement</option>
+<option>Charging or diagnostics</option>
+<option>Computer repair</option>
+<option>Tablet repair</option>
+<option>Other device</option>
+<option>Not sure yet</option></select>
+</div>
+<div class="field" id="display-preference">
+<label for="display">Display preference <span>(for screen repairs)</span></label><select id="display" name="display"><option>Help me choose</option><option>Budget</option><option>Premium</option><option>Original Apple</option></select>
+</div>
+<div class="field">
+<label for="issue">What’s happening?</label><textarea id="issue" name="issue" placeholder="What stopped working? When did it start?" maxlength="2500" required></textarea>
+</div>
+<button class="button" type="submit">Prepare my email <span aria-hidden="true">↗</span></button><p id="form-status" class="form-status" role="status" aria-live="polite"></p>
+<div class="form-fallback">No email app set up? Email <a href="mailto:joe@joestechrepair.com">joe@joestechrepair.com</a> or <a href="sms:+16263442562">text Joe</a> instead.</div>
+<noscript>
+<p>To request a quote, please use the email, phone, or Instagram links on this page.</p>
+<style>.repair-form .button{display:none}</style>
+</noscript>
+</form></section></main>
+<footer class="site-footer"><div class="wrap footer-main">
+<div>
+<a class="brand" href="index.html" aria-label="Joe’s Tech Repair">Joe’s<span>TECH REPAIR</span></a><p>Baldwin Park &amp; the San Gabriel Valley</p>
+</div>
+<div class="footer-links">
+<a href="tel:+16263442562">(626) 344-2562</a><a href="mailto:joe@joestechrepair.com">joe@joestechrepair.com</a><a href="https://www.instagram.com/joetechrepair/" target="_blank" rel="noopener noreferrer">@joetechrepair on Instagram</a>
+</div>
+</div>
+<div class="wrap footer-bottom">
+<span>© <span data-year>2026</span> Joe’s Tech Repair</span><a href="contact.html">Get in touch to arrange a repair.</a>
+</div></footer>
 </body>
 </html>

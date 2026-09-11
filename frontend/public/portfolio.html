@@ -1,353 +1,387 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Joe Jimenez | Portfolio</title>
-    <meta name="description" content="Portfolio for Joe Jimenez – full-stack repair engineer and master's-level computer science student showcasing projects, experience, and skills.">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="assets/css/style.css">
-    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js" defer></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Joe Jimenez — computer engineer, M.S. Computer Science candidate, graduate researcher, software builder, and repair technician.">
+  <meta name="color-scheme" content="light">
+  <title>Joe Jimenez | Portfolio</title>
+  <style>
+    :root {
+      --paper: #f5f0e7;
+      --sheet: #fffdf8;
+      --ink: #171513;
+      --soft: #625d55;
+      --faint: #8a8378;
+      --line: #cfc7ba;
+      --line-dark: #81796e;
+      --signal: #f04a22;
+      --signal-dark: #bd3214;
+      --sans: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      --serif: Iowan Old Style, Baskerville, Georgia, "Times New Roman", serif;
+      --mono: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+      --max: 1220px;
+      --gutter: clamp(1.25rem, 4vw, 3.75rem);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      border-top: 4px solid var(--signal);
+      color: var(--ink);
+      background: var(--paper);
+      font-family: var(--sans);
+      font-size: 16px;
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; }
+    a:focus-visible { outline: 3px solid var(--signal); outline-offset: 4px; }
+    .skip { position: absolute; left: -9999px; top: .75rem; z-index: 20; }
+    .skip:focus { left: .75rem; padding: .7rem 1rem; color: var(--sheet); background: var(--ink); }
+    .frame { width: min(calc(100% - (var(--gutter) * 2)), var(--max)); margin-inline: auto; }
+    .mono {
+      margin: 0;
+      color: var(--faint);
+      font-family: var(--mono);
+      font-size: .72rem;
+      font-weight: 650;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+    .mono strong { color: var(--signal-dark); }
+
+    header { border-bottom: 1px solid var(--line); }
+    .masthead {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+    }
+    .wordmark { font-size: 1rem; font-weight: 800; letter-spacing: -.02em; text-decoration: none; }
+    .wordmark span { color: var(--signal); }
+    nav { display: flex; align-items: center; gap: clamp(.9rem, 2.5vw, 1.8rem); }
+    nav a {
+      color: var(--soft);
+      font-family: var(--mono);
+      font-size: .7rem;
+      font-weight: 650;
+      letter-spacing: .1em;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+    nav .repair-return { color: var(--signal-dark); font-size: .875rem; letter-spacing: 0; text-transform: none; }
+    nav a:hover { color: var(--signal-dark); }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(240px, .34fr);
+      gap: clamp(3rem, 8vw, 7rem);
+      padding: clamp(4.5rem, 9vw, 8.5rem) 0 clamp(3.5rem, 7vw, 6rem);
+    }
+    .hero h1 {
+      max-width: 920px;
+      margin: 1.1rem 0 1.6rem;
+      font-family: var(--serif);
+      font-size: clamp(3.3rem, 7.6vw, 7.2rem);
+      font-weight: 500;
+      letter-spacing: -.065em;
+      line-height: .9;
+      text-wrap: balance;
+    }
+    .hero h1 em { color: var(--signal); font-style: normal; }
+    .hero-copy { max-width: 690px; margin: 0; color: #47423c; font-size: clamp(1.08rem, 1.6vw, 1.32rem); }
+    .availability {
+      align-self: end;
+      padding: 1.25rem 0 0 1.4rem;
+      border-top: 3px solid var(--ink);
+      border-left: 1px solid var(--line);
+    }
+    .availability p { margin: 0 0 1.2rem; }
+    .availability strong { display: block; font-size: 1.05rem; }
+    .availability span { display: block; margin-top: .18rem; color: var(--soft); font-size: .86rem; }
+    .button-row { display: flex; flex-wrap: wrap; gap: .55rem; }
+    .button {
+      display: inline-flex;
+      align-items: center;
+      min-height: 42px;
+      padding: .62rem .82rem;
+      border: 1px solid var(--ink);
+      font-size: .78rem;
+      font-weight: 800;
+      text-decoration: none;
+    }
+    .button:hover { color: var(--sheet); background: var(--ink); }
+
+    .method-strip {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-top: 1px solid var(--ink);
+      border-bottom: 1px solid var(--ink);
+    }
+    .method-step { min-height: 154px; padding: 1.25rem 1.4rem 1.45rem; border-left: 1px solid var(--line); }
+    .method-step:first-child { border-left: 0; }
+    .method-step h2 { margin: 0 0 .45rem; font-family: var(--serif); font-size: clamp(1.9rem, 3vw, 2.9rem); font-weight: 500; letter-spacing: -.045em; line-height: 1; }
+    .method-step p { max-width: 320px; margin: 0; color: var(--soft); font-size: .88rem; }
+
+    section { padding: clamp(4.5rem, 8vw, 7.5rem) 0; border-bottom: 1px solid var(--line); }
+    .section-head {
+      display: grid;
+      grid-template-columns: 170px minmax(0, 1fr);
+      gap: 2rem;
+      align-items: start;
+      margin-bottom: clamp(2rem, 5vw, 4rem);
+    }
+    .section-head h2 {
+      max-width: 860px;
+      margin: -.15rem 0 0;
+      font-family: var(--serif);
+      font-size: clamp(2.6rem, 5.2vw, 5.2rem);
+      font-weight: 500;
+      letter-spacing: -.055em;
+      line-height: .94;
+      text-wrap: balance;
+    }
+
+    .commitments { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+    .commitment {
+      min-height: 450px;
+      display: flex;
+      flex-direction: column;
+      padding: clamp(1.6rem, 3.3vw, 2.8rem);
+      border: 1px solid var(--line);
+      background: var(--sheet);
+    }
+    .commitment:nth-child(1) { border-top: 5px solid var(--ink); }
+    .commitment:nth-child(2) { border-top: 5px solid var(--signal); }
+    .commitment:nth-child(3) { border-top: 5px solid var(--line-dark); }
+    .commitment-meta { display: flex; justify-content: space-between; gap: 1rem; color: var(--faint); font-family: var(--mono); font-size: .7rem; letter-spacing: .06em; text-transform: uppercase; }
+    .commitment h3 { max-width: 520px; margin: clamp(3rem, 7vw, 5.5rem) 0 1rem; font-family: var(--serif); font-size: clamp(2.25rem, 4.5vw, 4.1rem); font-weight: 500; letter-spacing: -.05em; line-height: .95; }
+    .commitment > p { max-width: 560px; margin: 0; color: var(--soft); }
+    .commitment-foot { margin-top: auto; padding-top: 2.5rem; border-top: 1px solid var(--line); }
+    .commitment-foot p { margin: 0 0 1rem; color: var(--ink); font-size: .88rem; font-weight: 700; }
+    .text-link { color: var(--signal-dark); font-family: var(--mono); font-size: .72rem; font-weight: 750; letter-spacing: .06em; text-decoration: none; text-transform: uppercase; }
+    .text-link:hover { text-decoration: underline; text-underline-offset: 4px; }
+
+    .case-list { border-top: 1px solid var(--ink); }
+    .case {
+      display: grid;
+      grid-template-columns: minmax(210px, .72fr) minmax(0, 1.5fr) 110px;
+      gap: clamp(1rem, 3vw, 2rem);
+      padding: 2rem 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .case-title h3 { margin: 0 0 .35rem; font-family: var(--serif); font-size: clamp(1.65rem, 2.7vw, 2.45rem); font-weight: 500; letter-spacing: -.04em; line-height: 1; }
+    .case-title p { margin: 0; color: var(--soft); font-size: .82rem; }
+    .case-body { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+    .case-body p { margin: 0; color: var(--soft); font-size: .9rem; }
+    .case-body strong { display: block; margin-bottom: .35rem; color: var(--ink); font-family: var(--mono); font-size: .68rem; letter-spacing: .1em; text-transform: uppercase; }
+    .case > .text-link { justify-self: end; padding-top: .2rem; white-space: nowrap; }
+
+    .principle {
+      display: grid;
+      grid-template-columns: minmax(0, 1.45fr) minmax(260px, .55fr);
+      gap: clamp(3rem, 8vw, 7rem);
+      align-items: end;
+    }
+    .principle blockquote { max-width: 850px; margin: 0; font-family: var(--serif); font-size: clamp(2.6rem, 5.2vw, 5.2rem); font-weight: 500; letter-spacing: -.055em; line-height: .96; }
+    .principle blockquote span { color: var(--signal); }
+    .principle aside { border-top: 3px solid var(--ink); padding-top: 1.1rem; }
+    .principle aside p { margin: 0; color: var(--soft); }
+
+    .background-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2.5rem, 7vw, 6rem); }
+    .ledger h3 { margin: 0 0 1rem; font-family: var(--mono); font-size: .7rem; letter-spacing: .12em; text-transform: uppercase; }
+    .entry { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 1rem; padding: 1rem 0; border-top: 1px solid var(--line); }
+    .entry strong { display: block; }
+    .entry span, .entry time { color: var(--soft); font-size: .84rem; }
+    .entry time { text-align: right; }
+
+    .contact { padding-bottom: 3rem; border-bottom: 0; }
+    .contact-grid { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 3rem; align-items: end; }
+    .contact h2 { max-width: 900px; margin: 1rem 0 0; font-family: var(--serif); font-size: clamp(3.2rem, 7vw, 7rem); font-weight: 500; letter-spacing: -.065em; line-height: .9; }
+    .contact h2 span { color: var(--signal); }
+    .contact .button-row { justify-content: flex-end; }
+    footer { display: flex; justify-content: space-between; gap: 2rem; margin-top: clamp(4rem, 8vw, 7rem); padding-top: 1.25rem; border-top: 1px solid var(--line); color: var(--faint); font-family: var(--mono); font-size: .68rem; letter-spacing: .06em; text-transform: uppercase; }
+
+    @media (max-width: 900px) {
+      .hero, .principle { grid-template-columns: 1fr; }
+      .availability { max-width: 420px; }
+      .commitments { grid-template-columns: 1fr 1fr; }
+      .commitment:last-child { grid-column: 1 / -1; }
+      .case { grid-template-columns: minmax(0, 1fr) auto; }
+      .case-body { grid-column: 1 / -1; }
+    }
+    @media (max-width: 720px) {
+      nav a:not(:last-child) { display: none; }
+      .method-strip, .commitments, .background-grid, .contact-grid { grid-template-columns: 1fr; }
+      .commitment:last-child { grid-column: auto; }
+      .method-step { min-height: 0; border-top: 1px solid var(--line); border-left: 0; }
+      .method-step:first-child { border-top: 0; }
+      .section-head { grid-template-columns: 1fr; gap: .8rem; }
+      .commitment { min-height: 400px; }
+      .case { grid-template-columns: 1fr; }
+      .case > .text-link { grid-column: 1; justify-self: start; }
+      .case-body { grid-column: 1; grid-template-columns: 1fr; }
+      .contact .button-row { justify-content: flex-start; }
+    }
+    @media (max-width: 480px) {
+      .hero { padding-top: 3.5rem; }
+      .commitment-meta, footer { display: block; }
+      .commitment-meta span, footer span { display: block; margin-top: .35rem; }
+    }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  </style>
 </head>
-<body data-page="portfolio">
-    <div class="page-loader" aria-hidden="true">
-        <div class="page-loader__beam"></div>
-        <div class="page-loader__content">
-            <span class="loader-label">Booting portfolio</span>
-            <div class="loader-dots"><span></span><span></span><span></span></div>
-        </div>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header>
+    <div class="frame masthead">
+      <a class="wordmark" href="#top">Joe Jimenez<span>.</span></a>
+      <nav aria-label="Primary navigation">
+        <a href="#work">Work</a>
+        <a href="#background">Background</a>
+        <a href="#contact">Contact</a>
+        <a href="https://github.com/joejimenez-lab" target="_blank" rel="noopener">GitHub ↗</a>
+        <a class="repair-return" href="index.html">Repair site</a>
+      </nav>
     </div>
-    <header class="site-header">
-        <div class="container navbar">
-            <a class="brand" href="index.html">
-                <span class="brand-logo">JT</span>
-                <span class="brand-text">Joe's Tech Repair</span>
-            </a>
-            <nav class="nav-links">
-                <a href="index.html" data-nav="home">Home</a>
-                <a href="services.html" data-nav="services">Services</a>
-                <a href="prices.html" data-nav="prices" class="is-hidden">Pricing</a>
-                <a href="portfolio.html" data-nav="portfolio">Portfolio</a>
-                <a href="about.html" data-nav="about">About</a>
-                <a href="contact.html" data-nav="contact">Contact</a>
-            </nav>
-            <button class="nav-toggle" aria-label="Toggle navigation">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-        </div>
-    </header>
+  </header>
 
-    <main>
-        <section class="page-hero portfolio-hero">
-            <div class="container">
-                <div class="portfolio-hero-content reveal-up">
-                    <p class="badge"><i class="fa-solid fa-toolbox"></i> Repair · Engineering · Research</p>
-                    <h1 class="glitch-title" data-text="Joe Jimenez">Joe Jimenez</h1>
-                    <p class="hero-subtitle typing-text" data-typing='["Full-stack computer & mobile repair engineer","Master’s-level CS student @ Cal State LA","Automation-focused builder across hardware & software"]'>Full-stack computer & mobile repair engineer</p>
-                    <p>I keep devices and systems online for families, classrooms, and local businesses. I also build hardware and software solutions to solve real problems. I’m currently pursuing my M.S. in Computer Science at Cal State LA while running Joe’s Tech Repair in Baldwin Park.</p>
-                    <div class="hero-cta">
-                        <a class="button button-primary" href="https://www.linkedin.com" target="_blank" rel="noopener">
-                            <i class="fa-brands fa-linkedin"></i>
-                            LinkedIn
-                        </a>
-                        <a class="button button-secondary" href="mailto:joe@joestechrepair.com">
-                            <i class="fa-solid fa-envelope"></i>
-                            Email me
-                        </a>
-                    </div>
-                </div>
-                <div class="portfolio-hero-visual-small reveal-up">
-                    <lottie-player src="https://assets7.lottiefiles.com/packages/lf20_ktwnwv5m.json" background="transparent" speed="1" loop autoplay></lottie-player>
-                </div>
-            </div>
-        </section>
-
-        <section class="section projects-section">
-            <div class="container">
-                <div class="section-heading reveal-up">
-                    <h2>⭐ Featured Projects</h2>
-                    <lottie-player src="https://assets7.lottiefiles.com/packages/lf20_kuhijlvx.json" background="transparent" speed="1" loop autoplay></lottie-player>
-                </div>
-                <div class="cards-grid projects-grid">
-                    <article class="card reveal-up">
-                        <div class="card-header">
-                            <h3 class="card-title">EDA Dashboard</h3>
-                            <a href="https://github.com/" target="_blank" rel="noopener" class="repo-link"><i class="fa-brands fa-github"></i></a>
-                        </div>
-                        <p>Interactive analytics platform using Streamlit, FastAPI, and DuckDB for data drift, fairness checks, and Plotly dashboards.</p>
-                        <ul class="list-check">
-                            <li>Real-time alerts on fairness & drift metrics</li>
-                            <li>Reusable data ingestion pipelines</li>
-                            <li>Packaged with Docker Compose for rapid demos</li>
-                        </ul>
-                    </article>
-                    <article class="card reveal-up">
-                        <div class="card-header">
-                            <h3 class="card-title">Schedulify Class Sync</h3>
-                            <a href="https://github.com/" target="_blank" rel="noopener" class="repo-link"><i class="fa-brands fa-github"></i></a>
-                        </div>
-                        <p>Next.js + FastAPI scheduling tool to visualize and manage university class schedules.</p>
-                        <ul class="list-check">
-                            <li>ICS import/export + conflict detection</li>
-                            <li>Role-based view for advisors/students</li>
-                            <li>Deployed via Netlify & Railway</li>
-                        </ul>
-                    </article>
-                    <article class="card reveal-up">
-                        <div class="card-header">
-                            <h3 class="card-title">IoT & Embedded Systems</h3>
-                            <a href="https://github.com/" target="_blank" rel="noopener" class="repo-link"><i class="fa-brands fa-github"></i></a>
-                        </div>
-                        <p>Multi-display OLED interfaces, sensor-based monitoring prototypes, and microcontroller automation workflows.</p>
-                        <ul class="list-check">
-                            <li>Arduino + ESP32 telemetry collectors</li>
-                            <li>Edge ML inference for battery-limited devices</li>
-                            <li>Custom enclosures designed in Fusion 360</li>
-                        </ul>
-                    </article>
-                    <article class="card reveal-up">
-                        <div class="card-header">
-                    <h3 class="card-title">Topic Modeling Research Tools</h3>
-                    <a href="https://github.com/" target="_blank" rel="noopener" class="repo-link"><i class="fa-brands fa-github"></i></a>
-                </div>
-                <p>Exploratory NLP pipelines using Python, scikit-learn, and Jupyter notebooks.</p>
-                <ul class="list-check">
-                    <li>Automatically surfaces themes in service tickets</li>
-                    <li>Interactive Streamlit dashboards for SMEs</li>
-                    <li>Exports annotated corpora to DuckDB/S3</li>
-                </ul>
-            </article>
+  <main id="main">
+    <div class="frame" id="top">
+      <section class="hero" aria-labelledby="hero-title">
+        <div>
+          <p class="mono">Computer engineer + M.S. CS candidate · <strong>May 2027</strong></p>
+          <h1 id="hero-title">I find the failure <em>before</em> I build the fix.</h1>
+          <p class="hero-copy">I’m Joe—a graduate researcher, software builder, and board-level repair technician. Ten years at a repair bench shaped how I approach every system: inspect the evidence, narrow the cause, then make the change.</p>
         </div>
+        <aside class="availability" aria-label="Availability and contact">
+          <p><strong>Open to 2027 roles</strong><span>Software · systems · data · hardware-adjacent engineering</span></p>
+          <div class="button-row">
+            <a class="button" href="mailto:joejimenez367@gmail.com">Email Joe</a>
+            <a class="button" href="https://linkedin.com/in/joeyahirjimenez" target="_blank" rel="noopener">LinkedIn</a>
+          </div>
+        </aside>
+      </section>
+
+      <div class="method-strip" aria-label="Joe's diagnostic method">
+        <div class="method-step"><h2>Observe</h2><p>Begin with what the system actually did.</p></div>
+        <div class="method-step"><h2>Isolate</h2><p>Reduce the problem until the next test is clear.</p></div>
+        <div class="method-step"><h2>Resolve</h2><p>Turn the diagnosis into a useful outcome.</p></div>
+      </div>
     </div>
-</section>
 
-        <section class="section projects-section">
-            <div class="container">
-                <div class="section-heading reveal-up">
-                    <h2>Experience & Education</h2>
-                    <lottie-player src="https://assets2.lottiefiles.com/packages/lf20_4kx2q32n.json" background="transparent" speed="1" loop autoplay></lottie-player>
-                </div>
-                <div class="portfolio-timeline-grid">
-                    <div>
-                        <h3 class="timeline-heading">Education</h3>
-                        <div class="timeline align-center">
-                            <div class="timeline-item reveal-up" data-step="2027">
-                                <div>
-                                    <h3>M.S. Computer Science · Cal State LA</h3>
-                                    <p>Focusing on AI, ML, data systems, and reliability with projects spanning EDA dashboards, explainable ML, and containerized workflows.</p>
-                                </div>
-                            </div>
-                            <div class="timeline-item reveal-up" data-step="2025">
-                                <div>
-                                    <h3>B.S. Computer Engineering · UC Riverside</h3>
-                                    <p>Completed compiler design, embedded labs, and systems programming projects that shaped my repair methodology.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <h3 class="timeline-heading">Experience</h3>
-                        <div class="timeline">
-                            <div class="timeline-item reveal-up" data-step="2016–Present">
-                                <div>
-                                    <h3>Founder · Joe’s Tech Repair</h3>
-                                    <p>Board-level repairs, data recovery, diagnostics, and on-site support for Baldwin Park & LA clients with transparent workflows.</p>
-                                </div>
-                            </div>
-                            <div class="timeline-item reveal-up" data-step="2022–2023">
-                                <div>
-                                    <h3>STEM Instructor & Mentor</h3>
-                                    <p>Taught and mentored K–12 students in coding and engineering fundamentals while maintaining classroom device fleets.</p>
-                                </div>
-                            </div>
-                            <div class="timeline-item reveal-up" data-step="2021–2025">
-                                <div>
-                                    <h3>Technical Assistant · UC Riverside</h3>
-                                    <p>Supported professors with classroom tech—troubleshooting computers, projectors, and AV setups to keep lectures running smoothly.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="section">
-            <div class="container page-section terminal-section">
-                <div class="terminal-grid">
-                    <div class="terminal-side-card reveal-up" data-terminal-side>
-                        <p class="eyebrow side-reveal" data-side-reveal>About in 10s</p>
-                        <h3 class="side-reveal" data-side-reveal>Joe Jimenez</h3>
-                        <p class="side-reveal" data-side-reveal>Builder at the intersection of hardware + software. I ship products, teach STEM, and keep devices alive.</p>
-                        <p class="terminal-side-status side-reveal" data-side-status data-side-reveal>Panel ready.</p>
-                        <ul class="terminal-about-list">
-                            <li class="side-reveal" data-side-reveal><i class="fa-solid fa-microchip"></i> Arduino / ESP32 prototyping & telemetry</li>
-                            <li class="side-reveal" data-side-reveal><i class="fa-solid fa-code"></i> Streamlit, FastAPI, Next.js, DuckDB</li>
-                            <li class="side-reveal" data-side-reveal><i class="fa-solid fa-screwdriver-wrench"></i> Console, laptop, and phone repair</li>
-                            <li class="side-reveal" data-side-reveal><i class="fa-solid fa-chalkboard-user"></i> STEM instructor & community mentor</li>
-                        </ul>
-                    </div>
-                    <div class="terminal-card reveal-up" data-terminal>
-                        <div class="terminal-header">
-                            <div class="terminal-dots"><span></span><span></span><span></span></div>
-                            <span class="terminal-title">~/portfolio/run.sh</span>
-                            <span class="terminal-pill">live</span>
-                        </div>
-                        <div class="terminal-body" data-terminal-output></div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="section">
-            <div class="container page-section">
-                <h2>Recent wins</h2>
-                <div class="cards-grid">
-                    <article class="card reveal-up">
-                        <h3 class="card-title">Student laptop recovery</h3>
-                        <p>Recovered a water-damaged MacBook for a college student, migrating data safely and replacing the failing charge port.</p>
-                        <ul class="list-check">
-                            <li>Zero data loss + new backup routine created</li>
-                            <li>Battery & thermal diagnostics included</li>
-                            <li>Delivered preventative maintenance checklist</li>
-                        </ul>
-                    </article>
-                    <article class="card reveal-up">
-                        <h3 class="card-title">Home network stabilization</h3>
-                        <p>Optimized a family’s Wi-Fi setup to eliminate dead zones and drops during remote classes.</p>
-                        <ul class="list-check">
-                            <li>Mesh placement + channel tuning</li>
-                            <li>New router configuration & parental controls</li>
-                            <li>45% improvement in signal coverage</li>
-                        </ul>
-                    </article>
-                    <article class="card reveal-up">
-                        <h3 class="card-title">STEM classroom device refresh</h3>
-                        <p>Restored Chromebooks/iPads so a community program could launch the school year without downtime.</p>
-                        <ul class="list-check">
-                            <li>Clean OS loads, updated firmware, removed bloat</li>
-                            <li>Verified batteries, keyboards, and chargers</li>
-                            <li>Documented outstanding issues for IT follow-up</li>
-                        </ul>
-                    </article>
-                    <article class="card reveal-up">
-                        <h3 class="card-title">Console + handheld repairs</h3>
-                        <p>Fixed Nintendo Switch drift, PlayStation HDMI faults, and Xbox power failures.</p>
-                        <ul class="list-check">
-                            <li>Precision soldering + micro repairs</li>
-                            <li>System cleanup + thermal repaste</li>
-                            <li>Firmware/OS verification before handoff</li>
-                        </ul>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-        <section class="section">
-            <div class="container page-section">
-                <h2>Deliverables you can measure</h2>
-                <p class="reveal-up">Whether it’s a laptop repair or an embedded prototype, every job includes transparent diagnostics, before/after notes, and optional follow-up support.</p>
-                <div class="stats-cards">
-                    <div class="stat-card reveal-up">
-                        <span class="stat-value">48 hrs</span>
-                        <span class="stat-label">Typical turnaround for most repairs</span>
-                    </div>
-                    <div class="stat-card reveal-up">
-                        <span class="stat-value">4.9/5</span>
-                        <span class="stat-label">Average rating from local clients</span>
-                    </div>
-                    <div class="stat-card reveal-up">
-                        <span class="stat-value">8+ years</span>
-                        <span class="stat-label">Experience repairing phones, laptops, desktops, consoles</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="section">
-            <div class="container page-section">
-                <div class="grid-two columns">
-                    <div class="card reveal-up">
-                        <div class="card-icon"><i class="fa-solid fa-comments"></i></div>
-                        <h3 class="card-title">Client highlight</h3>
-                        <p>"Joe explained everything clearly and saved my data when my MacBook wouldn’t turn on. He even showed me how to prevent the issue from happening again." — Local Baldwin Park client</p>
-                    </div>
-                    <div class="reveal-up">
-                        <h2>Skills & tooling</h2>
-                        <div class="skills-grid">
-                            <div class="skill-pill">Hardware diagnostics</div>
-                            <div class="skill-pill">Board-level repair</div>
-                            <div class="skill-pill">Streamlit / FastAPI</div>
-                            <div class="skill-pill">Next.js</div>
-                            <div class="skill-pill">DuckDB & SQL</div>
-                            <div class="skill-pill">Docker & Compose</div>
-                            <div class="skill-pill">Python / C++</div>
-                            <div class="skill-pill">Embedded / Arduino</div>
-                            <div class="skill-pill">Edge ML</div>
-                            <div class="skill-pill">Network tuning</div>
-                            <div class="skill-pill">Customer support</div>
-                            <div class="skill-pill">Technical writing</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="section">
-            <div class="container page-section portfolio-cta">
-                <div>
-                    <h2>Let’s build or repair something together</h2>
-                    <p>I'm currently open to contract repair work, embedded projects, and full-stack roles that blend hardware with software automation.</p>
-                </div>
-                <div class="hero-cta reveal-up">
-                    <a class="button button-primary" href="contact.html">Schedule intro</a>
-                    <a class="button button-secondary" href="mailto:joe@joestechrepair.com">Email resume</a>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer class="portfolio-footer">
-        <div class="container">
-            <div class="portfolio-footer__header">
-                <span class="brand-logo">JT</span>
-                <div>
-                    <h3>Joe’s Tech Repair</h3>
-                    <p>Serving Baldwin Park & Los Angeles · Master’s student in Computer Science at Cal State LA</p>
-                </div>
-            </div>
-            <div class="portfolio-footer__grid">
-                <div>
-                    <h4>Quick links</h4>
-                    <div class="footer-links">
-                        <a href="index.html">Home</a>
-                        <a href="services.html">Services</a>
-                        <a href="prices.html" class="is-hidden">Pricing</a>
-                        <a href="contact.html">Schedule</a>
-                        <a href="portfolio.html">Portfolio</a>
-                    </div>
-                </div>
-                <div>
-                    <h4>Connect</h4>
-                    <div class="footer-links">
-                        <a href="mailto:joe@joestechrepair.com"><i class="fa-solid fa-envelope"></i> joe@joestechrepair.com</a>
-                        <a href="tel:16263442562"><i class="fa-solid fa-phone"></i> 626 344 2562</a>
-                        <a href="https://www.linkedin.com/in/joeyahirjimenez" target="_blank" rel="noopener"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <span>© 2025 Joe’s Tech Repair. Built with care in Baldwin Park.</span>
-                <span>Licensed & insured · CS Master’s Candidate</span>
-            </div>
+    <section id="work">
+      <div class="frame">
+        <div class="section-head">
+          <p class="mono"><strong>Core work</strong></p>
+          <h2>Two kinds of work. The same standard of proof.</h2>
         </div>
-    </footer>
 
-    <script src="assets/js/main.js" defer></script>
+        <div class="commitments">
+          <article class="commitment">
+            <div class="commitment-meta"><span>Graduate research</span><span>2026—present</span></div>
+            <h3>Wildfire Modeling &amp; Prediction</h3>
+            <p>Research at Cal State LA connecting physics-based wildfire simulation with satellite observations, weather inputs, fuel data, Python, and HPC workflows. The work is active, so the emphasis here is the method—not invented results.</p>
+            <div class="commitment-foot"><p>WRF-SFIRE · VIIRS · FLAMap · Python · HPC</p><span class="mono">Cal State LA research team</span></div>
+          </article>
+
+          <article class="commitment">
+            <div class="commitment-meta"><span>Owner + technician</span><span>2016—present</span></div>
+            <h3>Joe Tech Repair</h3>
+            <p>A decade of board-level diagnostics, microsoldering, repair operations, and customer accountability. The bench taught me to test assumptions before replacing parts—and to own the outcome when the first theory is wrong.</p>
+            <div class="commitment-foot"><p>Diagnostics · Microsoldering · Operations · Web</p><a class="text-link" href="index.html">Visit repair site →</a></div>
+          </article>
+
+          <article class="commitment">
+            <div class="commitment-meta"><span>Handshake</span><span>Jan 2026—present</span></div>
+            <h3>AI Training Manager</h3>
+            <p>Develops evaluation rubrics and reviews AI-generated hardware, software, PCB, and circuit outputs for technical quality. The role sits directly between engineering judgment and clear, consistent evaluation.</p>
+            <div class="commitment-foot"><p>Rubric design · Technical evaluation · Hardware · Software</p><span class="mono">AI quality and evaluation</span></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section aria-labelledby="projects-title">
+      <div class="frame">
+        <div class="section-head">
+          <p class="mono"><strong>Selected builds</strong></p>
+          <h2 id="projects-title">Software with the evidence left in.</h2>
+        </div>
+
+        <div class="case-list">
+          <article class="case">
+            <div class="case-title"><h3>Reliable Data Transfer over UDP</h3><p>Protocol engineering · Python</p></div>
+            <div class="case-body">
+              <p><strong>Built</strong>A reliable layer with sequence numbers, ACKs, CRC validation, receiver buffering, timeout retransmission, and retry limits.</p>
+              <p><strong>Verified</strong>Deterministic tests exercise delay, loss, corruption, and intentional failure cases. Built collaboratively with Alan Lam.</p>
+            </div>
+            <a class="text-link" href="https://github.com/joejimenez-lab/rdt-udp" target="_blank" rel="noopener">Source ↗</a>
+          </article>
+
+          <article class="case">
+            <div class="case-title"><h3>DispatchDesk</h3><p>Operational software · Full stack</p></div>
+            <div class="case-body">
+              <p><strong>Built</strong>A dispatch system for loads, drivers, brokers, payments, documents, maintenance, IFTA, and activity history.</p>
+              <p><strong>Controlled</strong>Next.js and TypeScript over Supabase/Postgres with authentication, row-level security, and private document storage.</p>
+            </div>
+            <a class="text-link" href="https://github.com/joejimenez-lab/DispatchDesk" target="_blank" rel="noopener">Source ↗</a>
+          </article>
+
+          <article class="case">
+            <div class="case-title"><h3>Schedulify Class Sync</h3><p>Human-in-the-loop AI · Web</p></div>
+            <div class="case-body">
+              <p><strong>Built</strong>A workflow that turns a schedule image or PDF into structured, editable events and exports them as an ICS calendar.</p>
+              <p><strong>Designed</strong>Gemini Vision and Pydantic handle extraction, while a required review step keeps the user in control before export.</p>
+            </div>
+            <a class="text-link" href="https://github.com/joejimenez-lab/Schedulify-Class-Sync" target="_blank" rel="noopener">Source ↗</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="frame principle">
+        <blockquote>“A clean demo is useful. A system that explains <span>why it works</span> is better.”</blockquote>
+        <aside><p class="mono"><strong>Working principle</strong></p><p>I care about architecture, failure modes, verification, and the decisions between them—not just the polished final screen.</p></aside>
+      </div>
+    </section>
+
+    <section id="background" aria-labelledby="background-title">
+      <div class="frame">
+        <div class="section-head">
+          <p class="mono"><strong>Background</strong></p>
+          <h2 id="background-title">Engineering across software and hardware.</h2>
+        </div>
+        <div class="background-grid">
+          <div class="ledger">
+            <h3>Education</h3>
+            <div class="entry"><div><strong>M.S. Computer Science</strong><span>California State University, Los Angeles</span></div><time>May 2027</time></div>
+            <div class="entry"><div><strong>B.S. Computer Engineering</strong><span>University of California, Riverside</span></div><time>June 2025</time></div>
+          </div>
+          <div class="ledger">
+            <h3>Current focus</h3>
+            <div class="entry"><div><strong>Graduate Research</strong><span>Wildfire modeling and prediction</span></div><time>2026—</time></div>
+            <div class="entry"><div><strong>Joe Tech Repair</strong><span>Owner and board-level technician</span></div><time>2016—</time></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contact" aria-labelledby="contact-title">
+      <div class="frame">
+        <div class="contact-grid">
+          <div><p class="mono"><strong>Let’s talk</strong></p><h2 id="contact-title">Looking for a thoughtful engineer for <span>2027?</span></h2></div>
+          <div class="button-row"><a class="button" href="mailto:joejimenez367@gmail.com">Email Joe</a><a class="button" href="https://github.com/joejimenez-lab" target="_blank" rel="noopener">GitHub</a></div>
+        </div>
+        <footer><span>© 2026 Joe Yahir Jimenez</span><span>Observe · Isolate · Resolve</span></footer>
+      </div>
+    </section>
+  </main>
 </body>
 </html>

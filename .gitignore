@@ -1,2 +1,7 @@
 # Local Netlify folder
 .netlify
+
+# Generated output and local files
+/dist/
+.DS_Store
+node_modules/
